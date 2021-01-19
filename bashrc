@@ -120,7 +120,7 @@ task_indicator() {
 }
 
 # Set promt
-PS1="[ \W $(task_indicator) ]"
+PS1="[ \w $(task_indicator) ]"
 
 # Complete command and file names (enabled with -cf flag)
 complete -cf pacman which sudo git
