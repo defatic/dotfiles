@@ -1,6 +1,6 @@
 #!/bin/bash
 
 # Create the sym links to $HOME
-ln -s "$HOME/repos/dotfiles/bashrc" "$HOME/.bashrc"
-ln -s "$HOME/repos/dotfiles/init.vim" "$HOME/.config/nvim/init.vim"
-ln -s "$HOME/repos/dotfiles/xinitrc" "$HOME/.xinitrc"
+ln -s "$PWD" "$HOME/.bashrc"
+ln -s "$PWD" "$HOME/.config/nvim/init.vim"
+ln -s "$PWD" "$HOME/.xinitrc"
