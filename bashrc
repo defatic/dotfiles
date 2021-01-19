@@ -91,12 +91,11 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 export WGETRC="${XDG_CONFIG_HOME:-$HOME/.config}/wget/wgetrc"
-export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 export WINEPREFIX="${XDG_DATA_HOME:-$HOME/.local/share}/wineprefixes/default"
 
 export KEYTIMEOUT=1
 
-# Format fir the time command
+# Format for the time command
 export TIMEFMT=$'\n%U\tuser\n%S\tsystem\n\n%P cpu %*E total'
 
 # nnn file manager options
