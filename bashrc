@@ -1,7 +1,6 @@
 #
 # ~/.bashrc
 #
-
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
@@ -62,10 +61,10 @@ alias paclsea="pacman -Qs"
 
 # Git aliases
 alias fullclean="make clean && rm -f config.h && git reset --hard origin/master"
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 
 # Fun stuff
 alias weather="curl wttr.in/kallhall"
+getip() { curl ifconfig.me; printf "\n" ;}
 
 # Check sshd
 alias check_sshd="journalctl -xe | egrep -i sshd"
@@ -104,15 +103,15 @@ export NNN_OPTS='edHx'
 # task promt function
 task_indicator() {
   TASK="task"
-  if [ `$TASK +READY +OVERDUE count` -gt '0' ]; then
+  if [[ `$TASK +READY +OVERDUE count` -gt '0' ]]; then
     echo "O!"
     # notify-send -u critical 'Overdue!' 'You have Overdue tasks.'
-  elif [ `$TASK +READY +DUETODAY count` -gt '0' ]; then
+  elif [[ `$TASK +READY +DUETODAY count` -gt '0' ]]; then
     echo "!"
     # notify-send -u normal 'Due Today!' 'You have tasks due today.'
-  elif [ `$TASK +READY +TOMORROW count` -gt '0' ]; then
+  elif [[ `$TASK +READY +TOMORROW count` -gt '0' ]]; then
     echo "¡"
-  elif [ `$TASK +READY urgency -gt 10 count` -gt '0' ]; then
+  elif [[ `$TASK +READY urgency -gt 10 count` -gt '0' ]]; then
     echo "U!"
   else
     echo '$'
