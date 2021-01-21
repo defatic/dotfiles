@@ -118,10 +118,9 @@ task_indicator() {
 # Set promt
 PS1="[ \w $(task_indicator) ]"
 
-# Complete command and file names (enabled with -cf flag)
-complete -cf pacman which sudo git
-
-# [ -n "$XTERM_VERSION" ] && transset-df -a > /dev/null # NOT sure if this is needed
+if [ -r /usr/share/bash-completion/bash_completion ]; then
+  source /usr/share/bash-completion/bash_completion
+fi
 
 archey_clone.py
 

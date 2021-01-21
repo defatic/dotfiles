@@ -31,6 +31,8 @@ set vi-cmd-mode-string \1\e[2 q\2
 set colored-stats On
 # Append char to indicate type
 set visible-stats On
+# Singel tap tab for completion
+set show-all-if-ambiguous on
 # Mark symlinked directories
 set mark-symlinked-directories On
 # Color the common prefix

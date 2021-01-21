@@ -5,3 +5,9 @@ ln -sf "$PWD/bashrc" "$HOME/.bashrc"
 ln -sf "$PWD/init.vim" "$HOME/.config/nvim/init.vim"
 ln -sf "$PWD/xinitrc" "$HOME/.xinitrc"
 ln -sf "$PWD/inputrc" "$HOME/.inputrc"
+bashrc
+init.vim
+inputrc
+README.md
+setup
+xinitrc
