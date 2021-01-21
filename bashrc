@@ -72,9 +72,6 @@ alias check_sshd="journalctl -xe | egrep -i sshd"
 # Kill jackd so I can get sound again
 alias kjackd="ps ax | grep jackd | grep -v grep | awk '{print $1}' | xargs -n1 kill -9"
 
-# Testing TBD if I gonna keep
-alias ?="ddgr"
-
 # Add $HOME/bin to $PATH
 export PATH="$HOME/bin:/usr/local/bin:$HOME/.local/bin:${PATH}"
 export MANPATH="/usr/local/man:$MANPATH"
