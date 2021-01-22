@@ -1,4 +1,4 @@
-call plug#begin('$HOME/.config/nvim/plugged')
+call plug#begin('$HOME/.vim/plugged')
 " let vim-plug manage it self [must have]
 Plug 'junegunn/vim-plug', { 'do': ':UpdateRemotePlugins' }
 " Light Line [nice to have]
@@ -7,8 +7,7 @@ Plug 'itchyny/vim-gitbranch'
 " Colorscheme
 Plug 'chriskempson/base16-vim'
 Plug 'tek256/simple-dark'
-"Plug 'gruvbox-community/gruvbox'
-Plug 'sainnhe/gruvbox-material'
+Plug 'gruvbox-community/gruvbox'
 " Tabline
 Plug 'mkitt/tabline.vim'
 " Delimitmate
@@ -17,9 +16,6 @@ Plug 'Raimondi/delimitMate'
 Plug 'oblitum/rainbow'
 " CSS Colors
 Plug 'ap/vim-css-color'
-" Vim Wiki
-Plug 'vimwiki/vimwiki'
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug'] }
 " CoC - Code Completion
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 " CTRL-P
@@ -28,10 +24,6 @@ Plug 'kien/ctrlp.vim'
 Plug 'mbbill/undotree'
 " LimeLight
 Plug 'junegunn/limelight.vim'
-" Python
-Plug 'pappasam/jedi-language-server'
-
-Plug '~/Programing/vim-plugins/test'
 call plug#end()
 
 " General settings
@@ -43,6 +35,19 @@ if !has("gui_running")
   set t_Co=256
 endif
 
+" Set the cursor as a line in Insert mode & as a block in Normal mode
+" KEEP THE FOUR BELOW LINES EXACTLY AS THEY ARE!
+let &t_ti.="\e[1 q"
+let &t_SI.="\e[5 q"
+let &t_EI.="\e[1 q"
+let &t_te.="\e[0 q"
+" makes toggling between Insert & Normal mode faster
+set ttimeout
+set ttimeoutlen=1
+set listchars=tab:>-,trail:~,extends:>,precedes:<,space:.
+set ttyfast
+
+" All of the other sets
 set nobackup
 set nowritebackup
 set noswapfile
@@ -72,7 +77,7 @@ set cmdheight=1
 set updatetime=50
 set shortmess+=c
 set signcolumn=yes
-set undodir=~/.config/nvim/undodir
+set undodir=~/.vim/undotree
 set undofile
 
 " Enable rainbow paren
@@ -85,12 +90,13 @@ let g:python3_host_prog = '/usr/bin/python'
 set mouse-=a
 
 " Vim Colorscheme
-let g:gruvbox_material_background = 'hard'
-colorscheme gruvbox-material
+let g:gruvbox_contrast_dark = 'Hard'
+colorscheme gruvbox
 
+"let base16colorspace=256
 "colorscheme base16-ia-dark
+
 set background=dark
-let base16colorspace=256
 
 " Set highlight for search pattern
 hi Search cterm=NONE ctermfg=204 ctermbg=236 guifg=#E06C75 guibg=#3E4452
@@ -111,8 +117,8 @@ let g:lightline = {
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ] },
       \ 'component_function': { 'gitbranch': 'gitbranch#name' }, }
 
-" Vim Wiki
-let g:vimwiki_list = [ { 'path': '~/.vimwiki/', 'syntax': 'markdown', 'ext': '.md' } ]
+" Limelight
+let g:limelight_conceal_ctermfg = 240 " non-highlight color set to drak gray
 
 " Clang Format config
 let g:clang_format#auto_format = 1
@@ -160,10 +166,10 @@ nnoremap <buffer> <leader>cr :CocRestart<CR>
 " Keymaps
 let mapleader="\<space>"
 tnoremap <esc> <C-\><C-N>
-nnoremap <leader>up :source ~/.config/nvim/init.vim<CR> :PlugInstall<CR>
-nnoremap <F9> :source ~/.config/nvim/init.vim<CR>
+nnoremap <leader>up :source ~/.vimrc<CR> :PlugInstall<CR>
+nnoremap <F9> :source ~/.vimrc<CR>
 nnoremap <silent><leader>cl :noh<CR>
-nnoremap <silent><leader>rc :e ~/.config/nvim/init.vim<CR>
+nnoremap <silent><leader>rc :e ~/.vimrc<CR>
 
 nnoremap <leader>f za
 
