@@ -107,9 +107,6 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_use_caching = 0
 
-" Undotree
-nnoremap <silent><leader>u :UndotreeShow<CR>
-
 " Light Line
 let g:lightline = {
       \ 'colorscheme': 'seoul256',
@@ -175,6 +172,9 @@ nnoremap <silent><leader>rc :e ~/.vimrc<CR>
 nnoremap <leader>f za
 
 nnoremap <silent><leader>ll :Limelight!!<CR>
+
+nnoremap <silent><leader>u :UndotreeShow<CR>
+
 
 nnoremap <silent><C-t> :tabnew<CR>
 nnoremap <silent><S-w> :tabclose<CR>
