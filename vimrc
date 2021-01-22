@@ -53,11 +53,12 @@ set nowritebackup
 set noswapfile
 set noshowmode
 set relativenumber
+set number
 set tabstop=2 shiftwidth=2 softtabstop=2
 set expandtab
 set autoindent
 set smartindent
-set hlsearch
+set nohlsearch
 set incsearch
 set showmatch
 set wildmenu
