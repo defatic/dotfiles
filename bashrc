@@ -10,6 +10,7 @@ set -o vi
 # Set some termial colors
 orange='\033[0;33m'
 red='\033[0;31m'
+cyan='\033[0;36m'
 resetc='\033[0m'
 
 # History settings
