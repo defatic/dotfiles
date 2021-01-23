@@ -113,12 +113,12 @@ task_indicator() {
   elif [[ `$TASK +READY urgency -gt 10 count` -gt '0' ]]; then
     echo "U!"
   else
-    echo '$'
+    echo '#'
   fi
 }
 
 # Set promt
-PS1="[ \W $(task_indicator) ]"
+PS1=" $(task_indicator) \W $ "
 
 if [ -r /usr/share/bash-completion/bash_completion ]; then
   source /usr/share/bash-completion/bash_completion
