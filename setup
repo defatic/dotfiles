@@ -2,7 +2,6 @@
 
 # Create the sym links to $HOME
 ln -sf "$PWD/bashrc" "$HOME/.bashrc"
-ln -sf "$PWD/init.vim" "$HOME/.config/nvim/init.vim"
 ln -sf "$PWD/xinitrc" "$HOME/.xinitrc"
 ln -sf "$PWD/inputrc" "$HOME/.inputrc"
 ln -sf "$PWD/vimrc" "$HOME/.vimrc"
