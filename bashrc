@@ -7,6 +7,11 @@
 # Set VI mode in bash
 set -o vi
 
+# Set some termial colors
+orange='\033[0;33m'
+red='\033[0;31m'
+resetc='\033[0m'
+
 # History settings
 HISTFILE=~/.histfile
 HISTSIZE=1000
@@ -118,7 +123,7 @@ task_indicator() {
 }
 
 # Set promt
-PS1=" $(task_indicator) \W $ "
+PS1=" $(task_indicator) \W ${orange}$ ${resetc}"
 
 if [ -r /usr/share/bash-completion/bash_completion ]; then
   source /usr/share/bash-completion/bash_completion
