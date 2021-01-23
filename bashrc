@@ -38,6 +38,8 @@ alias iotop="sudo iotop -oPa"
 alias iftop="sudo iftop -i enp3s0"
 alias nethogs="sudo nethogs enp3s0"
 
+which() { (alias; declare -f) | /usr/bin/which --tty-only --read-alias --read-functions $@; }
+
 # Mount aliases
 alias musb="sudo mount /dev/sde1 /mnt/usb/"
 alias umusb="sudo umount /mnt/usb/"
@@ -110,23 +112,24 @@ export NNN_OPTS='edHx'
 task_indicator() {
   TASK="task"
   if [[ `$TASK +READY +OVERDUE count` -gt '0' ]]; then
-    echo "${red}O!${resetc}"
+    echo -e "${red}O!${resetc}"
     # notify-send -u critical 'Overdue!' 'You have Overdue tasks.'
   elif [[ `$TASK +READY +DUETODAY count` -gt '0' ]]; then
-    echo "${green}!${resetc}"
+    echo -e "${green}!${resetc}"
     # notify-send -u normal 'Due Today!' 'You have tasks due today.'
   elif [[ `$TASK +READY +TOMORROW count` -gt '0' ]]; then
-    echo "¡"
+    echo -e "¡"
   elif [[ `$TASK +READY urgency -gt 10 count` -gt '0' ]]; then
-    echo "U!"
+    echo -e "U!"
   else
-    echo '#'
+    echo -e '#'
   fi
 }
 
 # Set promt
-PS1=" $(task_indicator) \W ${orange}$ ${resetc}"
+PS1=" $(task_indicator) ${cyan}\W${resetc} ${orange}\$${resetc} "
 
+# Tab completion stuff in bash
 if [ -r /usr/share/bash-completion/bash_completion ]; then
   source /usr/share/bash-completion/bash_completion
 fi
@@ -134,7 +137,7 @@ fi
 archey_clone.py
 
 # Transmission CLI functions
-alias tmrstart=" transmission-daemon -c ~/downloads/dotTorrents ; notify-send 'Transmission Server' 'Transmission deamon started!'"
+alias tmrstart=" transmission-daemon -c ~/downloads/dotTorrents && notify-send 'Transmission Server' 'Transmission deamon started!'"
 tmrlst() {  transmission-remote -l ;}
 tmradd() {  transmission-remote -a "$1" ;}
 tmrrem() {  transmission-remote -t "$1" -r ;}

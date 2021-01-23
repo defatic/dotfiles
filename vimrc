@@ -5,7 +5,6 @@ Plug 'junegunn/vim-plug', { 'do': ':UpdateRemotePlugins' }
 Plug 'itchyny/lightline.vim'
 Plug 'itchyny/vim-gitbranch'
 " Colorscheme
-Plug 'chriskempson/base16-vim'
 Plug 'tek256/simple-dark'
 Plug 'gruvbox-community/gruvbox'
 " Tabline
@@ -93,9 +92,6 @@ set mouse-=a
 " Vim Colorscheme
 let g:gruvbox_contrast_dark = 'Hard'
 colorscheme gruvbox
-
-"let base16colorspace=256
-"colorscheme base16-ia-dark
 
 set background=dark
 
