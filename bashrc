@@ -73,11 +73,13 @@ alias check_sshd="journalctl -xe | egrep -i sshd"
 alias kjackd="ps ax | grep jackd | grep -v grep | awk '{print $1}' | xargs -n1 kill -9"
 
 # Add $HOME/bin to $PATH
-export PATH="$HOME/bin:/usr/local/bin:$HOME/.local/bin:${PATH}"
+export PATH="$HOME/bin:$HOME/.local/bin:/usr/local/bin:${PATH}"
 export MANPATH="/usr/local/man:$MANPATH"
 
+export REPOS="$HOME/repos"
+
 # Default programs
-export EDITOR="nvim"
+export EDITOR="vim"
 export TERMINAL="st"
 export BROWSER="firefox"
 export READER="less"
@@ -116,7 +118,7 @@ task_indicator() {
 }
 
 # Set promt
-PS1="[ \w $(task_indicator) ]"
+PS1="[ \W $(task_indicator) ]"
 
 if [ -r /usr/share/bash-completion/bash_completion ]; then
   source /usr/share/bash-completion/bash_completion
