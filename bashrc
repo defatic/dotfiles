@@ -8,8 +8,9 @@
 set -o vi
 
 # Set some termial colors
-orange='\033[0;33m'
 red='\033[0;31m'
+green='\033[0;32m'
+orange='\033[0;33m'
 cyan='\033[0;36m'
 resetc='\033[0m'
 
@@ -109,10 +110,10 @@ export NNN_OPTS='edHx'
 task_indicator() {
   TASK="task"
   if [[ `$TASK +READY +OVERDUE count` -gt '0' ]]; then
-    echo "O!"
+    echo "${red}O!${resetc}"
     # notify-send -u critical 'Overdue!' 'You have Overdue tasks.'
   elif [[ `$TASK +READY +DUETODAY count` -gt '0' ]]; then
-    echo "!"
+    echo "${green}!${resetc}"
     # notify-send -u normal 'Due Today!' 'You have tasks due today.'
   elif [[ `$TASK +READY +TOMORROW count` -gt '0' ]]; then
     echo "¡"
