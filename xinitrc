@@ -14,18 +14,18 @@ fi
 picom &                     # enabels background transparency in terminals
 clipmenud &                 # Clipboard manager
 setxkbmap se                # sets the kayboard layout to swedish in X11
-xset m 1/1 4                # sets the mouse sensitivity and acceliration
+xset m 1/1 4 &              # sets the mouse sensitivity and acceliration
 xset r rate 300 50 &        # speed up xrate
 nvidia-settings --load-config-only
 xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape' # Turn Caps Lock into ESC
+kjackd # keep for now to see if it works
 
 # Set background
-feh --bg-fill ~/downloads/pictures/Mountains_Landscapes_Nature2.jpg
+feh --bg-fill ~/downloads/pictures/Mountains_Landscapes_Nature2.jpg &
 
 # Start a window manager
 ## dwm settings and launch
-while true
-do
+while true; do
    DATE=$(date '+%b %d %H:%M')
    VOL=$(amixer get Master | tail -1 | sed 's/.*\[\([0-9]*%\)\].*/\1/')
    IP=$(for i in `ip r`; do echo $i; done | grep -A 1 src | tail -n1)

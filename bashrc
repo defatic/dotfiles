@@ -79,7 +79,8 @@ getip() { curl ifconfig.me; printf "\n" ;}
 alias check_sshd="journalctl -xe | egrep -i sshd"
 
 # Kill jackd so I can get sound again
-alias kjackd="ps ax | grep jackd | grep -v grep | awk '{print $1}' | xargs -n1 kill -9"
+#alias kjackd="ps ax | grep jackd | grep -v grep | awk '{print $1}' | xargs -n1 kill -9"
+alias kjackd="jack_control exit"
 
 # Add $HOME/bin to $PATH
 export PATH="$HOME/bin:$HOME/.local/bin:/usr/local/bin:${PATH}"

@@ -1,7 +1,15 @@
 #!/bin/bash
+# Set variabels
+
+vimdir="$HOME/.vim"
 
 # Create the sym links to $HOME
 ln -sf "$PWD/bashrc" "$HOME/.bashrc"
 ln -sf "$PWD/xinitrc" "$HOME/.xinitrc"
 ln -sf "$PWD/inputrc" "$HOME/.inputrc"
-ln -sf "$PWD/vimrc" "$HOME/.vimrc"
+
+if [[ ! -d "${vimdir}" ]]; then
+  echo "Creating .vim directory in $HOME"
+  mkdir "${vimdir}"
+fi
+ln -sf "$PWD/vimrc" "$HOME/.vim/vimrc"

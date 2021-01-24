@@ -160,10 +160,10 @@ nnoremap <buffer> <leader>cr :CocRestart<CR>
 " Keymaps
 let mapleader="\<space>"
 tnoremap <esc> <C-\><C-N>
-nnoremap <leader>up :source ~/.vimrc<CR> :PlugInstall<CR>
-nnoremap <F9> :source ~/.vimrc<CR>
+nnoremap <leader>up :source ~/.vim/vimrc<CR> :PlugInstall<CR>
+nnoremap <F9> :source ~/.vim/vimrc<CR>
 nnoremap <silent><leader>cl :noh<CR>
-nnoremap <silent><leader>rc :e ~/.vimrc<CR>
+nnoremap <silent><leader>rc :e ~/.vim/vimrc<CR>
 
 nnoremap <leader>f za
 
