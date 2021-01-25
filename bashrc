@@ -84,13 +84,24 @@ alias check_sshd="journalctl -xe | egrep -i sshd"
 alias kjackd="jack_control exit"
 
 # Add $HOME/bin to $PATH
-export PATH="$HOME/bin:$HOME/.local/bin:/usr/local/bin:${PATH}"
-export MANPATH="/usr/local/man:$MANPATH"
+# be sure NOT to add ./ in PATH cuz it's unsafe
+export PATH=$HOME/bin:\
+$HOME/.local/bin:\
+/usr/local/bin:\
+$PATH
 
 export REPOS="$HOME/repos"
 
+# be sure not to remove ./ in CDPATH or stuff gets weird
+export CDPATH=\
+./:\
+$REPOS:\
+$HOME
+
 # Default programs
-export EDITOR="vim"
+export EDITOR="vi"
+export VISUAL="vi"
+export EDITOR_PREFIX="vi"
 export TERMINAL="st"
 export BROWSER="firefox"
 export READER="less"

@@ -1,6 +1,6 @@
 call plug#begin('$HOME/.vim/plugged')
 " let vim-plug manage it self [must have]
-Plug 'junegunn/vim-plug', { 'do': ':UpdateRemotePlugins' }
+Plug 'junegunn/vim-plug'
 " Light Line [nice to have]
 Plug 'itchyny/lightline.vim'
 Plug 'itchyny/vim-gitbranch'
@@ -20,7 +20,7 @@ Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 " CTRL-P
 Plug 'kien/ctrlp.vim'
 " Undotree
-Plug 'mbbill/undotree'
+Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 " LimeLight
 Plug 'junegunn/limelight.vim'
 call plug#end()
@@ -79,6 +79,7 @@ set shortmess+=c
 set signcolumn=yes
 set undodir=~/.vim/undotree
 set undofile
+set showcmd
 
 " Enable rainbow paren
 let g:rainbow_active = 1
@@ -169,7 +170,7 @@ nnoremap <leader>f za
 
 nnoremap <silent><leader>ll :Limelight!!<CR>
 
-nnoremap <silent><leader>u :UndotreeShow<CR>
+nnoremap <silent><leader>ud :UndotreeToggle<CR>
 
 
 nnoremap <silent><C-t> :tabnew<CR>
