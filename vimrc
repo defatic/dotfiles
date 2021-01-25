@@ -35,7 +35,7 @@ if !has("gui_running")
 endif
 
 " Set the cursor as a line in Insert mode & as a block in Normal mode
-" KEEP THE FOUR BELOW LINES EXACTLY AS THEY ARE!
+" KEEP THE FOUR LINES BELOW EXACTLY AS THEY ARE!
 let &t_ti.="\e[1 q"
 let &t_SI.="\e[5 q"
 let &t_EI.="\e[1 q"
