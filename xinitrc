@@ -28,13 +28,14 @@ feh --bg-fill ~/downloads/pictures/Mountains_Landscapes_Nature2.jpg &
 while true; do
    DATE=$(date '+%b %d %H:%M')
    VOL=$(amixer get Master | tail -1 | sed 's/.*\[\([0-9]*%\)\].*/\1/')
-   IP=$(for i in `ip r`; do echo $i; done | grep -A 1 src | tail -n1)
+   # IP=$(for i in `ip r`; do echo $i; done | grep -A 1 src | tail -n1)
+   IP=$(curl ifconfig.me)
    TEMP=$(($(cat /sys/class/thermal/thermal_zone0/temp) / 1000))C
    CPULOAD=$(uptime | sed 's/.*: //')
    MEM=$(free | awk '/Minne/ {printf "%d MiB\n", $3 / 1024.0, $2 / 1024.0}')
    KERNEL=$(uname -r | awk -F '-' '{ print $1 }')
 
-  xsetroot -name " $MEM | $CPULOAD | $KERNEL | [$VOL] $DATE "
+  xsetroot -name " $MEM | $CPULOAD | $IP | $KERNEL | [$VOL] $DATE "
 
   sleep 60
 done &

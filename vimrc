@@ -80,6 +80,7 @@ set signcolumn=yes
 set undodir=~/.vim/undotree
 set undofile
 set showcmd
+set viminfo='20,<1000,s1000
 
 " Enable rainbow paren
 let g:rainbow_active = 1
@@ -93,6 +94,7 @@ set mouse-=a
 " Vim Colorscheme
 let g:gruvbox_contrast_dark = 'Hard'
 colorscheme gruvbox
+
 
 set background=dark
 
@@ -170,7 +172,7 @@ nnoremap <leader>f za
 
 nnoremap <silent><leader>ll :Limelight!!<CR>
 
-nnoremap <silent><leader>ud :UndotreeToggle<CR>
+nnoremap <silent><leader>ut :UndotreeToggle<CR>
 
 
 nnoremap <silent><C-t> :tabnew<CR>
