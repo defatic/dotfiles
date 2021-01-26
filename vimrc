@@ -1,7 +1,6 @@
 call plug#begin('$HOME/.vim/plugged')
-" let vim-plug manage it self [must have]
 Plug 'junegunn/vim-plug'
-" Light Line [nice to have]
+" Light Line status bar [nice to have]
 Plug 'itchyny/lightline.vim'
 Plug 'itchyny/vim-gitbranch'
 " Colorscheme
