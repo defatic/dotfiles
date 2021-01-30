@@ -19,7 +19,6 @@ $endif
 
 # Display VI mode on the terminal line
 set show-mode-in-prompt on
-
 # Set new cursor shapes for insert and command mode
 # Insert mode line cursor
 set vi-ins-mode-string \1\e[6 q\2

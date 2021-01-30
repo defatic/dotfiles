@@ -47,17 +47,17 @@ alias umusb="sudo umount /mnt/usb/"
 alias mypass="sudo mount -t ntfs-3g /dev/sdd1 /mnt/myPassport -o force"
 
 # Pacman aliases
-# Remove Orphin packages
-alias pacro="pacman -Qtdq > /dev/null ; sudo pacman -Rns $(pacman -Qtdq | sed -e ':a;N;$!ba;s/\n/ /g') && notify-send 'Done!' 'Done with removing orphan packages.'"
 # Update the system
-alias pacupg="sudo pacman -Syyu ; notify-send 'Update Done!' 'Done with updating the system with official packages.'"
+alias pacupg="sudo pacman -Syyu && notify-send 'Update Done!' 'Done with updating the system with official packages.'"
 # Install packages
 alias pacins="sudo pacman -S"
 # Remove (uninstall) packages, configurationfiles and dependencies
 alias pacrem="sudo pacman -Rnus"
+# Remove Orphin packages
+alias pacro="pacman -Qtdq > /dev/null ; sudo pacman -Rns $(pacman -Qtdq | sed -e ':a;N;$!ba;s/\n/ /g') && notify-send 'Done!' 'Done with removing orphan packages.'"
 # Clear Cache of not installed packages
-alias pacclear="sudo pacman -Sc ; notify-send 'Done!' 'The packages Cache has been cleared.'"
-alias paccc="sudo paccache -ruk0 ; pacclear"
+alias pacclear="sudo pacman -Sc && notify-send 'Done!' 'The packages Cache has been cleared.'"
+alias paccc="sudo paccache -ruk0 && pacclear"
 
 # Pacman AUR aliases
 # Install packages from AUR
@@ -71,6 +71,11 @@ alias paclsea="pacman -Qs"
 
 # Git aliases
 alias fullclean="make clean && rm -f config.h && git reset --hard origin/master"
+
+# Mullvad VPN
+alias mc="mullvad connect && notify-send 'Mullvad' 'Connected to Mullvad VPN'"
+alias md="mullvad disconnect && notify-send 'Mullvad' 'Disconnected from Mullvad VPN'"
+alias ms="mullvad status"
 
 # Fun stuff
 alias weather="curl wttr.in/kallhall"
@@ -131,9 +136,9 @@ task_indicator() {
     echo -e "${green}!${resetc}"
     # notify-send -u normal 'Due Today!' 'You have tasks due today.'
   elif [[ `$TASK +READY +TOMORROW count` -gt '0' ]]; then
-    echo -e "¡"
+    echo -e "${orange}¡${resetc}"
   elif [[ `$TASK +READY urgency -gt 10 count` -gt '0' ]]; then
-    echo -e "U!"
+    echo -e "${red}U!${resetc}"
   else
     echo -e '#'
   fi
