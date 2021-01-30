@@ -10,18 +10,27 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
     done
 fi
 
-# xrdb -merge ~/.Xresources   # loads settings from .Xresources into xterm
-picom &                     # enabels background transparency in terminals
-clipmenud &                 # Clipboard manager
-setxkbmap se                # sets the kayboard layout to swedish in X11
-xset m 1/1 4 &              # sets the mouse sensitivity and acceliration
-xset r rate 300 50 &        # speed up xrate
+# loads settings from .Xresources into xterm
+[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
+# enabels background transparency in terminals
+picom &
+# Clipboard manager
+clipmenud &
+# sets the kayboard layout to swedish in X11
+setxkbmap se
+# sets the mouse sensitivity and acceliration
+xset m 1/1 4
+# speed up xrate
+xset r rate 300 50
+# Load Nvidia settings
 nvidia-settings --load-config-only
-xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape' # Turn Caps Lock into ESC
-kjackd                      # stop jackd to get sound working (need to setup jackd properly)
+# Turn Caps Lock into ESC
+xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+# stop jackd to get sound working (need to setup jackd properly instead)
+kjackd
 
 # Set background
-feh --bg-fill ~/downloads/pictures/Mountains_Landscapes_Nature2.jpg &
+feh --bg-fill ~/downloads/pictures/Mountains_Landscapes_Nature2.jpg
 
 # Start a window manager
 ## dwm settings and launch
