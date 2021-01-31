@@ -1,7 +1,7 @@
 # dotfiles
 
 ## Setup script
-You have to run the setup script for the dotfiles directory otherwise it will
+You have to run the setup script from the dotfiles directory otherwise it will
 not work
 
 * Stored in $HOME
