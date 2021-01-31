@@ -1,15 +1,29 @@
 #!/bin/bash
-# Set variabels
 
 vimdir="$HOME/.vim"
 
-# Create the sym links to $HOME
-ln -sf "$PWD/bashrc" "$HOME/.bashrc"
-ln -sf "$PWD/xinitrc" "$HOME/.xinitrc"
-ln -sf "$PWD/inputrc" "$HOME/.inputrc"
+# Add paths here
+declare -a symlinks=(
+"$PWD/bashrc $HOME/.bashrc"
+"$PWD/xinitrc $HOME/.xinitrc"
+"$PWD/inputrc $HOME/.inputrc"
+"$PWD/vimrc $vimdir/vimrc"
+)
 
+# Check if $HOME/.vim exists if not create it
 if [[ ! -d "${vimdir}" ]]; then
-  echo "Creating .vim directory in $HOME"
-  mkdir "${vimdir}"
+  mkdir ${vimdir}
+  if [[ $? -eq 0 ]]; then
+    echo "Creating .vim directory in $HOME"
+  fi
+else
+  echo ".vim already exists"
 fi
-ln -sf "$PWD/vimrc" "$HOME/.vim/vimrc"
+
+# Create the symlink
+for i in "${symlinks[@]}"; do
+  ln -sf $i
+  if [[ $? -eq 0 ]]; then
+    echo "Creating symlink: ${i}"
+  fi
+done
