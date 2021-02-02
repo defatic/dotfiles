@@ -84,17 +84,12 @@ set viminfo='20,<1000,s1000
 " Enable rainbow paren
 let g:rainbow_active = 1
 
-" Python3 path
-let g:python3_host_prog = '/usr/bin/python'
-
 " Disable mouse click to go to position
 set mouse-=a
 
 " Vim Colorscheme
-let g:gruvbox_contrast_dark = 'Hard'
+let g:gruvbox_contrast_dark = 'soft'
 colorscheme gruvbox
-
-
 set background=dark
 
 " Set highlight for search pattern
@@ -182,6 +177,7 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
+" Strip trailing whitespaces
 fun! TrimWhitespace()
     let l:save = winsaveview()
     keeppatterns %s/\s\+$//e

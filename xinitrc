@@ -30,7 +30,8 @@ xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 kjackd
 
 # Set background
-feh --bg-fill ~/downloads/pictures/Mountains_Landscapes_Nature2.jpg
+# feh --bg-fill ~/downloads/pictures/Mountains_Landscapes_Nature2.jpg
+feh --bg-fill ~/downloads/pictures/forest.jpg
 
 # Start a window manager
 ## dwm settings and launch
