@@ -88,7 +88,7 @@ let g:rainbow_active = 1
 set mouse-=a
 
 " Vim Colorscheme
-let g:gruvbox_contrast_dark = 'soft'
+let g:gruvbox_contrast_dark = 'hard'
 colorscheme gruvbox
 set background=dark
 
