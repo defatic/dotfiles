@@ -17,7 +17,7 @@ if [[ ! -d "${vimdir}" ]]; then
     echo "Creating .vim directory in $HOME"
   fi
 else
-  echo ".vim already exists"
+  echo "$vimdir already exists"
 fi
 
 # Create the symlink
