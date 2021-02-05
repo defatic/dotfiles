@@ -32,7 +32,7 @@ alias grep="egrep --color=auto"
 alias egrep="egrep --color=auto"
 alias vi="vim"
 alias c="clear"
-alias ca="c ; archey_clone.py ; task"
+alias ca="c ; archey_clone ; task"
 alias eb="vi ~/.bashrc"
 
 alias iotop="sudo iotop -oPa"
@@ -152,7 +152,7 @@ if [ -r /usr/share/bash-completion/bash_completion ]; then
   source /usr/share/bash-completion/bash_completion
 fi
 
-archey_clone.py
+archey_clone
 
 # Transmission CLI functions
 alias tmrstart=" transmission-daemon -c ~/downloads/dotTorrents && notify-send 'Transmission Server' 'Transmission deamon started!'"

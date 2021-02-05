@@ -6,6 +6,8 @@ Plug 'itchyny/vim-gitbranch'
 " Colorscheme
 Plug 'tek256/simple-dark'
 Plug 'gruvbox-community/gruvbox'
+Plug 'arcticicestudio/nord-vim'
+Plug 'ciaranm/inkpot'
 " Tabline
 Plug 'mkitt/tabline.vim'
 " Delimitmate
@@ -22,6 +24,8 @@ Plug 'kien/ctrlp.vim'
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 " LimeLight
 Plug 'junegunn/limelight.vim'
+" Markdown
+Plug 'plasticboy/vim-markdown'
 call plug#end()
 
 " General settings
@@ -39,7 +43,7 @@ let &t_ti.="\e[1 q"
 let &t_SI.="\e[5 q"
 let &t_EI.="\e[1 q"
 let &t_te.="\e[0 q"
-" makes toggling between Insert & Normal mode faster
+" Makes toggling between Insert & Normal mode faster
 set ttimeout
 set ttimeoutlen=1
 set listchars=tab:>-,trail:~,extends:>,precedes:<,space:.
@@ -80,6 +84,8 @@ set undodir=~/.vim/undotree
 set undofile
 set showcmd
 set viminfo='20,<1000,s1000
+set splitbelow
+set splitright
 
 " Enable rainbow paren
 let g:rainbow_active = 1
@@ -88,9 +94,17 @@ let g:rainbow_active = 1
 set mouse-=a
 
 " Vim Colorscheme
-let g:gruvbox_contrast_dark = 'hard'
-colorscheme gruvbox
 set background=dark
+" let g:gruvbox_contrast_dark = 'hard' " needs to be set before colorscheme is called
+" colorscheme gruvbox
+colorscheme nord
+if (g:colors_name == "nord")
+  let g:nord_cursor_line_number_background = 1
+  let g:nord_uniform_status_lines = 1
+  let g:nord_italic = 1
+  set termguicolors
+endif
+" colorscheme simple-dark
 
 " Set highlight for search pattern
 hi Search cterm=NONE ctermfg=204 ctermbg=236 guifg=#E06C75 guibg=#3E4452
@@ -102,7 +116,7 @@ let g:ctrlp_use_caching = 0
 
 " Light Line
 let g:lightline = {
-      \ 'colorscheme': 'seoul256',
+      \ 'colorscheme': 'nord',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste'],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ] },
@@ -115,28 +129,28 @@ let g:limelight_conceal_ctermfg = 240 " non-highlight color set to drak gray
 let g:clang_format#auto_format = 1
 let g:clang_format#code_style = "LLVM"
 let g:clang_format#style_options = {
-     \ "AllowShortIfStatementsOnASingleLine" : "false",
-     \ "IndentCaseLabels" : "true",
-     \ "IndentWidth" : 2,
-     \ "PointerAlignment" : "Left",
-     \ "TabWidth" : 2,
-     \ "AlignConsecutiveMacros" : "true",
-     \ "AlignConsecutiveAssignments" : "true",
-     \ "AlignConsecutiveDeclarations" : "true",
-     \ "AlignEscapedNewlines" : "true",
-     \ "AlignTrailingComments" : "true",
-     \ "AlignOperands" : "true",
-     \ "AllowShortBlocksOnASingleLine" : "true",
-     \ "AllowShortFunctionsOnASingleLine" : "true",
-     \ "ColumnLimit" : 80,
-     \ "KeepEmptyLinesAtTheStartOfBlocks" : "false",
-     \ "SortIncludes" : "false",
-     \ "SpaceAfterCStyleCast" :"false" }
+      \ "AllowShortIfStatementsOnASingleLine" : "false",
+      \ "IndentCaseLabels" : "true",
+      \ "IndentWidth" : 2,
+      \ "PointerAlignment" : "Left",
+      \ "TabWidth" : 2,
+      \ "AlignConsecutiveMacros" : "true",
+      \ "AlignConsecutiveAssignments" : "true",
+      \ "AlignConsecutiveDeclarations" : "true",
+      \ "AlignEscapedNewlines" : "true",
+      \ "AlignTrailingComments" : "true",
+      \ "AlignOperands" : "true",
+      \ "AllowShortBlocksOnASingleLine" : "true",
+      \ "AllowShortFunctionsOnASingleLine" : "true",
+      \ "ColumnLimit" : 80,
+      \ "KeepEmptyLinesAtTheStartOfBlocks" : "false",
+      \ "SortIncludes" : "false",
+      \ "SpaceAfterCStyleCast" :"false" }
 
 " CoC Settings
 function! s:check_back_space() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~# '\s'
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 inoremap <buffer> <silent><expr> <TAB>
@@ -179,9 +193,9 @@ nnoremap <c-l> <c-w>l
 
 " Strip trailing whitespaces
 fun! TrimWhitespace()
-    let l:save = winsaveview()
-    keeppatterns %s/\s\+$//e
-    call winrestview(l:save)
+  let l:save = winsaveview()
+  keeppatterns %s/\s\+$//e
+  call winrestview(l:save)
 endfun
 
 autocmd BufWritePre * :call TrimWhitespace()
