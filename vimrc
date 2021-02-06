@@ -19,7 +19,7 @@ Plug 'ap/vim-css-color'
 " CoC - Code Completion
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 " CTRL-P
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 " Undotree
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 " LimeLight
