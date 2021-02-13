@@ -15,7 +15,7 @@ cyan='\033[0;36m'
 resetc='\033[0m'
 
 # History settings
-HISTFILE=~/.histfile
+HISTFILE="$HOME/.histfile"
 HISTSIZE=1000
 SAVEHIST=2000
 
