@@ -39,8 +39,6 @@ alias iotop="sudo iotop -oPa"
 alias iftop="sudo iftop -i enp3s0"
 alias nethogs="sudo nethogs enp3s0"
 
-which() { (alias; declare -f) | /usr/bin/which --tty-only --read-alias --read-functions $@; }
-
 # Mount aliases
 alias musb="sudo mount /dev/sde1 /mnt/usb/"
 alias umusb="sudo umount /mnt/usb/"
@@ -153,6 +151,8 @@ if [ -r /usr/share/bash-completion/bash_completion ]; then
 fi
 
 archey_clone
+
+which() { (alias; declare -f) | /usr/bin/which --tty-only --read-alias --read-functions $@; }
 
 # Transmission CLI functions
 alias tmrstart=" transmission-daemon -c ~/downloads/dotTorrents && notify-send 'Transmission Server' 'Transmission deamon started!'"

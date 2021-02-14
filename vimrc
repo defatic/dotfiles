@@ -60,7 +60,7 @@ set tabstop=2 shiftwidth=2 softtabstop=2
 set expandtab
 set autoindent
 set smartindent
-set nohlsearch
+set hlsearch
 set incsearch
 set showmatch
 set wildmenu
@@ -176,16 +176,17 @@ nnoremap <F9> :source ~/.vim/vimrc<CR>
 nnoremap <silent><leader>cl :noh<CR>
 nnoremap <silent><leader>rc :e ~/.vim/vimrc<CR>
 
+" Folding
 nnoremap <leader>f za
 
 nnoremap <silent><leader>ll :Limelight!!<CR>
 
 nnoremap <silent><leader>ut :UndotreeToggle<CR>
 
-
 nnoremap <silent><C-t> :tabnew<CR>
 nnoremap <silent><S-w> :tabclose<CR>
 
+" Window navigation made easy
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h

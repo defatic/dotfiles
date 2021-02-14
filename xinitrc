@@ -31,7 +31,7 @@ kjackd
 
 # Set wallpapper
 # feh --bg-fill ~/downloads/pictures/Mountains_Landscapes_Nature2.jpg
-feh --bg-fill ~/downloads/pictures/forest.jpg
+feh --bg-fill ~/Documents/wallpappers/forest.jpg
 
 # Start a window manager
 ## dwm settings and launch
