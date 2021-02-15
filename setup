@@ -8,6 +8,7 @@ declare -a symlinks=(
 "$PWD/xinitrc $HOME/.xinitrc"
 "$PWD/inputrc $HOME/.inputrc"
 "$PWD/vimrc $vimdir/vimrc"
+"$PWD/tmux.conf $HOME/.tmux.conf"
 )
 
 # Check if $HOME/.vim exists if not create it

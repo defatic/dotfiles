@@ -94,6 +94,7 @@ $HOME/.local/bin:\
 $PATH
 
 export REPOS="$HOME/repos"
+export GOPATH="$HOME/programing/go"
 
 # be sure not to remove ./ in CDPATH or stuff gets weird
 export CDPATH=\
