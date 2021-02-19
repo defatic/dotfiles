@@ -26,6 +26,8 @@ Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 Plug 'junegunn/limelight.vim'
 " Markdown
 Plug 'plasticboy/vim-markdown'
+" Surround
+Plug 'tpope/vim-surround'
 call plug#end()
 
 " General settings
@@ -50,6 +52,8 @@ set listchars=tab:>-,trail:~,extends:>,precedes:<,space:.
 set ttyfast
 
 " All of the other sets
+set hlsearch
+set incsearch
 set nobackup
 set nowritebackup
 set noswapfile
@@ -60,8 +64,6 @@ set tabstop=2 shiftwidth=2 softtabstop=2
 set expandtab
 set autoindent
 set smartindent
-set hlsearch
-set incsearch
 set showmatch
 set wildmenu
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
@@ -171,10 +173,10 @@ nnoremap <buffer> <leader>cr :CocRestart<CR>
 " Keymaps
 let mapleader="\<space>"
 tnoremap <esc> <C-\><C-N>
-nnoremap <leader>up :source ~/.vim/vimrc<CR> :PlugInstall<CR>
+nnoremap <silent><leader>up :source ~/.vim/vimrc<CR> :PlugInstall<CR>
 nnoremap <F9> :source ~/.vim/vimrc<CR>
-nnoremap <silent><leader>cl :noh<CR>
 nnoremap <silent><leader>rc :e ~/.vim/vimrc<CR>
+nnoremap <silent><leader>cl :let @/=@_<CR>
 
 " Folding
 nnoremap <leader>f za
