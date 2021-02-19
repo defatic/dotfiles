@@ -176,7 +176,7 @@ tnoremap <esc> <C-\><C-N>
 nnoremap <silent><leader>up :source ~/.vim/vimrc<CR> :PlugInstall<CR>
 nnoremap <F9> :source ~/.vim/vimrc<CR>
 nnoremap <silent><leader>rc :e ~/.vim/vimrc<CR>
-nnoremap <silent><leader>cl :let @/=@_<CR>
+nnoremap <silent><leader>cl :noh<CR>
 
 " Folding
 nnoremap <leader>f za
