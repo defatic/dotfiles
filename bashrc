@@ -94,7 +94,6 @@ $HOME/.local/bin:\
 $PATH
 
 export REPOS="$HOME/repos"
-export GOPATH="$HOME/programming/go"
 
 # be sure not to remove ./ in CDPATH or stuff gets weird
 export CDPATH=\
@@ -103,10 +102,10 @@ $REPOS:\
 $HOME
 
 # Default programs
-export EDITOR="vi"
-export VISUAL="vi"
-export EDITOR_PREFIX="vi"
-export TERMINAL="st"
+export EDITOR="vim"
+export VISUAL="vim"
+export EDITOR_PREFIX="vim"
+export TERMINAL="alacritty"
 export BROWSER="firefox"
 export READER="less"
 
@@ -117,13 +116,15 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export WGETRC="${XDG_CONFIG_HOME:-$HOME/.config}/wget/wgetrc"
 export WINEPREFIX="${XDG_DATA_HOME:-$HOME/.local/share}/wineprefixes/default"
 
+# Golang paths
+export GOPATH="$HOME/programming/go"
+#export GOPATH="$XDG_DATA_HOME/go"
+#export GOPATH="$XDG_DATA_HOME/go/bin"
+
 export KEYTIMEOUT=1
 
 # Format for the time command
 export TIMEFMT=$'\n%U\tuser\n%S\tsystem\n\n%P cpu %*E total'
-
-# nnn file manager options
-export NNN_OPTS='edHx'
 
 # task promt function
 task_indicator() {

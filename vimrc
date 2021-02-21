@@ -25,9 +25,14 @@ Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 " LimeLight
 Plug 'junegunn/limelight.vim'
 " Markdown
-Plug 'plasticboy/vim-markdown'
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'rwxrob/vim-pandoc-syntax-simple'
 " Surround
 Plug 'tpope/vim-surround'
+" Rip Grep
+Plug 'jremmen/vim-ripgrep'
+" Vim go
+Plug 'fatih/vim-go', { 'do': 'GoInstallBinaries' }
 call plug#end()
 
 " General settings
@@ -38,6 +43,10 @@ syntax on
 if !has("gui_running")
   set t_Co=256
 endif
+
+" set Vim-specific sequences for RGB colors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 " Set the cursor as a line in Insert mode & as a block in Normal mode
 " KEEP THE FOUR LINES BELOW EXACTLY AS THEY ARE!
@@ -97,8 +106,8 @@ set mouse-=a
 
 " Vim Colorscheme
 set background=dark
-" let g:gruvbox_contrast_dark = 'hard' " needs to be set before colorscheme is called
-" colorscheme gruvbox
+"let g:gruvbox_contrast_dark = 'hard' " needs to be set before colorscheme is called
+"colorscheme gruvbox
 colorscheme nord
 if (g:colors_name == "nord")
   let g:nord_cursor_line_number_background = 1
@@ -162,6 +171,35 @@ inoremap <buffer> <silent><expr> <TAB>
 
 inoremap <buffer> <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 inoremap <buffer> <silent><expr> <C-space> coc#refresh()
+
+" golang
+let g:go_fmt_fail_silently = 0
+let g:go_fmt_command = 'goimports'
+let g:go_fmt_autosave = 1
+let g:go_gopls_enabled = 1
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_variable_declarations = 1
+let g:go_highlight_variable_assignments = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_diagnostic_errors = 1
+let g:go_highlight_diagnostic_warnings = 1
+let g:go_auto_type_info = 1
+let g:go_auto_sameids = 0
+"let g:go_metalinter_command='golangci-lint'
+"let g:go_metalinter_command='golint'
+"let g:go_metalinter_autosave=1
+"let g:go_gopls_analyses = { 'composites' : v:false }
+"au FileType go nmap <leader>t :GoTest!<CR>
+"au FileType go nmap <leader>v :GoVet!<CR>
+"au FileType go nmap <leader>b :GoBuild!<CR>
+"au FileType go nmap <leader>c :GoCoverageToggle<CR>
+"au FileType go nmap <leader>i :GoInfo<CR>
+"au FileType go nmap <leader>l :GoMetaLinter!<CR>
 
 " GoTo code navigation.
 nmap <buffer> <leader>gd <Plug>(coc-definition)
