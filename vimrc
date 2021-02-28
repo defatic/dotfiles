@@ -15,7 +15,7 @@ Plug 'Raimondi/delimitMate'
 " Color Paren
 Plug 'oblitum/rainbow'
 " CSS Colors
-Plug 'ap/vim-css-color'
+"Plug 'ap/vim-css-color'
 " CoC - Code Completion
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 " CTRL-P
@@ -38,7 +38,9 @@ call plug#end()
 " General settings
 set nocompatible
 filetype plugin on
-syntax on
+"syntax on
+
+set omnifunc=syntaxcomplete#Complete
 
 if !has("gui_running")
   set t_Co=256
@@ -225,6 +227,11 @@ nnoremap <silent><leader>ut :UndotreeToggle<CR>
 
 nnoremap <silent><C-t> :tabnew<CR>
 nnoremap <silent><S-w> :tabclose<CR>
+
+" Spellchecking switching key binds
+nnoremap <leader>ss :setlocal spell spelllang=sv<CR>
+nnoremap <leader>se :setlocal spell spelllang=en<CR>
+nnoremap <silent><leader>ns :set nospell<CR>
 
 " Window navigation made easy
 nnoremap <c-j> <c-w>j

@@ -17,7 +17,7 @@ picom &
 # Clipboard manager
 clipmenud &
 # sets the kayboard layout to swedish in X11
-setxkbmap se
+      setxkbmap se
 # sets the mouse sensitivity and acceliration
 xset m 1/1 4
 # speed up xrate
