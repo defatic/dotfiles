@@ -102,9 +102,9 @@ $REPOS:\
 $HOME
 
 # Default programs
-export EDITOR="vim"
-export VISUAL="vim"
-export EDITOR_PREFIX="vim"
+export EDITOR="vi"
+export VISUAL="vi"
+export EDITOR_PREFIX="vi"
 export TERMINAL="alacritty"
 export BROWSER="firefox"
 export READER="less"
