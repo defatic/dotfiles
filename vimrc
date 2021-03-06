@@ -108,6 +108,7 @@ set mouse-=a
 
 " Vim Colorscheme
 set background=dark
+" colorscheme simple-dark
 "let g:gruvbox_contrast_dark = 'hard' " needs to be set before colorscheme is called
 "colorscheme gruvbox
 colorscheme nord
@@ -117,10 +118,10 @@ if (g:colors_name == "nord")
   let g:nord_italic = 1
   set termguicolors
 endif
-" colorscheme simple-dark
 
 " Set highlight for search pattern
 hi Search cterm=NONE ctermfg=204 ctermbg=236 guifg=#E06C75 guibg=#3E4452
+" hi Normal guibg=NONE
 
 " CTRL-P
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'

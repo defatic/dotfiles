@@ -73,10 +73,10 @@ alias fullclean="make clean && rm -f config.h && git reset --hard origin/master"
 # Mullvad VPN
 alias mc="mullvad connect && notify-send 'Mullvad' 'Connected to Mullvad VPN'"
 alias md="mullvad disconnect && notify-send 'Mullvad' 'Disconnected from Mullvad VPN'"
-alias ms="mullvad status"
+alias ms="mullvad status && getip"
 
 # Fun stuff
-alias weather="curl wttr.in/kallhall"
+alias weather="curl wttr.in/kallhall?m"
 getip() { curl ifconfig.me; printf "\n" ;}
 
 # Check sshd
