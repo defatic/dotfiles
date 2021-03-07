@@ -15,7 +15,7 @@ cyan='\033[0;36m'
 resetc='\033[0m'
 
 # History settings
-HISTFILE="$HOME/.histfile"
+HISTFILE="$HOME/.cache/bash/histfile"
 HISTSIZE=1000
 SAVEHIST=2000
 
@@ -144,13 +144,17 @@ task_indicator() {
   fi
 }
 
-# Set promt
-PS1=" $(task_indicator) ${cyan}\W${resetc} ${orange}\$${resetc} "
-
 # Tab completion stuff in bash
 if [ -r /usr/share/bash-completion/bash_completion ]; then
   source /usr/share/bash-completion/bash_completion
 fi
+
+# Set promt
+function my_prompt() {
+  source "$HOME/.git-prompt.sh"
+  export PS1=" $(task_indicator) ${cyan}\W${resetc}${red}$(__git_ps1 ':%s')${resetc} ${orange}\$${resetc} "
+}
+export PROMPT_COMMAND="my_prompt"
 
 archey_clone
 
