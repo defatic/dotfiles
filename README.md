@@ -8,5 +8,10 @@ not work
   * bashrc
   * xinitrc
   * inputrc
+  * git-prompt.sh
+  * zshrc
 * Stored in specific directory
   * vimrc -> $HOME/.vim/vimrc
+
+## Not Used
+zshrc, I'm using B bash for now
