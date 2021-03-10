@@ -34,6 +34,7 @@ alias vi="vim"
 alias c="clear"
 alias ca="c ; archey_clone ; task"
 alias eb="vi ~/.bashrc"
+alias cal="cal -m3"
 
 alias iotop="sudo iotop -oPa"
 alias iftop="sudo iftop -i enp3s0"
