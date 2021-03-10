@@ -1,6 +1,3 @@
-#
-# ~/.bashrc
-#
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
@@ -16,8 +13,8 @@ resetc='\033[0m'
 
 # History settings
 HISTFILE="$HOME/.cache/bash/histfile"
-HISTSIZE=1000
-SAVEHIST=2000
+HISTSIZE=10000
+SAVEHIST=10000
 
 # eval commands
 eval $(dircolors -b)
@@ -32,7 +29,7 @@ alias grep="egrep --color=auto"
 alias egrep="egrep --color=auto"
 alias vi="vim"
 alias c="clear"
-alias ca="c ; archey_clone ; task"
+alias ca="c ; archey_clone ; task list"
 alias eb="vi ~/.bashrc"
 alias cal="cal -m3"
 
@@ -157,6 +154,7 @@ function my_prompt() {
 }
 export PROMPT_COMMAND="my_prompt"
 
+# Display system info
 archey_clone
 
 which() { (alias; declare -f) | /usr/bin/which --tty-only --read-alias --read-functions $@; }
