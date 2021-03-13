@@ -5,19 +5,19 @@
 # Below function runs files in /etc/X11/xinit/xinit.d/ catelog for startup at
 # X11 boot
 if [ -d /etc/X11/xinit/xinitrc.d ]; then
-    for f in /etc/X11/xinit/xinitrc.d/*; do
-        [ -x "$f" ] && . "$f"
-    done
+  for f in /etc/X11/xinit/xinitrc.d/*; do
+    [ -x "$f" ] && . "$f"
+  done
 fi
 
 # loads settings from .Xresources into xterm
-[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
+[[ -f ~/.Xresources ]] && xrdb -merge -I"$HOME ~/.Xresources"
 # enabels background transparency in terminals
 picom &
 # Clipboard manager
 clipmenud &
 # sets the kayboard layout to swedish in X11
-      setxkbmap se
+setxkbmap se
 # sets the mouse sensitivity and acceliration
 xset m 1/1 4
 # speed up xrate
@@ -38,8 +38,8 @@ feh --bg-fill ~/Documents/wallpappers/forest.jpg
 while true; do
    DATE=$(date '+%b %d %H:%M')
    VOL=$(amixer get Master | tail -1 | sed 's/.*\[\([0-9]*%\)\].*/\1/')
-   IP=$(for i in `ip r`; do echo $i; done | grep -A 1 src | tail -n1)
-   TEMP=$(($(cat /sys/class/thermal/thermal_zone0/temp) / 1000))C
+   #IP=$(for i in $(ip r); do echo "$i"; done | grep -A 1 src | tail -n1)
+   #TEMP=$(($(cat /sys/class/thermal/thermal_zone0/temp) / 1000))C
    CPULOAD=$(uptime | sed 's/.*: //')
    MEM=$(free | awk '/Mem/ {printf "%d MiB\n", $3 / 1024.0, $2 / 1024.0}')
    KERNEL=$(uname -r | awk -F '-' '{ print $1 }')
