@@ -127,15 +127,15 @@ export TIMEFMT=$'\n%U\tuser\n%S\tsystem\n\n%P cpu %*E total'
 # task promt function
 task_indicator() {
   TASK="task"
-  if [[ `$TASK +READY +OVERDUE count` -gt '0' ]]; then
+  if [[ $($TASK +READY +OVERDUE count) -gt '0' ]]; then
     echo -e "${red}O!${resetc}"
-    # notify-send -u critical 'Overdue!' 'You have Overdue tasks.'
-  elif [[ `$TASK +READY +DUETODAY count` -gt '0' ]]; then
+    # notify-send -u critical "Overdue!" "You have Overdue tasks."
+  elif [[ $($TASK +READY +DUETODAY count) -gt '0' ]]; then
     echo -e "${green}!${resetc}"
-    # notify-send -u normal 'Due Today!' 'You have tasks due today.'
-  elif [[ `$TASK +READY +TOMORROW count` -gt '0' ]]; then
+    # notify-send -u normal "Due Today!" "You have tasks due today."
+  elif [[ $($TASK +READY +TOMORROW count) -gt '0' ]]; then
     echo -e "${orange}¡${resetc}"
-  elif [[ `$TASK +READY urgency -gt 10 count` -gt '0' ]]; then
+  elif [[ $($TASK +READY urgency -gt 10 count) -gt '0' ]]; then
     echo -e "${red}U!${resetc}"
   else
     echo -e '#'
@@ -157,7 +157,7 @@ export PROMPT_COMMAND="my_prompt"
 # Display system info
 archey_clone
 
-which() { (alias; declare -f) | /usr/bin/which --tty-only --read-alias --read-functions $@; }
+which() { (alias; declare -f) | /usr/bin/which --tty-only --read-alias --read-functions "$@"; }
 
 # Transmission CLI functions
 alias tmrstart=" transmission-daemon -c ~/downloads/dotTorrents && notify-send 'Transmission Server' 'Transmission deamon started!'"
@@ -170,4 +170,5 @@ tmrcli() {  transmission-remote-cli ;}
 tmrkill() {  sudo pkill transmission-da ;}
 
 # Streamlink Functions
-sl() { streamlink -p vlc "$1" best ;}
+# disown the background prosses to "unlock" the terminal
+sl() { streamlink -p vlc "$1" best; disown $!;}

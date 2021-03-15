@@ -38,7 +38,7 @@ call plug#end()
 " General settings
 set nocompatible
 filetype plugin on
-"syntax on
+syntax on
 
 set omnifunc=syntaxcomplete#Complete
 

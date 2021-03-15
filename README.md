@@ -14,4 +14,4 @@ not work
   * vimrc -> $HOME/.vim/vimrc
 
 ## Not Used
-zshrc, I'm using B bash for now
+zshrc, I'm using bash for now
