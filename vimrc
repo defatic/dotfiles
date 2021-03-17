@@ -15,7 +15,7 @@ Plug 'Raimondi/delimitMate'
 " Color Paren
 Plug 'oblitum/rainbow'
 " CSS Colors
-"Plug 'ap/vim-css-color'
+Plug 'ap/vim-css-color'
 " CoC - Code Completion
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 " CTRL-P
