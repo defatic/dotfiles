@@ -84,6 +84,8 @@ alias check_sshd="journalctl -xe | egrep -i sshd"
 #alias kjackd="ps ax | grep jackd | grep -v grep | awk '{print $1}' | xargs -n1 kill -9"
 alias kjackd="jack_control exit"
 
+source "$HOME/.oauth"
+
 # Add $HOME/bin to $PATH
 # be sure NOT to add ./ in PATH cuz it's unsafe
 export PATH=$HOME/bin:\
@@ -100,9 +102,9 @@ $REPOS:\
 $HOME
 
 # Default programs
-export EDITOR="vi"
-export VISUAL="vi"
-export EDITOR_PREFIX="vi"
+export EDITOR="vim"
+export VISUAL="vim"
+export EDITOR_PREFIX="vim"
 export TERMINAL="alacritty"
 export BROWSER="firefox"
 export READER="less"
