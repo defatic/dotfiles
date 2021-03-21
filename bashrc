@@ -149,7 +149,7 @@ if [ -r /usr/share/bash-completion/bash_completion ]; then
   source /usr/share/bash-completion/bash_completion
 fi
 
-# Set promt
+#; Set promt
 function my_prompt() {
   source "$HOME/.git-prompt.sh"
   export PS1=" $(task_indicator) ${cyan}\W${resetc}${red}$(__git_ps1 ':%s')${resetc} ${orange}\$${resetc} "
@@ -159,18 +159,23 @@ export PROMPT_COMMAND="my_prompt"
 # Display system info
 archey_clone
 
+# better which command
 which() { (alias; declare -f) | /usr/bin/which --tty-only --read-alias --read-functions "$@"; }
 
 # Transmission CLI functions
 alias tmrstart=" transmission-daemon -c ~/downloads/dotTorrents && notify-send 'Transmission Server' 'Transmission deamon started!'"
-tmrlst() {  transmission-remote -l ;}
-tmradd() {  transmission-remote -a "$1" ;}
-tmrrem() {  transmission-remote -t "$1" -r ;}
-tmrsta() {  transmission-remote -t "$1" --start ;}
-tmrsto() {  transmission-remote -t "$1" --stop ;}
-tmrcli() {  transmission-remote-cli ;}
-tmrkill() {  sudo pkill transmission-da ;}
+tmrlst() { transmission-remote -l ;}
+tmradd() { transmission-remote -a "$1" ;}
+tmrrem() { transmission-remote -t "$1" -r ;}
+tmrsta() { transmission-remote -t "$1" --start ;}
+tmrsto() { transmission-remote -t "$1" --stop ;}
+tmrcli() { transmission-remote-cli ;}
+tmrkill() { sudo pkill transmission-da ;}
 
 # Streamlink Functions
 # disown the background prosses to "unlock" the terminal
-sl() { streamlink -p vlc "$1" best; disown $!;}
+sl() {
+  #streamlink -p "vlc --qt-minimal-view" "$1" best
+  streamlink -p "mpv" "$1" best
+  disown $!
+}

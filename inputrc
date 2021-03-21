@@ -1,10 +1,10 @@
 $include /etc/inputrc
 
 # Set VI mode in the terminal
-set bell-style none
-set editing-mode vi
-set keymap vi
-
+#set bell-style none
+#set editing-mode vi
+#set keymap vi
+#
 $if mode=vi
   set keymap vi-command
   # these are for vi-command mode
