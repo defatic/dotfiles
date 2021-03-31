@@ -4,6 +4,10 @@
 # Set VI mode in bash
 set -o vi
 
+shopt -s nocaseglob
+shopt -s histappend
+shopt -s cdspell
+
 # Set some termial colors
 red='\033[0;31m'
 green='\033[0;32m'
@@ -83,8 +87,6 @@ alias check_sshd="journalctl -xe | egrep -i sshd"
 # Kill jackd so I can get sound again
 #alias kjackd="ps ax | grep jackd | grep -v grep | awk '{print $1}' | xargs -n1 kill -9"
 alias kjackd="jack_control exit"
-
-source "$HOME/.oauth"
 
 # Add $HOME/bin to $PATH
 # be sure NOT to add ./ in PATH cuz it's unsafe
@@ -176,6 +178,6 @@ tmrkill() { sudo pkill transmission-da ;}
 # disown the background prosses to "unlock" the terminal
 sl() {
   #streamlink -p "vlc --qt-minimal-view" "$1" best
-  streamlink -p "mpv" "$1" best
-  disown $!
+  streamlink -p "mpv" "$1" best &>/dev/null &
+  disown "$!"
 }
