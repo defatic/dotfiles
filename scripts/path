@@ -1,0 +1,10 @@
+#!/bin/bash
+
+echo -e "Path!"
+echo -e "${PATH//:/\\n}"
+echo -e ""
+echo -e "CD Path!"
+echo -e "${CDPATH//:/\\n}"
+echo -e ""
+echo -e "Go Path!"
+echo -e "${GOPATH//:/\\n}"

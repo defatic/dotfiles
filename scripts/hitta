@@ -1,0 +1,3 @@
+#!/bin/bash
+
+lynx "https://www.hitta.se/s%C3%B6k?vad=${1}"

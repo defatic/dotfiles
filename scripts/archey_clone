@@ -1,0 +1,104 @@
+#!/usr/bin/python3
+
+# Archey Clone
+# Author: Dennis Svensson < ech.o >
+
+import os
+from itertools import zip_longest
+from subprocess import Popen, PIPE
+
+# Spacer
+spr = " "
+# ANSI Color Setup
+CL = "\033[0m"  # reset all (colors and brightness)
+BO = "\033[1m"  # Bright
+# Foreground
+BL = "\033[30m"  # Black
+R = "\033[31m"  # Red
+G = "\033[32m"  # Green
+Y = "\033[33m"  # Yellow
+B = "\033[34m"  # Blue
+M = "\033[35m"  # Magenta
+C = "\033[36m"  # Cyan
+W = "\033[37m"  # White
+# Backgroud
+# example:
+# BBL = "\033[40m" # Black
+# BR  = "\033[41m" # Red
+# BG  = "\033[42m" # Green
+# and so on
+
+
+def get_env_value(value):
+    value = os.getenv(value)
+    if value == "rxvt-unicode-256color":
+        value = "rxvt 256 colors"
+    elif value == "xterm-256color":
+        value = "xterm 256 colors"
+    elif value == "tmux-256color":
+        value = "tmux 256 colors"
+    elif value == "/bin/bash":
+        value = "bash"
+    else:
+        value = value
+    return str(value)
+
+
+def packages():
+    p1 = Popen(['pacman', '-Q'], stdout=PIPE).communicate()[0].decode("utf-8")
+    packages_num = len(p1.rstrip('\n').split('\n'))
+    return str(packages_num)
+
+
+def host():
+    hostname = Popen(
+        ['uname', '-n'],
+        stdout=PIPE).communicate()[0].decode('Utf-8').rstrip('\n')
+    return hostname
+
+
+def kernel():
+    kernel_ver = Popen(
+        ['uname', '-r'],
+        stdout=PIPE).communicate()[0].decode('Utf-8').rstrip('\n').split("-")
+    return kernel_ver[0]
+
+
+def dist():
+    global dist_type
+    if os.path.exists('/etc/pacman.conf'):
+        dist_type = 'Arch Linux'
+    return dist_type
+
+logo = [
+    BO + R + "  █████████" + CL + BO + G + " █████████" + CL +
+    BO + M + " █████████" + CL + BO + C + " █████    " + CL,
+    BO + R + "  █       █" + CL + BO + G + " █       █" + CL +
+    BO + M + " █       █" + CL + BO + C + " █   █████" + CL,
+    BO + R + "  █████   █" + CL + BO + G + " █   █   █" + CL +
+    BO + M + " █   █   █" + CL + BO + C + " █       █" + CL,
+    BO + R + "  █       █" + CL + G + " █   █   █" + CL +
+    BO + M + " █   █   █" + CL + C + " █   █   █" + CL,
+    R + "  █   █   █" + CL + G + " █   █████" + CL +
+        M + " █   █████" + CL + C + " █   █   █" + CL,
+    R + "  █       █" + CL + G + " █   █    " + CL +
+        M + " █       █" + CL + C + " █   █   █" + CL,
+    R + "  █████████" + CL + G + " █████    " + CL +
+        M + " █████████" + CL + C + " █████████" + CL
+]
+
+output = [
+    B + "User: " + CL + get_env_value('USER'),
+    B + "Host: " + CL + host(),
+    B + "Distro: " + CL + dist(),
+    B + "Shell: " + CL + get_env_value('SHELL'),
+    B + "Packages: " + CL + packages(),
+    B + "Terminal: " + CL + get_env_value('TERM'),
+    B + "Kernel: " + CL + kernel()
+]
+
+if __name__ == "__main__":
+    print(spr)
+    for x, y in zip_longest(logo, output, fillvalue="\r"):
+        print(x, y)
+    print(spr)

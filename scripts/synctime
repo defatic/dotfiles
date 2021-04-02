@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+sudo ntpd -qg
+sudo hwclock --systohc
+echo "Fixing the time and setting HW Clock to current time"

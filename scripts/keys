@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [[ "$1" == "se" ]]; then
+  echo "Seting kdb layout to Swedish"
+  setxkbmap se && xset r 66
+  echo "Setting Caps Lock to Escape"
+  xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+elif [[ "$1" == "colemak" ]]; then
+  echo "Setting kdb layout to US Colemak"
+  setxkbmap us -variant colemak
+else
+  echo "Useage:"
+  echo "$0 se: set kdb layout to Swedish"
+  echo "$0 colemak: set kab layout to US Colemak"
+fi
