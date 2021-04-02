@@ -177,7 +177,7 @@ tmrkill() { sudo pkill transmission-da ;}
 # Streamlink Functions
 # disown the background prosses to "unlock" the terminal
 sl() {
-  #streamlink -p "vlc --qt-minimal-view" "$1" best
+  #streamlink -p "vlc --qt-minimal-view" "$1" best &>/dev/null &
   streamlink -p "mpv" "$1" best &>/dev/null &
   disown "$!"
 }
