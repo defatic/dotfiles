@@ -1,6 +1,7 @@
 # dotfiles
 
 ## Setup script
+
 You have to run the setup script from the dotfiles directory otherwise it will
 not work
 
@@ -12,6 +13,3 @@ not work
   * zshrc
 * Stored in specific directory
   * vimrc -> $HOME/.vim/vimrc
-
-## Not Used
-zshrc, I'm using bash for now

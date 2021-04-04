@@ -31,7 +31,7 @@ eval $(dircolors -b)
 # General aliases
 alias ls="ls --color=auto"
 alias la="ls --color=auto -lAh"
-alias ll="ls --color=auto -gSX"
+alias ll="ls --color=auto -ghSX"
 alias l1="ls -1 --color=auto"
 alias ..="cd .."
 alias grep="egrep --color=auto"
