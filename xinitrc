@@ -13,7 +13,7 @@ fi
 # loads settings from .Xresources into xterm
 [[ -f ~/.Xresources ]] && xrdb -merge -I"$HOME ~/.Xresources"
 # enabels background transparency in terminals
-picom &
+#picom &
 # Clipboard manager
 clipmenud &
 # sets the kayboard layout to swedish in X11
@@ -26,7 +26,7 @@ xset r rate 300 50
 nvidia-settings --load-config-only
 # Turn Caps Lock into ESC
 xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
-# stop jackd to get sound working (need to setup jackd properly instead)
+# WORKAROUND: stop jackd to get sound working (need to setup jackd properly instead)
 kjackd
 
 # Set wallpapper
@@ -49,4 +49,4 @@ while true; do
   sleep 60
 done &
 
-exec ~/bin/dwm
+exec "$HOME/bin/dwm"

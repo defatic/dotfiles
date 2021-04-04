@@ -1,6 +1,11 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# first whatever the system has (required for completion, etc.)
+if [ -e /etc/bashrc ]; then
+  source /etc/bashrc
+fi
+
 # Set VI mode in bash
 set -o vi
 
@@ -34,7 +39,7 @@ alias egrep="egrep --color=auto"
 alias vi="vim"
 alias c="clear"
 alias ca="c ; archey_clone ; task list"
-alias eb="vi ~/.bashrc"
+alias eb="vi $HOME/.bashrc"
 alias cal="cal -m3"
 
 alias iotop="sudo iotop -oPa"
@@ -110,6 +115,7 @@ export EDITOR_PREFIX="vim"
 export TERMINAL="alacritty"
 export BROWSER="firefox"
 export READER="less"
+export GITUSER="defatic"
 
 # Clean up $HOME
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -118,10 +124,54 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export WGETRC="${XDG_CONFIG_HOME:-$HOME/.config}/wget/wgetrc"
 export WINEPREFIX="${XDG_DATA_HOME:-$HOME/.local/share}/wineprefixes/default"
 
+# Colors
+export escape=$'\033'
+export reset=$'\033[0m'
+export bold=$'\033[1m'
+export underline=$'\033[4m'
+export blinkon=$'\033[5m'
+export blinkoff=$'\033[25m'
+export inverse=$'\033[7m'
+export inverseoff=$'\033[27m'
+export normal=$'\033[39m'
+export normalbg=$'\033[49m'
+
+export clear=$'\033[H\033[2J'
+clear () { echo -n $clear; }
+
+export black=$'\033[30m'
+export red=$'\033[31m'
+export green=$'\033[32m'
+export yellow=$'\033[33m'
+export blue=$'\033[34m'
+export magenta=$'\033[35m'
+export cyan=$'\033[36m'
+export white=$'\033[37m'
+
+export brblack=$'\033[90m'   # brblack
+export brred=$'\033[91m'     # brred
+export brgreen=$'\033[92m'   # brgreen
+export bryellow=$'\033[93m'  # bryellow
+export brblue=$'\033[94m'    # brblue
+export brmagenta=$'\033[95m' # brmagenta
+export brcyan=$'\033[96m'    # brcyan
+export brwhite=$'\033[97m'   # brwhite
+
+# Here's your colored man pages right here.
+export LESS_TERMCAP_mb=$magenta
+export LESS_TERMCAP_md=$yellow
+export LESS_TERMCAP_me=$reset
+export LESS_TERMCAP_se=$reset
+export LESS_TERMCAP_so=$blue
+export LESS_TERMCAP_ue=$reset
+export LESS_TERMCAP_us=""
+
 # Golang paths
-export GOPATH="$HOME/programming/go"
-#export GOPATH="$XDG_DATA_HOME/go"
-#export GOPATH="$XDG_DATA_HOME/go/bin"
+export GOPRIVATE="gihub.com/$GITUSER/*"
+export GOPATH="$HOME/.local/go"
+export GOBIN="$HOME/.local/go/bin"
+export GOPROXY="direct"
+export CGO_ENABELD=0
 
 export KEYTIMEOUT=1
 
