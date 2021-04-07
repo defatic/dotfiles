@@ -167,7 +167,7 @@ export LESS_TERMCAP_ue=$reset
 export LESS_TERMCAP_us=""
 
 # Golang paths
-export GOPRIVATE="gihub.com/$GITUSER/*"
+export GOPRIVATE="github.com/$GITUSER/*"
 export GOPATH="$HOME/.local/go"
 export GOBIN="$HOME/.local/go/bin"
 export GOPROXY="direct"

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 if [[ "$1" == "se" ]]; then
   echo "Seting kdb layout to Swedish"
