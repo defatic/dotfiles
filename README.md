@@ -5,11 +5,11 @@
 You have to run the setup script from the dotfiles directory otherwise it will
 not work
 
-* Stored in $HOME
+* Located in $HOME
   * bashrc
   * xinitrc
   * inputrc
   * git-prompt.sh
   * zshrc
-* Stored in specific directory
+* Located in a specific directory
   * vimrc -> $HOME/.vim/vimrc

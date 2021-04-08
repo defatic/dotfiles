@@ -11,7 +11,7 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
 fi
 
 # loads settings from .Xresources into xterm
-[[ -f ~/.Xresources ]] && xrdb -merge -I"$HOME ~/.Xresources"
+[[ -f "$HOME/.Xresources" ]] && xrdb -merge -I"$HOME $HOME/.Xresources"
 # enabels background transparency in terminals
 #picom &
 # Clipboard manager
@@ -30,8 +30,8 @@ xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 kjackd
 
 # Set wallpapper
-# feh --bg-fill ~/downloads/pictures/Mountains_Landscapes_Nature2.jpg
-feh --bg-fill ~/Documents/wallpappers/forest.jpg
+# feh --bg-fill "$HOME/Documents/wallpappers/Mountains_Landscapes_Nature2.jpg"
+feh --bg-fill "$HOME/Documents/wallpappers/forest.jpg"
 
 # Start a window manager
 ## dwm settings and launch
