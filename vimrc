@@ -108,7 +108,7 @@ set mouse-=a
 
 " Vim Colorscheme
 set background=dark
-" colorscheme simple-dark
+"colorscheme simple-dark
 "let g:gruvbox_contrast_dark = 'hard' " needs to be set before colorscheme is called
 "colorscheme gruvbox
 colorscheme nord

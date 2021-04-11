@@ -9,6 +9,11 @@ fi
 # Set VI mode in bash
 set -o vi
 
+shopt -s checkwinsize
+shopt -s expand_aliases
+shopt -s globstar
+shopt -s dotglob
+shopt -s extglob
 shopt -s nocaseglob
 shopt -s histappend
 shopt -s cdspell
@@ -116,7 +121,7 @@ export EDITOR_PREFIX="vim"
 export TERMINAL="alacritty"
 export BROWSER="firefox"
 export READER="less"
-export GITUSER="defatic"
+export GITUSER="$(git config --global user.name)"
 
 # Clean up $HOME
 export XDG_CONFIG_HOME="$HOME/.config"
