@@ -202,7 +202,7 @@ if [ -r /usr/share/bash-completion/bash_completion ]; then
   source /usr/share/bash-completion/bash_completion
 fi
 
-#; Set promt
+# Set promt
 function my_prompt() {
   source "$HOME/.git-prompt.sh"
   export PS1=" $(task_indicator) ${cyan}\W${resetc}${red}$(__git_ps1 ':%s')${resetc} ${orange}\$${resetc} "
