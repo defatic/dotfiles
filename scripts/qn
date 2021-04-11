@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 qn_file="$HOME/repos/notes/quick_notes.md"
 

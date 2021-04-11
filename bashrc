@@ -95,7 +95,8 @@ alias kjackd="jack_control exit"
 
 # Add $HOME/bin to $PATH
 # be sure NOT to add ./ in PATH cuz it's unsafe
-export PATH=$HOME/bin:\
+export PATH=\
+$HOME/bin:\
 $HOME/.local/bin:\
 /usr/local/bin:\
 $PATH
