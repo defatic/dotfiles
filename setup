@@ -5,6 +5,7 @@ vimdir="$HOME/.vim"
 # Add paths here
 declare -a symlinks=(
 "$PWD/bashrc $HOME/.bashrc"
+"$PWD/bash_profile $HOME/.bash_profile"
 "$PWD/xinitrc $HOME/.xinitrc"
 "$PWD/inputrc $HOME/.inputrc"
 "$PWD/vimrc $vimdir/vimrc"
