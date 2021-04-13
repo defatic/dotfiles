@@ -22,8 +22,6 @@ Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'ctrlpvim/ctrlp.vim'
 " Undotree
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
-" LimeLight
-Plug 'junegunn/limelight.vim'
 " Markdown
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'rwxrob/vim-pandoc-syntax-simple'
@@ -136,9 +134,6 @@ let g:lightline = {
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ] },
       \ 'component_function': { 'gitbranch': 'gitbranch#name' }, }
 
-" Limelight
-let g:limelight_conceal_ctermfg = 240 " non-highlight color set to drak gray
-
 " Clang Format config
 let g:clang_format#auto_format = 1
 let g:clang_format#code_style = "LLVM"
@@ -240,7 +235,7 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
-" Strip trailing whitespaces
+" Strip trailing white spaces
 fun! TrimWhitespace()
   let l:save = winsaveview()
   keeppatterns %s/\s\+$//e
