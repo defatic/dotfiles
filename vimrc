@@ -157,6 +157,8 @@ let g:clang_format#style_options = {
       \ "SpaceAfterCStyleCast" :"false" }
 
 " CoC Settings
+let g:coc_disable_startup_warning = 1
+
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'

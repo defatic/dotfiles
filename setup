@@ -12,7 +12,6 @@ declare -a symlinks=(
 "$PWD/tmux.conf $HOME/.tmux.conf"
 "$PWD/git-prompt.sh $HOME/.git-prompt.sh"
 "$PWD/alacritty.yml $HOME/.config/alacritty/alacritty.yml"
-"$PWD/scripts $HOME/bin"
 )
 
 # Check if $HOME/.vim exists if not create it
