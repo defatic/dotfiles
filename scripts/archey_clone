@@ -90,9 +90,9 @@ logo = [
 output = [
     B + "User: " + CL + get_env_value('USER'),
     B + "Host: " + CL + host(),
-    B + "Distro: " + CL + dist(),
+#    B + "Distro: " + CL + dist(),
     B + "Shell: " + CL + get_env_value('SHELL'),
-    B + "Packages: " + CL + packages(),
+#    B + "Packages: " + CL + packages(),
     B + "Terminal: " + CL + get_env_value('TERM'),
     B + "Kernel: " + CL + kernel()
 ]
