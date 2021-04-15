@@ -1,4 +1,4 @@
-# If not running interactively, don't do anything
+
 [[ $- != *i* ]] && return
 
 # first whatever the system has (required for completion, etc.)
@@ -107,6 +107,7 @@ export PATH=\
 $HOME/bin:\
 $HOME/.local/bin:\
 /usr/local/bin:\
+$REPOS/dotfiles/scripts:\
 $PATH
 
 export REPOS="$HOME/repos"
@@ -221,7 +222,7 @@ export PROMPT_COMMAND="my_prompt"
 archey_clone
 
 # better which command
-which() { (alias; declare -f) | /usr/bin/which --tty-only --read-alias --read-functions "$@"; }
+#which() { (alias; declare -f) | /usr/bin/which --tty-only --read-alias --read-functions "$@"; }
 
 # Transmission CLI functions
 alias tmrstart=" transmission-daemon -c ~/downloads/dotTorrents && notify-send 'Transmission Server' 'Transmission deamon started!'"
