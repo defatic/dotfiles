@@ -38,6 +38,7 @@ alias ls="ls --color=auto"
 alias la="ls --color=auto -lAh"
 alias ll="ls --color=auto -ghSX"
 alias l1="ls -1 --color=auto"
+alias lac="ls --color=auto -aC"
 alias ..="cd .."
 alias grep="egrep --color=auto"
 alias egrep="egrep --color=auto"
@@ -56,28 +57,30 @@ alias musb="sudo mount /dev/sde1 /mnt/usb/"
 alias umusb="sudo umount /mnt/usb/"
 alias mypass="sudo mount -t ntfs-3g /dev/sdd1 /mnt/myPassport -o force"
 
-# Pacman aliases
-# Update the system
-alias pacupg="sudo pacman -Syyu && notify-send 'Update Done!' 'Done with updating the system with official packages.'"
-# Install packages
-alias pacins="sudo pacman -S"
-# Remove (uninstall) packages, configurationfiles and dependencies
-alias pacrem="sudo pacman -Rnus"
-# Remove Orphin packages
-alias pacro="pacman -Qtdq > /dev/null ; sudo pacman -Rns $(pacman -Qtdq | sed -e ':a;N;$!ba;s/\n/ /g') && notify-send 'Done!' 'Done with removing orphan packages.'"
-# Clear Cache of not installed packages
-alias pacclear="sudo pacman -Sc && notify-send 'Done!' 'The packages Cache has been cleared.'"
-alias paccc="sudo paccache -ruk0 && pacclear"
+alias apt="sudo apt"
 
-# Pacman AUR aliases
-# Install packages from AUR
-alias aurins="pacaur -S"
-# Update the system with AUR packages
-alias aurupg="pacaur -Syyu && notify-send 'Update Done!' 'Done with updating the system with AUR packages.'"
-# Search for packages Official and in the AUR
-alias pacsea="pacaur -Ss"
-# Search the local database for a named package
-alias paclsea="pacman -Qs"
+## Pacman aliases
+## Update the system
+#alias pacupg="sudo pacman -Syyu && notify-send 'Update Done!' 'Done with updating the system with official packages.'"
+## Install packages
+#alias pacins="sudo pacman -S"
+## Remove (uninstall) packages, configurationfiles and dependencies
+#alias pacrem="sudo pacman -Rnus"
+## Remove Orphin packages
+#alias pacro="pacman -Qtdq > /dev/null ; sudo pacman -Rns $(pacman -Qtdq | sed -e ':a;N;$!ba;s/\n/ /g') && notify-send 'Done!' 'Done with removing orphan packages.'"
+## Clear Cache of not installed packages
+#alias pacclear="sudo pacman -Sc && notify-send 'Done!' 'The packages Cache has been cleared.'"
+#alias paccc="sudo paccache -ruk0 && pacclear"
+#
+## Pacman AUR aliases
+## Install packages from AUR
+#alias aurins="pacaur -S"
+## Update the system with AUR packages
+#alias aurupg="pacaur -Syyu && notify-send 'Update Done!' 'Done with updating the system with AUR packages.'"
+## Search for packages Official and in the AUR
+#alias pacsea="pacaur -Ss"
+## Search the local database for a named package
+#alias paclsea="pacman -Qs"
 
 # Git aliases
 alias fullclean="make clean && rm -f config.h && git reset --hard origin/master"

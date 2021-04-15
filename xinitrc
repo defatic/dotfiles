@@ -26,12 +26,10 @@ xset r rate 300 50
 nvidia-settings --load-config-only
 # Turn Caps Lock into ESC
 xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
-# WORKAROUND: stop jackd to get sound working (need to setup jackd properly instead)
-kjackd
 
 # Set wallpapper
 # feh --bg-fill "$HOME/Documents/wallpappers/Mountains_Landscapes_Nature2.jpg"
-feh --bg-fill "$HOME/Documents/wallpappers/forest.jpg"
+feh --bg-fill "$HOME/Documents/wallpappers/jungle.jpg"
 
 # Start a window manager
 ## dwm settings and launch
