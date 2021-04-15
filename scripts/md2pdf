@@ -1,3 +1,5 @@
-#!/bin/sh
+#!/bin/bash
+
+[[ -z $(which pandoc) ]] && echo "Install Pandoc" && exit 1
 
 pandoc "$1.md" -o "$1.pdf" --from markdown --template eisvogel --listings
