@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Folders
+declare -a dirCreate=(
+"$HOME/.vim"
+"$HOME/.config/alacritty"
+)
+
+# Symlinks
+declare -a symlinks=(
+"$PWD/bashrc $HOME/.bashrc"
+"$PWD/bash_profile $HOME/.bash_profile"
+"$PWD/xinitrc $HOME/.xinitrc"
+"$PWD/inputrc $HOME/.inputrc"
+"$PWD/vimrc $vimdir/vimrc"
+"$PWD/tmux.conf $HOME/.tmux.conf"
+"$PWD/git-prompt.sh $HOME/.git-prompt.sh"
+"$PWD/alacritty.yml $HOME/.config/alacritty/alacritty.yml"
+)
+
+# Check if directorys and symlinks exist, otherwise create them!
+

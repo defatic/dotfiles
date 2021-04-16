@@ -18,10 +18,10 @@ declare -a symlinks=(
 if [[ ! -d "${vimdir}" ]]; then
   mkdir ${vimdir}
   if [[ $? -eq 0 ]]; then
-    echo "Creating .vim directory in $HOME"
+    echo "Creating .vim directory in ${HOME}"
   fi
 else
-  echo "$vimdir already exists"
+  echo "${vimdir} already exists"
 fi
 
 # Create the symlink
