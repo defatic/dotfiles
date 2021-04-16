@@ -97,20 +97,16 @@ getip() { curl ifconfig.me; printf "\n" ;}
 # Check sshd
 alias check_sshd="journalctl -xe | egrep -i sshd"
 
-# Kill jackd so I can get sound again
-#alias kjackd="ps ax | grep jackd | grep -v grep | awk '{print $1}' | xargs -n1 kill -9"
-alias kjackd="jack_control exit"
+export REPOS="$HOME/repos"
 
 # Add $HOME/bin to $PATH
 # be sure NOT to add ./ in PATH cuz it's unsafe
 export PATH=\
 $HOME/bin:\
 $HOME/.local/bin:\
-/usr/local/bin:\
 $REPOS/dotfiles/scripts:\
+/usr/local/bin:\
 $PATH
-
-export REPOS="$HOME/repos"
 
 # be sure not to remove ./ in CDPATH or stuff gets weird
 export CDPATH=\
