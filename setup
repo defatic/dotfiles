@@ -1,8 +1,10 @@
 #!/bin/bash
 
+# Add folders here
 vimdir="$HOME/.vim"
+aladir="$HOME/.config/alacritty"
 
-# Add paths here
+# Add symlink paths here
 declare -a symlinks=(
 "$PWD/bashrc $HOME/.bashrc"
 "$PWD/bash_profile $HOME/.bash_profile"
@@ -16,12 +18,22 @@ declare -a symlinks=(
 
 # Check if $HOME/.vim exists if not create it
 if [[ ! -d "${vimdir}" ]]; then
-  mkdir ${vimdir}
+  mkdir -p ${vimdir}
   if [[ $? -eq 0 ]]; then
     echo "Creating .vim directory in ${HOME}"
   fi
 else
   echo "${vimdir} already exists"
+fi
+
+# Check if $HOME/.config/alacritty exists if not create it
+if [[ ! -d "${aladir}" ]]; then
+  mkdir -p ${aladir}
+  if [[ $? -eq 0 ]]; then
+    echo "Creating alacritty directory in ${aladir}"
+  fi
+else
+  echo "${aladir} already exists"
 fi
 
 # Create the symlink
