@@ -204,7 +204,7 @@ task_indicator() {
 
 # Tab completion stuff in bash
 if [ -r /usr/share/bash-completion/bash_completion ]; then
-  source /usr/share/bash-completion/bash_completion
+  . /usr/share/bash-completion/bash_completion
 fi
 
 # Set promt
