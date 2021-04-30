@@ -83,12 +83,7 @@ alias apt="sudo apt"
 #alias paclsea="pacman -Qs"
 
 # Git aliases
-alias fullclean="make clean && rm -f config.h && git reset --hard origin/master"
-
-# Mullvad VPN
-alias mc="mullvad connect && notify-send 'Mullvad' 'Connected to Mullvad VPN'"
-alias md="mullvad disconnect && notify-send 'Mullvad' 'Disconnected from Mullvad VPN'"
-alias ms="mullvad status && getip"
+alias fullclean="make clean && git reset --hard origin/master"
 
 # Fun stuff
 alias weather="curl wttr.in/kallhall?m"

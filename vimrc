@@ -8,12 +8,8 @@ Plug 'tek256/simple-dark'
 Plug 'gruvbox-community/gruvbox'
 Plug 'arcticicestudio/nord-vim'
 Plug 'ciaranm/inkpot'
-" Tabline
-Plug 'mkitt/tabline.vim'
 " Delimitmate
 Plug 'Raimondi/delimitMate'
-" Color Paren
-Plug 'oblitum/rainbow'
 " CSS Colors
 Plug 'ap/vim-css-color'
 " CoC - Code Completion
@@ -25,8 +21,6 @@ Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 " Markdown
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'rwxrob/vim-pandoc-syntax-simple'
-" Surround
-Plug 'tpope/vim-surround'
 " Rip Grep
 Plug 'jremmen/vim-ripgrep'
 " Vim go
@@ -97,9 +91,6 @@ set showcmd
 set viminfo='20,<1000,s1000
 set splitbelow
 set splitright
-
-" Enable rainbow paren
-let g:rainbow_active = 1
 
 " Disable mouse click to go to position
 set mouse-=a
