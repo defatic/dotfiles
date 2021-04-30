@@ -48,3 +48,4 @@ while true; do
 done &
 
 exec "$HOME/bin/dwm"
+# exec "$HOME/repos/suckless/dwm/dwm" # for testing new builds
