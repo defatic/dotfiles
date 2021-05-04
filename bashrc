@@ -31,7 +31,8 @@ HISTSIZE=10000
 SAVEHIST=10000
 
 # eval commands
-eval $(dircolors -b)
+eval "$(dircolors -b)"
+eval "$(gh completion -s bash)" # Bash completion for the gh command (github cli)
 
 # General aliases
 alias ls="ls --color=auto"
@@ -116,6 +117,7 @@ export EDITOR_PREFIX="vim"
 export TERMINAL="alacritty"
 export BROWSER="firefox"
 export READER="less"
+
 export GITUSER="$(git config --global user.name)"
 
 # Clean up $HOME
@@ -137,9 +139,6 @@ export inverseoff=$'\033[27m'
 export normal=$'\033[39m'
 export normalbg=$'\033[49m'
 
-export clear=$'\033[H\033[2J'
-clear () { echo -n $clear; }
-
 export black=$'\033[30m'
 export red=$'\033[31m'
 export green=$'\033[32m'
@@ -157,6 +156,9 @@ export brblue=$'\033[94m'    # brblue
 export brmagenta=$'\033[95m' # brmagenta
 export brcyan=$'\033[96m'    # brcyan
 export brwhite=$'\033[97m'   # brwhite
+
+export clear=$'\033[H\033[2J'
+clear () { echo -n $clear; }
 
 # Here's your colored man pages right here.
 export LESS_TERMCAP_mb=$magenta
