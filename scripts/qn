@@ -1,20 +1,27 @@
-#!/bin/bash
+#!/bin/sh
 
 qn_file="$HOME/repos/notes/quick_notes.md"
+dir="$REPOS/notes"
 
-if [[ "$1" == "e" ]]; then
+if [ "$1" = "e" ]; then
   $EDITOR "${qn_file}"
   exit 0
-elif [[ "$1" == "v" ]]; then
-  cat "${qn_file}"
+elif [ "$1" = "v" ]; then
+  exec cat "${qn_file}"
   exit 0
-elif [[ -z "$1" ]]; then
-  echo -e "Usage:
+elif [ -z "$1" ]; then
+  echo "Usage:
   qn \"<note>\"\tadd a new note
   qn e\t\tEdit note
   qn v\t\tView note files"
   exit 1
 fi
 
-echo -e "# $(date '+%Y-%m-%d %H:%M')" >> "${qn_file}"
-echo -e "$1\n" >> "${qn_file}"
+echo "# $(date '+%Y-%m-%d %H:%M')" >> "${qn_file}"
+echo "$1\n" >> "${qn_file}"
+
+cd "$dir"
+
+git add -A "$dir"
+git commit -m "Updated to quick notes"
+git push

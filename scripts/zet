@@ -41,15 +41,20 @@ query() {
   type urlencode >/dev/null 2>&1
   it="https://github.com/$GITUSER/$EXE/search?q=$(urlencode $*)"
   echo "$it"
-  type wee >/dev/null 2>&1 || return 0
-  exec wee "$it"
+
+  # I dont have, use or intent to use rwxrob's wee script
+  # So the two below lines are not needed in my use case
+  # I should remove them at some point
+
+  # type wee >/dev/null 2>&1 || return 0
+  # exec wee "$it"
 }
 
 case "$1" in
-add | "") add ;;
-q | query)
-  shift
-  query "$@"
-  ;;
-*) echo Unsupported. ;;
+  add | "") add ;;
+  q | query)
+    shift
+    query "$@"
+    ;;
+  *) echo Unsupported. ;;
 esac
