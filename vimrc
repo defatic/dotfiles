@@ -7,7 +7,6 @@ Plug 'itchyny/vim-gitbranch'
 Plug 'tek256/simple-dark'
 Plug 'gruvbox-community/gruvbox'
 Plug 'arcticicestudio/nord-vim'
-Plug 'ciaranm/inkpot'
 " Delimitmate
 Plug 'Raimondi/delimitMate'
 " CSS Colors

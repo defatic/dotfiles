@@ -30,10 +30,6 @@ HISTFILE="$HOME/.cache/bash/histfile"
 HISTSIZE=10000
 SAVEHIST=10000
 
-# eval commands
-eval "$(dircolors -b)"
-eval "$(gh completion -s bash)" # Bash completion for the gh command (github cli)
-
 # General aliases
 alias ls="ls --color=auto"
 alias la="ls --color=auto -lAh"
@@ -45,7 +41,7 @@ alias grep="egrep --color=auto"
 alias egrep="egrep --color=auto"
 alias vi="vim"
 alias c="clear"
-alias ca="c ; archey_clone ; task list"
+alias ca="c && archey_clone"
 alias eb="vi $HOME/.bashrc"
 alias cal="cal -m3"
 
@@ -205,10 +201,15 @@ if [ -r /usr/share/bash-completion/bash_completion ]; then
   . /usr/share/bash-completion/bash_completion
 fi
 
+# eval commands
+eval "$(dircolors -b)"
+eval "$(gh completion -s bash)" # Bash completion for the gh command (github cli)
+
 # Set promt
 function my_prompt() {
   source "$HOME/.git-prompt.sh"
-  export PS1=" $(task_indicator) ${cyan}\W${resetc}${red}$(__git_ps1 ':%s')${resetc} ${orange}\$${resetc} "
+  local tNum="$(task list | tail -1 | sed 's/ [a-z]\+//')"
+  export PS1=" ${orange}$tNum${resetc} $(task_indicator) ${cyan}\W${resetc}${red}$(__git_ps1 ':%s')${resetc} ${orange}\$${resetc} "
 }
 export PROMPT_COMMAND="my_prompt"
 
@@ -228,7 +229,7 @@ tmrsto() { transmission-remote -t "$1" --stop ;}
 tmrcli() { transmission-remote-cli ;}
 tmrkill() { sudo pkill transmission-da ;}
 
-# Streamlink Functions
+# Streamlink function
 # disown the background prosses to "unlock" the terminal
 sl() {
   #streamlink -p "vlc --qt-minimal-view" "$1" best &>/dev/null &
