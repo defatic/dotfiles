@@ -87,13 +87,14 @@ alias apt="sudo apt"
 alias fullclean="make clean && git reset --hard origin/master"
 
 # Fun stuff
-alias weather="curl wttr.in/kallhall?m"
-getip() { curl ifconfig.me; printf "\n" ;}
+alias weather="curl -L wttr.in/kallhall?m"
+getip() { curl -L ifconfig.me; printf "\n" ;}
 
 # Check sshd
 alias check_sshd="journalctl -xe | egrep -i sshd"
 
 export REPOS="$HOME/repos"
+export KN="$REPOS" # Knowledge Node repo
 
 # Add $HOME/bin to $PATH
 # be sure NOT to add ./ in PATH cuz it's unsafe
@@ -231,6 +232,6 @@ tmrkill() { sudo pkill transmission-da ;}
 # disown the background prosses to "unlock" the terminal
 sl() {
   #streamlink -p "vlc --qt-minimal-view" "$1" best &>/dev/null &
-  streamlink -p "mpv" "$1" best &>/dev/null &
+  streamlink -p "mpv" "$1" best >/dev/null 2>&1 &
   disown "$!"
 }
