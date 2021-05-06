@@ -40,7 +40,8 @@ query() {
   test -z "$1" && echo "Missing search query." && exit 1
   type urlencode >/dev/null 2>&1
   it="https://github.com/$GITUSER/$EXE/search?q=$(urlencode $*)"
-  echo "$it"
+  ${BROWSER:-echo} "$it"
+  # echo "$it"
 
   # I dont have, use or intent to use rwxrob's wee script
   # So the two below lines are not needed in my use case
