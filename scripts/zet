@@ -29,7 +29,9 @@ add() {
   mkdir -p "$dir"
   ${EDITOR:-vim} "$dir/README.md"
   cd "$dir"
+  test ! -e "$dir/README.md" && rmdir "$dir"
   line=$(head -1 "$dir/README.md" | sed 's/#\+ *//')
+  test -n "$line"
   echo "Adding: $line"
   git add -A "$dir"
   git commit -m "$line"
@@ -39,9 +41,10 @@ add() {
 query() {
   test -z "$1" && echo "Missing search query." && exit 1
   type urlencode >/dev/null 2>&1
-  it="https://github.com/$GITUSER/$EXE/search?q=$(urlencode $*)"
+  term="$*"
+  it="https://github.com/$GITUSER/$EXE/search?q=$(urlencode $term)"
   ${BROWSER:-echo} "$it"
-  # echo "$it"
+  echo "[$term]: <$it>"
 
   # I dont have, use or intent to use rwxrob's wee script
   # So the two below lines are not needed in my use case
