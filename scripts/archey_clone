@@ -7,6 +7,7 @@ import os
 from itertools import zip_longest
 from subprocess import Popen, PIPE
 
+
 # Spacer
 spr = " "
 # ANSI Color Setup
@@ -70,6 +71,7 @@ def dist():
         dist_type = 'Arch Linux'
     return dist_type
 
+
 logo = [
     BO + R + "  █████████" + CL + BO + G + " █████████" + CL +
     BO + M + " █████████" + CL + BO + C + " █████    " + CL,
@@ -87,6 +89,7 @@ logo = [
         M + " █████████" + CL + C + " █████████" + CL
 ]
 
+
 output = [
     B + "User: " + CL + get_env_value('USER'),
     B + "Host: " + CL + host(),
@@ -96,6 +99,7 @@ output = [
     B + "Terminal: " + CL + get_env_value('TERM'),
     B + "Kernel: " + CL + kernel()
 ]
+
 
 if __name__ == "__main__":
     print(spr)

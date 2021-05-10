@@ -1,3 +1,15 @@
 #!/bin/sh
 
-lynx "https://lite.duckduckgo.com/lite?q=$1"
+case "$1" in
+  d) exec lynx "https://lite.duckduckgo.com/lite?kd=-1&kp=-1&q=${2}"
+    ;;
+  g) exec lynx "https://www.google.com/search?q=${2}"
+    ;;
+  sh) exec lynx "https://www.grymoire.com/Unix/Sh.html"
+    ;;
+  *) echo "Use:
+    d for duckduckgo
+    g for google
+    sh for POSIX shell Tutorial"
+    ;;
+esac
