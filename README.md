@@ -3,4 +3,4 @@
 
 ## Setup script
 
-Run the setup script from the dotfiles directory otherwise it will not work
+Run the setup script from within the dotfiles directory otherwise it will not work
