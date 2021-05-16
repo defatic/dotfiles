@@ -17,30 +17,26 @@ declare -a symlinks=(
 "$PWD/taskrc $HOME/.taskrc"
 )
 
-# Check if $HOME/.vim exists if not create it
-if [[ ! -d "${vimdir}" ]]; then
-  mkdir -p ${vimdir}
-  if [[ $? -eq 0 ]]; then
-    echo "Creating .vim directory in ${HOME}"
+checkDir() {
+  if [[ ! -d "$1" ]]; then
+    mkdir -p "$1"
+    if [[ $? -eq 0 ]]; then
+      printf %s\\n "Creating directory: $1"
+    fi
+  else
+    printf %s\\n "directory: $1 already exists"
   fi
-else
-  echo "${vimdir} already exists"
-fi
+}
 
-# Check if $HOME/.config/alacritty exists if not create it
-if [[ ! -d "${aladir}" ]]; then
-  mkdir -p ${aladir}
-  if [[ $? -eq 0 ]]; then
-    echo "Creating alacritty directory in ${aladir}"
-  fi
-else
-  echo "${aladir} already exists"
-fi
+checkDir "${vimdir}"
+checkDir "${aladir}"
 
 # Create the symlink
 for i in "${symlinks[@]}"; do
   ln -sf $i
   if [[ $? -eq 0 ]]; then
-    echo "Creating symlink: ${i}"
+    printf %s\\n "Creating symlink: ${i}"
+  else
+    printf %s\\n "Failed to create symlink: ${i}"
   fi
 done
