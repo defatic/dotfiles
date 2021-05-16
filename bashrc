@@ -1,4 +1,3 @@
-
 [[ $- != *i* ]] && return
 
 # first whatever the system has (required for completion, etc.)
