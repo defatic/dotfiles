@@ -215,7 +215,7 @@ function my_prompt() {
 export PROMPT_COMMAND="my_prompt"
 
 # Display system info
-archey_clone
+#archey_clone
 
 # better which command
 #which() { (alias; declare -f) | /usr/bin/which --tty-only --read-alias --read-functions "$@"; }
