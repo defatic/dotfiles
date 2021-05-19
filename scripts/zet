@@ -54,11 +54,23 @@ query() {
   # exec wee "$it"
 }
 
+lquery() {
+  test -z "$1" && echo "Missing local search query." && exit 1
+  term="$*"
+  echo "[$term]"
+  # Rip grep is required otherwise change rg to grep
+  rg -i "$*" $REPOS/zet/
+}
+
 case "$1" in
   add | "") add ;;
   q | query)
     shift
     query "$@"
+    ;;
+  l | local | lquery)
+    shift
+    lquery "$@"
     ;;
   *) echo Unsupported. ;;
 esac
