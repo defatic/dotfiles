@@ -234,4 +234,4 @@ fun! TrimWhitespace()
   call winrestview(l:save)
 endfun
 
-autocmd BufWritePre * :call TrimWhitespace()
+" autocmd BufWritePre * :call TrimWhitespace()
