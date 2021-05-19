@@ -59,7 +59,7 @@ lquery() {
   term="$*"
   echo "[$term]"
   # Rip grep is required otherwise change rg to grep
-  rg -i "$*" $REPOS/zet/
+  rg -i "$*" $KN/zet/
 }
 
 case "$1" in
