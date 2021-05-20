@@ -1,0 +1,43 @@
+#!/bin/sh
+
+downloadDir="$HOME/Downloads/dotTorrents"
+
+case "$1" in
+  daemon)
+    transmission-daemon -c "$downloadDir"
+    printf "Transmission daemon started\n"
+    ;;
+  add)
+    shift
+    transmission-remote -a "$@"
+    ;;
+  list)
+    transmission-remote -l
+    ;;
+  remove)
+    shift
+    transmission-remote -t "$@" -r
+    ;;
+  start)
+    shift
+    transmission-remote -t "$@" --start
+    ;;
+  stop)
+    shift
+    transmission-remote -t "$@" --stop
+    ;;
+  kill)
+    sudo pkill transmission-da
+    printf "Transmission daemon killed\n"
+    ;;
+  *)
+    printf "Usage:\n"
+    printf " daemon\t\tStart the daemon\n"
+    printf " add\t\tAdd a torrent\n"
+    printf " list\t\tList torrents\n"
+    printf " remove\t\tRemove torrent for the list\n"
+    printf " start\t\tStart the daemon\n"
+    printf " stop\t\tStop the daemon\n"
+    printf " kill\t\tKill the daemon\n"
+    ;;
+esac

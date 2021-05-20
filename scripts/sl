@@ -1,0 +1,6 @@
+#!/bin/sh
+
+#streamlink -p "vlc --qt-minimal-view" "$1" best &>/dev/null &
+#disown "$!"
+
+streamlink -p "mpv" "$1" best >/dev/null 2>&1 &
