@@ -83,10 +83,6 @@ alias apt="sudo apt"
 # Git aliases
 alias fullclean="make clean && git reset --hard origin/master"
 
-# Fun stuff
-alias weather="curl -L wttr.in/kallhall?m"
-getip() { curl -L ifconfig.me; printf "\n" ;}
-
 # Check sshd
 alias check_sshd="journalctl -xe | egrep -i sshd"
 
@@ -219,21 +215,3 @@ export PROMPT_COMMAND="my_prompt"
 
 # better which command
 #which() { (alias; declare -f) | /usr/bin/which --tty-only --read-alias --read-functions "$@"; }
-
-# Transmission CLI functions
-alias tmrstart=" transmission-daemon -c ~/downloads/dotTorrents && notify-send 'Transmission Server' 'Transmission deamon started!'"
-tmrlst() { transmission-remote -l ;}
-tmradd() { transmission-remote -a "$1" ;}
-tmrrem() { transmission-remote -t "$1" -r ;}
-tmrsta() { transmission-remote -t "$1" --start ;}
-tmrsto() { transmission-remote -t "$1" --stop ;}
-tmrcli() { transmission-remote-cli ;}
-tmrkill() { sudo pkill transmission-da ;}
-
-# Streamlink function
-# disown the background prosses to "unlock" the terminal
-sl() {
-  #streamlink -p "vlc --qt-minimal-view" "$1" best &>/dev/null &
-  streamlink -p "mpv" "$1" best >/dev/null 2>&1 &
-  disown "$!"
-}
