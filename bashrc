@@ -44,7 +44,6 @@ alias vi="vim"
 alias c="clear"
 alias ca="c && archey_clone"
 alias eb="vi $HOME/.bashrc"
-alias cal="cal -m3"
 
 alias iotop="sudo iotop -oPa"
 alias iftop="sudo iftop -i enp3s0"
@@ -205,7 +204,8 @@ eval "$(gh completion -s bash)" # Bash completion for the gh command (github cli
 # Set promt
 function my_prompt() {
   source "$HOME/.git-prompt.sh"
-  local tNum="$(task list | tail -1 | sed 's/ [a-z]\+//')"
+  #local tNum="$(task list | tail -1 | sed 's/ [a-z]\+//')"
+  local tNum="$(task status:pending count)"
   export PS1=" ${orange}$tNum${resetc} $(task_indicator) ${cyan}\W${resetc}${red}$(__git_ps1 ':%s')${resetc} ${orange}\$${resetc} "
 }
 export PROMPT_COMMAND="my_prompt"
