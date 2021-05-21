@@ -17,6 +17,7 @@ declare -a symlinks=(
 "$PWD/taskrc $HOME/.taskrc"
 "$PWD/lynx/lynx.cfg $HOME/.config/lynx/lynx.cfg"
 "$PWD/lynx/lynx.lss $HOME/.config/lynx/lynx.lss"
+"$PWD/mutt $HOME/.mutt"
 )
 
 checkDir() {
