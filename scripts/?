@@ -1,13 +1,19 @@
 #!/bin/sh
 
 case "$1" in
-  d) exec lynx "https://lite.duckduckgo.com/lite?kd=-1&kp=-1&q=${2}"
+  d)
+    shift
+    exec lynx "https://lite.duckduckgo.com/lite?kd=-1&kp=-1&q=$*"
     ;;
-  g) exec lynx "https://www.google.com/search?q=${2}"
+  g)
+    shift
+    exec lynx "https://www.google.com/search?q=$*"
     ;;
-  sh) exec lynx "https://www.grymoire.com/Unix/Sh.html"
+  sh)
+    exec lynx "https://www.grymoire.com/Unix/Sh.html"
     ;;
-  *) echo "Use:
+  *)
+    echo "Use:
     d for duckduckgo
     g for google
     sh for POSIX shell Tutorial"
