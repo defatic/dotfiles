@@ -36,12 +36,8 @@ alias ls="ls --color=auto"
 alias la="ls --color=auto -lAh"
 alias ll="ls --color=auto -ghSX"
 alias l1="ls -1 --color=auto"
-alias lac="ls --color=auto -aC"
 alias ..="cd .."
-alias grep="egrep --color=auto"
-alias egrep="egrep --color=auto"
 alias c="clear"
-alias ca="c && archey_clone"
 alias eb="vim $HOME/.bashrc"
 
 alias iotop="sudo iotop -oPa"
@@ -54,6 +50,9 @@ alias umusb="sudo umount /mnt/usb/"
 alias mypass="sudo mount -t ntfs-3g /dev/sdd1 /mnt/myPassport -o force"
 
 alias apt="sudo apt"
+
+# Mutt email stuff
+alias mbsync="mbsync -c '$HOME/.mutt/isync/mbsyncrc'"
 
 ## Pacman aliases
 ## Update the system
