@@ -40,6 +40,8 @@ alias ..="cd .."
 alias c="clear"
 alias eb="vim $HOME/.bashrc"
 
+which vim $>/dev/null && alias vi=vim
+
 alias iotop="sudo iotop -oPa"
 alias iftop="sudo iftop -i enp3s0"
 alias nethogs="sudo nethogs enp3s0"
