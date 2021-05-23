@@ -217,15 +217,15 @@ nnoremap <silent><C-t> :tabnew<CR>
 nnoremap <silent><S-w> :tabclose<CR>
 
 " Spellchecking switching key binds
-nnoremap <leader>ss :setlocal spell spelllang=sv<CR>
-nnoremap <leader>se :setlocal spell spelllang=en<CR>
+nnoremap <leader>se :setlocal spell spelllang=sv<CR>
+nnoremap <leader>en :setlocal spell spelllang=en<CR>
 nnoremap <silent><leader>ns :set nospell<CR>
 
 " Window navigation made easy
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-h> <c-w>h
-nnoremap <c-l> <c-w>l
+"nnoremap <c-j> <c-w>j
+"nnoremap <c-k> <c-w>k
+"nnoremap <c-h> <c-w>h
+"nnoremap <c-l> <c-w>l
 
 " Strip trailing white spaces
 fun! TrimWhitespace()
