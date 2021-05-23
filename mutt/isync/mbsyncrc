@@ -1,9 +1,0 @@
-IMAPAccount netc.eu
-Host ?
-Port ?
-User ?
-PassCmd "?"
-SSLType None
-AuthMechs LOGIN
-
-
