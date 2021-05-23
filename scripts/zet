@@ -42,7 +42,7 @@ query() {
   test -z "$1" && echo "Missing search query." && exit 1
   type urlencode >/dev/null 2>&1
   term="$*"
-  it="https://github.com/$GITUSER/$EXE/search?q=$(urlencode $term)"
+  it="https://github.com/$GITUSER/$EXE/search?q=$(urlencode "$term")"
   ${BROWSER:-echo} "$it"
   echo "[$term]: <$it>"
 
@@ -59,7 +59,7 @@ lquery() {
   term="$*"
   echo "[$term]"
   # Rip grep is required otherwise change rg to grep
-  rg -i "$*" $KN/zet/
+  rg -i "$*" "$KN/zet/"
 }
 
 case "$1" in
@@ -68,7 +68,7 @@ case "$1" in
     shift
     query "$@"
     ;;
-  l | local | lquery)
+  l | lquery)
     shift
     lquery "$@"
     ;;
