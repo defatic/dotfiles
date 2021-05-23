@@ -31,7 +31,7 @@ set nocompatible
 filetype plugin on
 syntax on
 
-set omnifunc=syntaxcomplete#Complete
+"set omnifunc=syntaxcomplete#Complete
 
 if !has("gui_running")
   set t_Co=256
@@ -96,9 +96,12 @@ set mouse-=a
 
 " Vim Colorscheme
 set background=dark
+
 "colorscheme simple-dark
+
 "let g:gruvbox_contrast_dark = 'hard' " needs to be set before colorscheme is called
 "colorscheme gruvbox
+
 colorscheme nord
 if (g:colors_name == "nord")
   let g:nord_cursor_line_number_background = 1
@@ -209,10 +212,10 @@ nnoremap <silent><leader>cl :noh<CR>
 " Folding
 nnoremap <leader>f za
 
-nnoremap <silent><leader>ll :Limelight!!<CR>
-
+" Undotree
 nnoremap <silent><leader>ut :UndotreeToggle<CR>
 
+" Tabs
 nnoremap <silent><C-t> :tabnew<CR>
 nnoremap <silent><S-w> :tabclose<CR>
 
@@ -222,10 +225,10 @@ nnoremap <leader>en :setlocal spell spelllang=en<CR>
 nnoremap <silent><leader>ns :set nospell<CR>
 
 " Window navigation made easy
-"nnoremap <c-j> <c-w>j
-"nnoremap <c-k> <c-w>k
-"nnoremap <c-h> <c-w>h
-"nnoremap <c-l> <c-w>l
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
 
 " Strip trailing white spaces
 fun! TrimWhitespace()
