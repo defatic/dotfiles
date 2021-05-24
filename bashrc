@@ -53,9 +53,6 @@ alias mypass="sudo mount -t ntfs-3g /dev/sdd1 /mnt/myPassport -o force"
 
 alias apt="sudo apt"
 
-# Mutt email stuff
-alias mbsync="mbsync -c '$HOME/.mutt/isync/mbsyncrc'"
-
 ## Pacman aliases
 ## Update the system
 #alias pacupg="sudo pacman -Syyu && notify-send 'Update Done!' 'Done with updating the system with official packages.'"
