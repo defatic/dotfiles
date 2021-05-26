@@ -6,7 +6,7 @@ REC_TIME=5
 SLEEP_TIME=2
 
 # Runtime
-echo "Recording for "$REC_TIME" sec, say somthing!"
+echo "Recording for $REC_TIME sec, say somthing!"
 arecord -d "$REC_TIME" "$FILE"
 echo "Recording STOPED!"
 sleep "$SLEEP_TIME"
