@@ -1,4 +1,4 @@
 #!/bin/sh
 
-clipdel -d "."
-notify-send -u normal "DONE!" "Clipboard cleared!"
+# notify-send -u normal "DONE!" "Clipboard cleared!"
+exec clipdel -d "."
