@@ -50,7 +50,7 @@ let &t_te.="\e[0 q"
 " Makes toggling between Insert & Normal mode faster
 set ttimeout
 set ttimeoutlen=1
-set listchars=tab:>-,trail:~,extends:>,precedes:<,space:.
+set listchars=tab:>-,trail:~,extends:>,precedes:<,space:*
 set ttyfast
 
 " All of the other sets

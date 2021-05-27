@@ -29,7 +29,7 @@ xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 
 # Set wallpapper
 # feh --bg-fill "$HOME/Documents/wallpappers/Mountains_Landscapes_Nature2.jpg"
-feh --bg-fill "$HOME/Documents/wallpappers/jungle.jpg"
+feh --no-fehbg --bg-fill "$HOME/Documents/wallpappers/jungle.jpg"
 
 # Start a window manager
 ## dwm settings and launch
