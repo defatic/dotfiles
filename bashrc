@@ -35,7 +35,6 @@ SAVEHIST=10000
 alias ls="ls --color=auto"
 alias la="ls -lAh --color=auto"
 alias ll="ls -ghSX --color=auto"
-alias l1="ls -1 --color=auto"
 alias ..="cd .."
 alias c="clear"
 alias eb="vim $HOME/.bashrc"
@@ -45,11 +44,6 @@ which vim $>/dev/null && alias vi=vim
 alias iotop="sudo iotop -oPa"
 alias iftop="sudo iftop -i enp3s0"
 alias nethogs="sudo nethogs enp3s0"
-
-# Mount aliases
-alias musb="sudo mount /dev/sde1 /mnt/usb/"
-alias umusb="sudo umount /mnt/usb/"
-alias mypass="sudo mount -t ntfs-3g /dev/sdd1 /mnt/myPassport -o force"
 
 alias apt="sudo apt"
 
@@ -65,6 +59,8 @@ alias apt="sudo apt"
 ## Clear Cache of not installed packages
 #alias pacclear="sudo pacman -Sc && notify-send 'Done!' 'The packages Cache has been cleared.'"
 #alias paccc="sudo paccache -ruk0 && pacclear"
+## Search the local database for a named package
+#alias paclsea="pacman -Qs"
 #
 ## Pacman AUR aliases
 ## Install packages from AUR
@@ -73,8 +69,6 @@ alias apt="sudo apt"
 #alias aurupg="pacaur -Syyu && notify-send 'Update Done!' 'Done with updating the system with AUR packages.'"
 ## Search for packages Official and in the AUR
 #alias pacsea="pacaur -Ss"
-## Search the local database for a named package
-#alias paclsea="pacman -Qs"
 
 # Git aliases
 alias fullclean="make clean && git reset --hard origin/master"
@@ -85,13 +79,12 @@ alias check_sshd="journalctl -xe | egrep -i sshd"
 export REPOS="$HOME/repos"
 export KN="$REPOS" # Knowledge Node repo
 
-# Add $HOME/bin to $PATH
 # be sure NOT to add ./ in PATH cuz it's unsafe
 export PATH=\
+/usr/local/bin:\
 $HOME/bin:\
 $HOME/.local/bin:\
 $REPOS/dotfiles/scripts:\
-/usr/local/bin:\
 $PATH
 
 # be sure not to remove ./ in CDPATH or stuff gets weird
@@ -206,9 +199,6 @@ function my_prompt() {
   export PS1=" ${orange}$tNum${resetc} $(task_indicator) ${cyan}\W${resetc}${red}$(__git_ps1 ':%s')${resetc} ${orange}\$${resetc} "
 }
 export PROMPT_COMMAND="my_prompt"
-
-# Display system info
-#archey_clone
 
 # better which command
 #which() { (alias; declare -f) | /usr/bin/which --tty-only --read-alias --read-functions "$@"; }
