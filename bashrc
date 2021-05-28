@@ -1,11 +1,11 @@
 #!/usr/bin/bash
 
-[[ $- != *i* ]] && return
+test -e /etc/bashrc && source /etc/bashrc
 
-# first whatever the system has (required for completion, etc.)
-if [ -e /etc/bashrc ]; then
-  source /etc/bashrc
-fi
+case $- in
+  *i*) ;;
+  *) return ;;
+esac
 
 # Set VI mode in bash
 set -o vi
@@ -15,9 +15,9 @@ shopt -s expand_aliases
 shopt -s globstar
 shopt -s dotglob
 shopt -s extglob
-shopt -s nocaseglob
 shopt -s histappend
-shopt -s cdspell
+shopt -s noclobber
+shopt -s nocaseglob
 
 # Set some termial colors
 red='\033[0;31m'
@@ -94,9 +94,9 @@ $REPOS:\
 $HOME
 
 # Default programs
-export EDITOR="vim"
-export VISUAL="vim"
-export EDITOR_PREFIX="vim"
+export EDITOR="vi"
+export VISUAL="vi"
+export EDITOR_PREFIX="vi"
 export TERMINAL="alacritty"
 export BROWSER="firefox"
 export READER="less"
@@ -194,11 +194,8 @@ eval "$(gh completion -s bash)" # Bash completion for the gh command (github cli
 # Set promt
 function my_prompt() {
   source "$HOME/.git-prompt.sh"
-  #local tNum="$(task list | tail -1 | sed 's/ [a-z]\+//')"
   local tNum="$(task status:pending count)"
   export PS1=" ${orange}$tNum${resetc} $(task_indicator) ${cyan}\W${resetc}${red}$(__git_ps1 ':%s')${resetc} ${orange}\$${resetc} "
 }
-export PROMPT_COMMAND="my_prompt"
 
-# better which command
-#which() { (alias; declare -f) | /usr/bin/which --tty-only --read-alias --read-functions "$@"; }
+export PROMPT_COMMAND="my_prompt"

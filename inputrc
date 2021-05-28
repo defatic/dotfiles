@@ -1,4 +1,4 @@
-$include /etc/inputrc
+# $include /etc/inputrc
 
 # Set VI mode in the terminal
 set editing-mode vi
