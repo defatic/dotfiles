@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # Add folders here
 vimdir="$HOME/.vim"
 aladir="$HOME/.config/alacritty"
@@ -21,9 +23,10 @@ declare -a symlinks=(
 )
 
 checkDir() {
+  test ! -d "$1" && mkdir -p "$1"
   if [[ ! -d "$1" ]]; then
     mkdir -p "$1"
-    if [[ $? -eq 0 ]]; then
+    if [[ "$?" -eq 0 ]]; then
       printf %s\\n "Creating directory: $1"
     fi
   else
@@ -36,8 +39,8 @@ checkDir "${aladir}"
 
 # Create the symlink
 for i in "${symlinks[@]}"; do
-  ln -sf $i
-  if [[ $? -eq 0 ]]; then
+  ln -sf "$i"
+  if [[ "$?" -eq 0 ]]; then
     printf %s\\n "Creating symlink: ${i}"
   else
     printf %s\\n "Failed to create symlink: ${i}"
