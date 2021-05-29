@@ -31,7 +31,7 @@ set nocompatible
 filetype plugin on
 syntax on
 
-"set omnifunc=syntaxcomplete#Complete
+set omnifunc=syntaxcomplete#Complete
 
 if !has("gui_running")
   set t_Co=256
@@ -60,8 +60,8 @@ set nobackup
 set nowritebackup
 set noswapfile
 set noshowmode
-set relativenumber
 set number
+set relativenumber
 set tabstop=2 shiftwidth=2 softtabstop=2
 set expandtab
 set autoindent
@@ -72,7 +72,7 @@ set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
 set ignorecase
 set smartcase
 set laststatus=2
-set textwidth=80
+set textwidth=72
 set ls=2
 set backupdir=~/.tmp
 set directory=~/.tmp
@@ -84,8 +84,8 @@ set cmdheight=1
 set updatetime=50
 set shortmess+=c
 set signcolumn=yes
-set undodir=~/.vim/undotree
 set undofile
+set undodir=~/.vim/undotree
 set showcmd
 set viminfo='20,<1000,s1000
 set splitbelow
