@@ -9,6 +9,7 @@ esac
 
 # Set VI mode in bash
 set -o vi
+set -o noclobber
 
 shopt -s checkwinsize
 shopt -s expand_aliases
@@ -16,7 +17,6 @@ shopt -s globstar
 shopt -s dotglob
 shopt -s extglob
 shopt -s histappend
-shopt -s noclobber
 shopt -s nocaseglob
 
 # Set some termial colors
