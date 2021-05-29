@@ -23,7 +23,6 @@ declare -a symlinks=(
 )
 
 checkDir() {
-  test ! -d "$1" && mkdir -p "$1"
   if [[ ! -d "$1" ]]; then
     mkdir -p "$1"
     if [[ "$?" -eq 0 ]]; then
