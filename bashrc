@@ -1,4 +1,3 @@
-#!/usr/bin/bash
 
 test -e /etc/bashrc && source /etc/bashrc
 
