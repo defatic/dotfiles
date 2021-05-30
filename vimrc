@@ -47,11 +47,19 @@ let &t_ti.="\e[1 q"
 let &t_SI.="\e[5 q"
 let &t_EI.="\e[1 q"
 let &t_te.="\e[0 q"
+
 " Makes toggling between Insert & Normal mode faster
 set ttimeout
 set ttimeoutlen=1
-set listchars=tab:>-,trail:~,extends:>,precedes:<,space:*
 set ttyfast
+
+set listchars=tab:>-,trail:~,extends:>,precedes:<,space:*
+
+set fo+=t
+set fo-=l
+
+set textwidth=72
+set wrapmargin=2
 
 " All of the other sets
 set hlsearch
@@ -72,7 +80,6 @@ set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
 set ignorecase
 set smartcase
 set laststatus=2
-set textwidth=72
 set ls=2
 set backupdir=~/.tmp
 set directory=~/.tmp
@@ -201,7 +208,7 @@ nmap <buffer> <leader>gi <Plug>(coc-implementation)
 nmap <buffer> <leader>gr <Plug>(coc-references)
 nnoremap <buffer> <leader>cr :CocRestart<CR>
 
-" Keymaps
+" Key maps
 let mapleader="\<space>"
 tnoremap <esc> <C-\><C-N>
 nnoremap <silent><leader>up :source ~/.vim/vimrc<CR> :PlugInstall<CR>
@@ -212,7 +219,7 @@ nnoremap <silent><leader>cl :noh<CR>
 " Folding
 nnoremap <leader>f za
 
-" Undotree
+" Undo tree
 nnoremap <silent><leader>ut :UndotreeToggle<CR>
 
 " Tabs
