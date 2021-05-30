@@ -5,7 +5,7 @@
 exec pandoc -s --from markdown \
   -V 'geometry:margin=1in' \
   -V 'fontsize=10pt' \
-  --pdf-engine=xelatex \
+  --pdf-engine=pdflatex \
   --template="$HOME/Documents/pandoc-templates/eisvogel.latex" \
   --listings \
   --toc "$1" -o "$2"

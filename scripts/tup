@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -e
+
+cd $HOME/.task
+
+git add -A .
+git commit -m 'task update'
+git push
+
+cd -
