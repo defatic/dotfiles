@@ -31,49 +31,49 @@ HISTSIZE=10000
 SAVEHIST=10000
 
 # General aliases
-alias ls="ls --color=auto"
-alias la="ls -lAh --color=auto"
-alias ll="ls -ghSX --color=auto"
-alias ..="cd .."
-alias c="clear"
-alias eb="vim $HOME/.bashrc"
+alias ls='ls --color=auto'
+alias la='ls -lAh --color=auto'
+alias ll='ls -ghSX --color=auto'
+alias ..='cd ..'
+alias c='clear'
+alias eb='vim $HOME/.bashrc'
 
 which vim $>/dev/null && alias vi=vim
 
-alias iotop="sudo iotop -oPa"
-alias iftop="sudo iftop -i enp3s0"
-alias nethogs="sudo nethogs enp3s0"
+alias iotop='sudo iotop -oPa'
+alias iftop='sudo iftop -i enp3s0'
+alias nethogs='sudo nethogs enp3s0'
 
-alias apt="sudo apt"
+alias apt='sudo apt'
 
 ## Pacman aliases
 ## Update the system
-#alias pacupg="sudo pacman -Syyu && notify-send 'Update Done!' 'Done with updating the system with official packages.'"
+#alias pacupg='sudo pacman -Syyu'
 ## Install packages
-#alias pacins="sudo pacman -S"
+#alias pacins='sudo pacman -S'
 ## Remove (uninstall) packages, configurationfiles and dependencies
-#alias pacrem="sudo pacman -Rnus"
+#alias pacrem='sudo pacman -Rnus'
 ## Remove Orphin packages
-#alias pacro="pacman -Qtdq > /dev/null ; sudo pacman -Rns $(pacman -Qtdq | sed -e ':a;N;$!ba;s/\n/ /g') && notify-send 'Done!' 'Done with removing orphan packages.'"
+#alias pacro='pacman -Qtdq > /dev/null ; sudo pacman -Rns $(pacman -Qtdq | sed -e ':a;N;$!ba;s/\n/ /g')'
 ## Clear Cache of not installed packages
-#alias pacclear="sudo pacman -Sc && notify-send 'Done!' 'The packages Cache has been cleared.'"
+#alias pacclear='sudo pacman -Sc'
 #alias paccc="sudo paccache -ruk0 && pacclear"
 ## Search the local database for a named package
-#alias paclsea="pacman -Qs"
+#alias paclsea='pacman -Qs'
 #
 ## Pacman AUR aliases
 ## Install packages from AUR
-#alias aurins="pacaur -S"
+#alias aurins='pacaur -S'
 ## Update the system with AUR packages
-#alias aurupg="pacaur -Syyu && notify-send 'Update Done!' 'Done with updating the system with AUR packages.'"
+#alias aurupg='pacaur -Syyu'
 ## Search for packages Official and in the AUR
-#alias pacsea="pacaur -Ss"
+#alias pacsea='pacaur -Ss'
 
 # Git aliases
-alias fullclean="make clean && git reset --hard origin/master"
+alias fullclean='make clean && git reset --hard origin/master'
 
 # Check sshd
-alias check_sshd="journalctl -xe | egrep -i sshd"
+alias check_sshd='journalctl -xe | egrep -i sshd'
 
 export REPOS="$HOME/repos"
 export KN="$REPOS" # Knowledge Node repo
@@ -198,9 +198,3 @@ function my_prompt() {
 }
 
 export PROMPT_COMMAND="my_prompt"
-
-PATH="/home/dennis/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/home/dennis/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/home/dennis/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/home/dennis/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/home/dennis/perl5"; export PERL_MM_OPT;
