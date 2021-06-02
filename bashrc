@@ -81,7 +81,6 @@ export KN="$REPOS" # Knowledge Node repo
 # be sure NOT to add ./ in PATH cuz it's unsafe
 export PATH=\
 /usr/local/bin:\
-$HOME/bin:\
 $HOME/.local/bin:\
 $REPOS/dotfiles/scripts:\
 $PATH
@@ -159,6 +158,11 @@ export GOPROXY="direct"
 export CGO_ENABELD=0
 
 export KEYTIMEOUT=1
+
+# Values for shader caching for use in gaming.
+export __GL_SHADER_DISK_CACHE=1
+export __GL_SHADER_DISK_CACHE_PATH='/tmp/nvidia-shaders'
+export __GL_THREADED_OPTIMIZATION=1
 
 # Format for the time command
 export TIMEFMT=$'\n%U\tuser\n%S\tsystem\n\n%P cpu %*E total'
