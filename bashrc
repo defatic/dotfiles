@@ -78,6 +78,7 @@ export KN="$REPOS" # Knowledge Node repo
 export PATH=\
 /usr/local/bin:\
 $HOME/.local/bin:\
+/snap/bin/:\
 $REPOS/dotfiles/scripts:\
 $PATH
 
