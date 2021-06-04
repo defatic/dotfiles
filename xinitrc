@@ -22,8 +22,6 @@ setxkbmap se
 xset m 1/1 4
 # speed up xrate
 xset r rate 300 50
-# Load Nvidia settings
-nvidia-settings --load-config-only
 # Turn Caps Lock into ESC
 xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 
@@ -35,7 +33,8 @@ feh --no-fehbg --bg-fill "$HOME/Documents/wallpappers/jungle.jpg"
 ## dwm settings and launch
 while true; do
    DATE=$(date '+%b %d %H:%M')
-   VOL=$(amixer get Master | tail -1 | sed 's/.*\[\([0-9]*%\)\].*/\1/')
+   #VOL=$(amixer get Master | tail -1 | sed 's/.*\[\([0-9]*%\)\].*/\1/')
+   VOL=$(pulsemixer --get-volume | perl -paE 's/ [0-9][0-9][0-9]$//')
    #IP=$(for i in $(ip r); do echo "$i"; done | grep -A 1 src | tail -n1)
    #TEMP=$(($(cat /sys/class/thermal/thermal_zone0/temp) / 1000))C
    CPULOAD=$(uptime | sed 's/.*: //')
@@ -47,5 +46,5 @@ while true; do
   sleep 60
 done &
 
-exec "$HOME/bin/dwm"
+exec "$HOME/.local/bin/dwm"
 # exec "$HOME/repos/suckless/dwm/dwm" # for testing new builds

@@ -18,17 +18,13 @@ shopt -s extglob
 shopt -s histappend
 shopt -s nocaseglob
 
-# Set some termial colors
-red='\033[0;31m'
-green='\033[0;32m'
-orange='\033[0;33m'
-cyan='\033[0;36m'
-resetc='\033[0m'
-
 # History settings
 HISTFILE="$HOME/.cache/bash/histfile"
 HISTSIZE=10000
 SAVEHIST=10000
+
+export clear=$'\033[H\033[2J'
+clear () { echo -n $clear; }
 
 # General aliases
 alias ls='ls --color=auto'
@@ -38,7 +34,7 @@ alias ..='cd ..'
 alias c='clear'
 alias eb='vim $HOME/.bashrc'
 
-which vim $>/dev/null && alias vi=vim
+command -v vim &>/dev/null && alias vi=vim
 
 alias iotop='sudo iotop -oPa'
 alias iftop='sudo iftop -i enp3s0'
@@ -138,9 +134,6 @@ export brmagenta=$'\033[95m' # brmagenta
 export brcyan=$'\033[96m'    # brcyan
 export brwhite=$'\033[97m'   # brwhite
 
-export clear=$'\033[H\033[2J'
-clear () { echo -n $clear; }
-
 # Here's your colored man pages right here.
 export LESS_TERMCAP_mb=$magenta
 export LESS_TERMCAP_md=$yellow
@@ -171,15 +164,15 @@ export TIMEFMT=$'\n%U\tuser\n%S\tsystem\n\n%P cpu %*E total'
 task_indicator() {
   TASK="task"
   if [[ $($TASK +READY +OVERDUE count) -gt '0' ]]; then
-    echo -e "${red}O!${resetc}"
+    echo -e "${red}O!${reset}"
     # notify-send -u critical "Overdue!" "You have Overdue tasks."
   elif [[ $($TASK +READY +DUETODAY count) -gt '0' ]]; then
-    echo -e "${green}!${resetc}"
+    echo -e "${green}!${reset}"
     # notify-send -u normal "Due Today!" "You have tasks due today."
   elif [[ $($TASK +READY +TOMORROW count) -gt '0' ]]; then
-    echo -e "${orange}¡${resetc}"
+    echo -e "${yellow}¡${reset}"
   elif [[ $($TASK +READY urgency -gt 10 count) -gt '0' ]]; then
-    echo -e "${red}U!${resetc}"
+    echo -e "${red}U!${reset}"
   else
     echo -e '#'
   fi
@@ -198,7 +191,7 @@ eval "$(gh completion -s bash)" # Bash completion for the gh command (github cli
 function my_prompt() {
   source "$HOME/.git-prompt.sh"
   local tNum="$(task status:pending count)"
-  export PS1=" ${orange}$tNum${resetc} $(task_indicator) ${cyan}\W${resetc}${red}$(__git_ps1 ':%s')${resetc} ${orange}\$${resetc} "
+  export PS1=" ${yellow}$tNum${reset} $(task_indicator) ${cyan}\W${reset}${red}$(__git_ps1 ':%s')${reset} ${yellow}\$${reset} "
 }
 
 export PROMPT_COMMAND="my_prompt"
