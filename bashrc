@@ -75,16 +75,38 @@ export REPOS="$HOME/repos"
 export KN="$REPOS" # Knowledge Node repo
 
 # be sure NOT to add ./ in PATH cuz it's unsafe
-export PATH=\
-/usr/local/bin:\
-$HOME/.local/bin:\
-/snap/bin/:\
-$REPOS/dotfiles/scripts:\
-$PATH
+# export PATH=\
+# /usr/local/bin:\
+# /snap/bin/:\
+# $HOME/.local/bin:\
+# $REPOS/dotfiles/scripts:\
+# $PATH
+
+pathappend() {
+  for ARG in "$@"; do
+    test -d "${ARG}" || continue
+    PATH=${PATH//:${ARG}:/:}
+    PATH=${PATH/#${ARG}:/}
+    PATH=${PATH/%:${ARG}/}
+    export PATH="${PATH:+"${PATH}:"}${ARG}"
+  done
+}
+
+pathappend \
+  $HOME/.local/bin \
+  $REPOS/dotfiles/scripts \
+  /usr/local/bin \
+  /usr/local/sbin \
+  /usr/games \
+  /usr/sbin \
+  /usr/bin \
+  /snap/bin \
+  /sbin \
+  /bin
+
 
 # be sure not to remove ./ in CDPATH or stuff gets weird
-export CDPATH=\
-./:\
+export CDPATH=.:\
 $REPOS:\
 $HOME
 
