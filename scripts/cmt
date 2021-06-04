@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# This script is used for commenting out lines in vim combined with the bang (!)
+# command. This will insert a hash-tag (#) to be used as a comment line.
+
+while IFS= read -r line; do
+  echo "${1-#} $line"
+done
