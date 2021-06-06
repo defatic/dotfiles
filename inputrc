@@ -1,21 +1,7 @@
-# $include /etc/inputrc
-
 # Set VI mode in the terminal
 set editing-mode vi
 set bell-style none
 set keymap vi
-
-$if mode=vi
-  set keymap vi-command
-  # these are for vi-command mode
-  "\e[A": history-search-backward
-  "\e[B": history-search-forward
-
-  set keymap vi-insert
-  # these are for vi-insert mode
-  "\e[A": history-search-backward
-  "\e[B": history-search-forward
-$endif
 
 # Display VI mode on the terminal line
 set show-mode-in-prompt on
@@ -24,17 +10,3 @@ set show-mode-in-prompt on
 set vi-ins-mode-string \1\e[6 q\2
 # Command mode block cursor
 set vi-cmd-mode-string \1\e[2 q\2
-
-# Color files by types
-# Note that this may cause completion text blink in some terminals (e.g. xterm).
-set colored-stats On
-# Append char to indicate type
-set visible-stats On
-# Singel tap tab for completion
-set show-all-if-ambiguous on
-# Mark symlinked directories
-set mark-symlinked-directories On
-# Color the common prefix
-set colored-completion-prefix On
-# Color the common prefix in menu-complete
-set menu-complete-display-prefix On
