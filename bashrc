@@ -30,6 +30,7 @@ clear () { echo -n $clear; }
 alias ls='ls --color=auto'
 alias la='ls -lAh --color=auto'
 alias ll='ls -ghSX --color=auto'
+alias grep='grep --color=auto'
 alias ..='cd ..'
 alias c='clear'
 alias eb='vim $HOME/.bashrc'
