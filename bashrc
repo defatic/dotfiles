@@ -72,6 +72,7 @@ alias fullclean='make clean && git reset --hard origin/master'
 alias check_sshd='journalctl -xe | egrep -i sshd'
 
 export REPOS="$HOME/repos"
+export SCRIPTS="$HOME/repos/dotfiles"
 export KN="$REPOS" # Knowledge Node repo
 
 # be sure NOT to add ./ in PATH cuz it's unsafe
@@ -108,6 +109,7 @@ pathappend \
 # be sure not to remove ./ in CDPATH or stuff gets weird
 export CDPATH=.:\
 $REPOS:\
+$SCRIPTS:\
 $HOME
 
 # Default programs
@@ -157,7 +159,7 @@ export brmagenta=$'\033[95m' # brmagenta
 export brcyan=$'\033[96m'    # brcyan
 export brwhite=$'\033[97m'   # brwhite
 
-# Here's your colored man pages right here.
+# Colored man pages
 export LESS_TERMCAP_mb=$magenta
 export LESS_TERMCAP_md=$yellow
 export LESS_TERMCAP_me=$reset
