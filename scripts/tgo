@@ -1,0 +1,10 @@
+#!/bin/sh
+
+case "$@" in
+  *) 
+    exec tmux -L main attach
+    ;;
+  s)
+    exec tmux -L main new -s main -n weechat \ weechat \; new-window -a \; last-window;
+    ;;
+esac

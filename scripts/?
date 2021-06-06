@@ -3,11 +3,11 @@
 case "$1" in
   d)
     shift
-    exec lynx "https://lite.duckduckgo.com/lite?kd=-1&kp=-1&q=$*"
+    exec lynx "https://lite.duckduckgo.com/lite?kd=-1&kp=-1&q=$@"
     ;;
   g)
     shift
-    exec lynx "https://www.google.com/search?q=$*"
+    exec lynx "https://www.google.com/search?q=$@"
     ;;
   sh)
     exec lynx "https://www.grymoire.com/Unix/Sh.html"
@@ -16,6 +16,6 @@ case "$1" in
     echo "Use:
     d for duckduckgo
     g for google
-    sh for POSIX shell Tutorial"
+    sh for POSIX shell Guide"
     ;;
 esac
