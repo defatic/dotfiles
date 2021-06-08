@@ -1,5 +1,7 @@
 #!/bin/sh
 
+test ! "$(command -v arecord)" && echo "Install alsa-utils" && exit 1
+
 # Settings
 FILE="test-mic.wav"
 REC_TIME=5

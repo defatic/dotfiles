@@ -1,7 +1,5 @@
 #!/bin/sh
 
-set -e
-
 cd $HOME/.task
 
 git add -A .
