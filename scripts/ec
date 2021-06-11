@@ -1,4 +1,4 @@
 #!/bin/sh
 
-cmd=$(command -v $1)
+cmd=$(command -v "$1")
 test -n "$cmd" && exec vi "$cmd"

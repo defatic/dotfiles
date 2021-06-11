@@ -1,9 +1,17 @@
 #!/bin/sh
 
-cd $HOME/.task
+reset='\e[0m'
+red='\e[31m'
 
-git add -A .
-git commit -m 'task update'
-git push
+doGitUpdate() {
+  cd "$HOME/${1}" 2>/dev/null || exit 1
 
-cd -
+  git add -A .
+  git commit -m "updated ${1}"
+  git push
+
+  cd - || exit 1
+}
+
+doGitUpdate ".task"
+doGitUpdate ".weechat"

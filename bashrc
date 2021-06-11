@@ -77,13 +77,6 @@ export SCRIPTS="$HOME/repos/dotfiles"
 export KN="$REPOS" # Knowledge Node repo
 
 # be sure NOT to add ./ in PATH cuz it's unsafe
-# export PATH=\
-# /usr/local/bin:\
-# /snap/bin/:\
-# $HOME/.local/bin:\
-# $REPOS/dotfiles/scripts:\
-# $PATH
-
 pathappend() {
   for ARG in "$@"; do
     test -d "${ARG}" || continue
@@ -131,34 +124,34 @@ export WGETRC="${XDG_CONFIG_HOME:-$HOME/.config}/wget/wgetrc"
 export WINEPREFIX="${XDG_DATA_HOME:-$HOME/.local/share}/wineprefixes/default"
 
 # Colors
-export escape=$'\033'
-export reset=$'\033[0m'
-export bold=$'\033[1m'
-export underline=$'\033[4m'
-export blinkon=$'\033[5m'
-export blinkoff=$'\033[25m'
-export inverse=$'\033[7m'
-export inverseoff=$'\033[27m'
-export normal=$'\033[39m'
-export normalbg=$'\033[49m'
+escape=$'\e'
+reset=$'\e[0m'
+bold=$'\e[1m'
+underline=$'\e[4m'
+blinkon=$'\e[5m'
+blinkoff=$'\e[25m'
+inverse=$'\e[7m'
+inverseoff=$'\e[27m'
+normal=$'\e[39m'
+normalbg=$'\e[49m'
 
-export black=$'\033[30m'
-export red=$'\033[31m'
-export green=$'\033[32m'
-export yellow=$'\033[33m'
-export blue=$'\033[34m'
-export magenta=$'\033[35m'
-export cyan=$'\033[36m'
-export white=$'\033[37m'
+black=$'\e[30m'
+red=$'\e[31m'
+green=$'\e[32m'
+yellow=$'\e[33m'
+blue=$'\e[34m'
+magenta=$'\e[35m'
+cyan=$'\e[36m'
+white=$'\e[37m'
 
-export brblack=$'\033[90m'   # brblack
-export brred=$'\033[91m'     # brred
-export brgreen=$'\033[92m'   # brgreen
-export bryellow=$'\033[93m'  # bryellow
-export brblue=$'\033[94m'    # brblue
-export brmagenta=$'\033[95m' # brmagenta
-export brcyan=$'\033[96m'    # brcyan
-export brwhite=$'\033[97m'   # brwhite
+brblack=$'\e[90m'   # brblack
+brred=$'\e[91m'     # brred
+brgreen=$'\e[92m'   # brgreen
+bryellow=$'\e[93m'  # bryellow
+brblue=$'\e[94m'    # brblue
+brmagenta=$'\e[95m' # brmagenta
+brcyan=$'\e[96m'    # brcyan
+brwhite=$'\e[97m'   # brwhite
 
 # Colored man pages
 export LESS_TERMCAP_mb=$magenta
@@ -186,7 +179,7 @@ export __GL_THREADED_OPTIMIZATION=1
 # Format for the time command
 export TIMEFMT=$'\n%U\tuser\n%S\tsystem\n\n%P cpu %*E total'
 
-# task promt function
+# Task promt
 task_indicator() {
   TASK="task"
   if [[ $($TASK +READY +OVERDUE count) -gt '0' ]]; then

@@ -60,6 +60,7 @@ lquery() {
   echo "[$term]"
   # Rip grep is required otherwise change rg to grep
   rg -i "$*" "$KN/zet/"
+#   grep -inHTr --exclude-dir='.git' --color=auto "$*" "$KN/zet/"
 }
 
 case "$1" in
