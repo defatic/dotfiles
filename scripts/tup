@@ -5,13 +5,15 @@ red='\e[31m'
 
 doGitUpdate() {
   cd "$HOME/${1}" 2>/dev/null || exit 1
+  echo "${red}$HOME/${1}${reset}"
 
   git add -A .
   git commit -m "updated ${1}"
   git push
 
-  cd - || exit 1
+  cd -
 }
 
 doGitUpdate ".task"
 doGitUpdate ".weechat"
+doGitUpdate "repos/priv"

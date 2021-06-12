@@ -1,6 +1,3 @@
-
-test -e /etc/bashrc && source /etc/bashrc
-
 case $- in
   *i*) ;;
   *) return ;;
@@ -210,7 +207,7 @@ eval "$(gh completion -s bash)" # Bash completion for the gh command (github cli
 function my_prompt() {
   source "$HOME/.git-prompt.sh"
   local tNum="$(task status:pending count)"
-  export PS1=" ${yellow}$tNum${reset} $(task_indicator) ${cyan}\W${reset}${red}$(__git_ps1 ':%s')${reset} ${yellow}\$${reset} "
+  export PS1=" ${yellow}$tNum${reset} $(task_indicator) ${cyan}\W${red}$(__git_ps1 ':%s') ${yellow}\$${reset} "
 }
 
 export PROMPT_COMMAND="my_prompt"
