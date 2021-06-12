@@ -3,7 +3,6 @@ case $- in
   *) return ;;
 esac
 
-# Set VI mode in bash
 set -o vi
 set -o noclobber
 
@@ -20,7 +19,7 @@ HISTFILE="$HOME/.cache/bash/histfile"
 HISTSIZE=10000
 SAVEHIST=10000
 
-export clear=$'\033[H\033[2J'
+export clear=$'\e[H\e[2J'
 clear () { echo -n $clear; }
 
 # General aliases
@@ -40,34 +39,9 @@ alias nethogs='sudo nethogs enp3s0'
 
 alias apt='sudo apt'
 
-## Pacman aliases
-## Update the system
-#alias pacupg='sudo pacman -Syyu'
-## Install packages
-#alias pacins='sudo pacman -S'
-## Remove (uninstall) packages, configurationfiles and dependencies
-#alias pacrem='sudo pacman -Rnus'
-## Remove Orphin packages
-#alias pacro='pacman -Qtdq > /dev/null ; sudo pacman -Rns $(pacman -Qtdq | sed -e ':a;N;$!ba;s/\n/ /g')'
-## Clear Cache of not installed packages
-#alias pacclear='sudo pacman -Sc'
-#alias paccc="sudo paccache -ruk0 && pacclear"
-## Search the local database for a named package
-#alias paclsea='pacman -Qs'
-#
-## Pacman AUR aliases
-## Install packages from AUR
-#alias aurins='pacaur -S'
-## Update the system with AUR packages
-#alias aurupg='pacaur -Syyu'
-## Search for packages Official and in the AUR
-#alias pacsea='pacaur -Ss'
-
-# Git aliases
-alias fullclean='make clean && git reset --hard origin/master'
-
-# Check sshd
-alias check_sshd='journalctl -xe | egrep -i sshd'
+# Mutt aliases
+alias mbsync='mbsync -c "$HOME/.mutt/isync/mbsyncrc" -a'
+alias mutt='mutt -F $HOME/.mutt/muttrc'
 
 export REPOS="$HOME/repos"
 export SCRIPTS="$HOME/repos/dotfiles"
@@ -141,14 +115,14 @@ magenta=$'\e[35m'
 cyan=$'\e[36m'
 white=$'\e[37m'
 
-brblack=$'\e[90m'   # brblack
-brred=$'\e[91m'     # brred
-brgreen=$'\e[92m'   # brgreen
-bryellow=$'\e[93m'  # bryellow
-brblue=$'\e[94m'    # brblue
-brmagenta=$'\e[95m' # brmagenta
-brcyan=$'\e[96m'    # brcyan
-brwhite=$'\e[97m'   # brwhite
+brblack=$'\e[90m'
+brred=$'\e[91m'
+brgreen=$'\e[92m'
+bryellow=$'\e[93m'
+brblue=$'\e[94m'
+brmagenta=$'\e[95m'
+brcyan=$'\e[96m'
+brwhite=$'\e[97m'
 
 # Colored man pages
 export LESS_TERMCAP_mb=$magenta
@@ -211,3 +185,30 @@ function my_prompt() {
 }
 
 export PROMPT_COMMAND="my_prompt"
+
+# ---------------------------------------------------------------------
+# OLD aliases used in Arch Linux (when I ran it!)
+
+## Pacman aliases
+## Update the system
+#alias pacupg='sudo pacman -Syyu'
+## Install packages
+#alias pacins='sudo pacman -S'
+## Remove (uninstall) packages, configurationfiles and dependencies
+#alias pacrem='sudo pacman -Rnus'
+## Remove Orphin packages
+#alias pacro='pacman -Qtdq > /dev/null ; sudo pacman -Rns $(pacman -Qtdq | sed -e ':a;N;$!ba;s/\n/ /g')'
+## Clear Cache of not installed packages
+#alias pacclear='sudo pacman -Sc'
+#alias paccc="sudo paccache -ruk0 && pacclear"
+## Search the local database for a named package
+#alias paclsea='pacman -Qs'
+#
+## Pacman AUR aliases
+## Install packages from AUR
+#alias aurins='pacaur -S'
+## Update the system with AUR packages
+#alias aurupg='pacaur -Syyu'
+## Search for packages Official and in the AUR
+#alias pacsea='pacaur -Ss'
+
