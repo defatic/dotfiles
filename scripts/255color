@@ -2,4 +2,9 @@
 
 for i in $(seq 0 255); do
   printf "\e[38;5;${i}m${i} \e[0"
+  if [ "$(echo ${i} % 20 | bc)" -eq 0 ]; then
+    printf "\n"
+  fi
 done
+
+printf "\n"
