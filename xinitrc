@@ -6,14 +6,12 @@
 # X11 boot
 if [ -d /etc/X11/xinit/xinitrc.d ]; then
   for f in /etc/X11/xinit/xinitrc.d/*; do
-    [ -x "$f" ] && . "$f"
+    test -x "${f}"  && . "${f}"
   done
 fi
 
 # loads settings from .Xresources into xterm
-[[ -f "$HOME/.Xresources" ]] && xrdb -merge -I"$HOME $HOME/.Xresources"
-# Enabels background transparency in terminals
-#picom &
+test -f "$HOME/.Xresources" && xrdb -merge -I"$HOME $HOME/.Xresources"
 # Clipboard manager
 clipmenud &
 # Sets the keyboard layout to Swedish in X11
@@ -31,13 +29,13 @@ feh --no-fehbg --bg-fill "$HOME/Documents/wallpapers/jungle.jpg"
 # Start a window manager
 ## dwm settings and launch
 while true; do
-  DATE=$(date '+%b %d %H:%M')
-  VOL=$(pulsemixer --get-volume)
-  CPULOAD=$(uptime)
   MEM=$(free | awk '/Mem/ {printf "%d MiB\n", $3 / 1024.0}')
+  CPULOAD=$(uptime)
   KERNEL=$(uname -r)
-#    IP=$(for i in $(ip r); do echo "$i"; done | grep -A 1 src | tail -n1)
-#    TEMP=$(($(cat /sys/class/thermal/thermal_zone0/temp) / 1000))C
+  VOL=$(pulsemixer --get-volume)
+  DATE=$(date '+%b %d %H:%M')
+#   IP=$(for i in $(ip r); do echo "$i"; done | grep -A 1 src | tail -n1)
+#   TEMP=$(($(cat /sys/class/thermal/thermal_zone0/temp) / 1000))C
 
   xsetroot -name " ${MEM} / ${CPULOAD##*:} / ${KERNEL%%-*} / [${VOL#* }] ${DATE}"
 
