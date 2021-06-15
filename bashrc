@@ -169,7 +169,7 @@ task_indicator() {
 }
 
 # Tab completion stuff in bash
-if [ -r /usr/share/bash-completion/bash_completion ]; then
+if test -r /usr/share/bash-completion/bash_completion; then
   . /usr/share/bash-completion/bash_completion
 fi
 
@@ -189,26 +189,25 @@ export PROMPT_COMMAND="my_prompt"
 # ---------------------------------------------------------------------
 # OLD aliases used in Arch Linux (when I ran it!)
 
-## Pacman aliases
-## Update the system
-#alias pacupg='sudo pacman -Syyu'
-## Install packages
-#alias pacins='sudo pacman -S'
-## Remove (uninstall) packages, configurationfiles and dependencies
-#alias pacrem='sudo pacman -Rnus'
-## Remove Orphin packages
-#alias pacro='pacman -Qtdq > /dev/null ; sudo pacman -Rns $(pacman -Qtdq | sed -e ':a;N;$!ba;s/\n/ /g')'
-## Clear Cache of not installed packages
-#alias pacclear='sudo pacman -Sc'
-#alias paccc="sudo paccache -ruk0 && pacclear"
-## Search the local database for a named package
-#alias paclsea='pacman -Qs'
-#
-## Pacman AUR aliases
-## Install packages from AUR
-#alias aurins='pacaur -S'
-## Update the system with AUR packages
-#alias aurupg='pacaur -Syyu'
-## Search for packages Official and in the AUR
-#alias pacsea='pacaur -Ss'
-
+# # Pacman aliases
+# # Update the system
+# alias pacupg='sudo pacman -Syyu'
+# # Install packages
+# alias pacins='sudo pacman -S'
+# # Remove (uninstall) packages, configurationfiles and dependencies
+# alias pacrem='sudo pacman -Rnus'
+# # Remove Orphin packages
+# alias pacro='pacman -Qtdq > /dev/null ; sudo pacman -Rns $(pacman -Qtdq | sed -e ':a;N;$!ba;s/ / /g')'
+# # Clear Cache of not installed packages
+# alias pacclear='sudo pacman -Sc'
+# alias paccc="sudo paccache -ruk0 && pacclear"
+# # Search the local database for a named package
+# alias paclsea='pacman -Qs'
+# 
+# # Pacman AUR aliases
+# # Install packages from AUR
+# alias aurins='pacaur -S'
+# # Update the system with AUR packages
+# alias aurupg='pacaur -Syyu'
+# # Search for packages Official and in the AUR
+# alias pacsea='pacaur -Ss'
