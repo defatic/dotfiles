@@ -178,8 +178,8 @@ eval "$(dircolors -b)"
 eval "$(gh completion -s bash)" # Bash completion for the gh command (github cli)
 
 # Set promt
+source "$HOME/.git-prompt.sh"
 function my_prompt() {
-  source "$HOME/.git-prompt.sh"
   local tNum="$(task status:pending count)"
   export PS1=" ${yellow}$tNum${reset} $(task_indicator) ${cyan}\W${red}$(__git_ps1 ':%s') ${yellow}\$${reset} "
 }
