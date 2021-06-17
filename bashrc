@@ -19,8 +19,7 @@ HISTFILE="$HOME/.cache/bash/histfile"
 HISTSIZE=10000
 SAVEHIST=10000
 
-export clear=$'\e[H\e[2J'
-clear () { echo -n $clear; }
+clear () { printf '\e[H\e[2J'; }
 
 # General aliases
 alias ls='ls --color=auto'
