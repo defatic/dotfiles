@@ -172,9 +172,10 @@ if test -r /usr/share/bash-completion/bash_completion; then
   . /usr/share/bash-completion/bash_completion
 fi
 
-# eval commands
 eval "$(dircolors -b)"
-eval "$(gh completion -s bash)" # Bash completion for the gh command (github cli)
+type gh &>/dev/null && . <(gh completion -s bash)
+type pandoc &>/dev/null && . <(pandoc --bash-completion)
+type yq &>/dev/null && . <(yq shell-completion bash)
 
 # Set promt
 source "$HOME/.git-prompt.sh"
