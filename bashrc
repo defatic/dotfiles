@@ -1,3 +1,4 @@
+
 case $- in
   *i*) ;;
   *) return ;;
@@ -19,7 +20,7 @@ HISTFILE="$HOME/.cache/bash/histfile"
 HISTSIZE=10000
 SAVEHIST=10000
 
-clear () { printf '\e[H\e[2J'; }
+# clear () { printf '[H[2J'; }
 
 # General aliases
 alias ls='ls --color=auto'
@@ -43,38 +44,15 @@ alias mbsync='mbsync -c "$HOME/.mutt/isync/mbsyncrc" -a'
 alias mutt='mutt -F $HOME/.mutt/muttrc'
 
 export REPOS="$HOME/repos"
-export SCRIPTS="$HOME/repos/dotfiles"
+export SCRIPTS="$REPOS/dotfiles/scripts"
 export KN="$REPOS" # Knowledge Node repo
 
-# be sure NOT to add ./ in PATH cuz it's unsafe
-pathappend() {
-  for ARG in "$@"; do
-    test -d "${ARG}" || continue
-    PATH=${PATH//:${ARG}:/:}
-    PATH=${PATH/#${ARG}:/}
-    PATH=${PATH/%:${ARG}/}
-    export PATH="${PATH:+"${PATH}:"}${ARG}"
-  done
-}
-
-pathappend \
-  $HOME/.local/bin \
-  $REPOS/dotfiles/scripts \
-  /usr/local/bin \
-  /usr/local/sbin \
-  /usr/games \
-  /usr/sbin \
-  /usr/bin \
-  /snap/bin \
-  /sbin \
-  /bin
-
-
-# be sure not to remove ./ in CDPATH or stuff gets weird
-export CDPATH=.:\
-$REPOS:\
-$SCRIPTS:\
-$HOME
+# Golang paths
+export GOPRIVATE="github.com/$GITUSER/*"
+export GOPATH="$HOME/.local/go"
+export GOBIN="$HOME/.local/go/bin"
+export GOPROXY="direct"
+export CGO_ENABELD=0
 
 # Default programs
 export EDITOR="vi"
@@ -93,7 +71,50 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export WGETRC="${XDG_CONFIG_HOME:-$HOME/.config}/wget/wgetrc"
 export WINEPREFIX="${XDG_DATA_HOME:-$HOME/.local/share}/wineprefixes/default"
 
-# Colors
+# Path
+pathappend() {
+  for arg in "$@"; do
+    test -d "${arg}" || continue
+    PATH=${PATH//:${arg}:/:}
+    PATH=${PATH/#${arg}:/}
+    PATH=${PATH/%:${arg}/}
+    export PATH="${PATH:+"${PATH}:"}${arg}"
+  done
+}
+
+pathprepend() {
+  for arg in "$@"; do
+    test -d "${arg}" || continue
+    PATH=${PATH//:${arg}:/:}
+    PATH=${PATH/#${arg}:/}
+    PATH=${PATH/%:${arg}/}
+    export PATH="${arg}${PATH:+":${PATH}"}"
+  done
+}
+
+# be sure NOT to add ./ in PATH cuz it's unsafe
+# Last arg will be first i path
+pathprepend \
+  $HOME/.local/bin \
+  "$SCRIPTS"
+
+pathappend \
+  /usr/local/bin \
+  /usr/local/sbin \
+  /usr/games \
+  /usr/sbin \
+  /usr/bin \
+  /snap/bin \
+  /sbin \
+  /bin
+
+# be sure not to remove ./ in CDPATH or stuff gets weird
+export CDPATH=.:\
+$REPOS:\
+$SCRIPTS:\
+$HOME
+
+# Colors and escapes
 escape=$'\e'
 reset=$'\e[0m'
 bold=$'\e[1m'
@@ -131,13 +152,6 @@ export LESS_TERMCAP_se=$reset
 export LESS_TERMCAP_so=$blue
 export LESS_TERMCAP_ue=$reset
 export LESS_TERMCAP_us=""
-
-# Golang paths
-export GOPRIVATE="github.com/$GITUSER/*"
-export GOPATH="$HOME/.local/go"
-export GOBIN="$HOME/.local/go/bin"
-export GOPROXY="direct"
-export CGO_ENABELD=0
 
 export KEYTIMEOUT=1
 

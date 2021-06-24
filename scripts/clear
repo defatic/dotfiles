@@ -1,0 +1,3 @@
+#!/bin/sh
+
+printf '\e[H\e[2J'

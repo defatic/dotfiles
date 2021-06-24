@@ -1,10 +1,8 @@
 #!/bin/bash
 
-echo -e "Path!"
-echo -e "${PATH//:/\\n}"
-echo -e ""
-echo -e "CD Path!"
-echo -e "${CDPATH//:/\\n}"
-echo -e ""
-echo -e "Go Path!"
-echo -e "${GOPATH//:/\\n}"
+printf "Path!\n"
+printf "${PATH//:/\\n}\n\n"
+printf "CD Path!\n"
+printf "${CDPATH//:/\\n}\n\n"
+printf "Go Path!\n"
+printf "${GOPATH//:/\\n}\n\n"
