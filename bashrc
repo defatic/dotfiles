@@ -93,12 +93,11 @@ pathprepend() {
 }
 
 # be sure NOT to add ./ in PATH cuz it's unsafe
-# Last arg will be first i path
-pathprepend \
-  $HOME/.local/bin \
-  "$SCRIPTS"
+# Last arg will be first in path
+# pathprepend \
 
 pathappend \
+  $HOME/.local/bin \
   /usr/local/bin \
   /usr/local/sbin \
   /usr/games \
@@ -111,7 +110,7 @@ pathappend \
 # be sure not to remove ./ in CDPATH or stuff gets weird
 export CDPATH=.:\
 $REPOS:\
-$SCRIPTS:\
+$REPOS/dotfiles:\
 $HOME
 
 # Colors and escapes
@@ -186,7 +185,8 @@ if test -r /usr/share/bash-completion/bash_completion; then
   . /usr/share/bash-completion/bash_completion
 fi
 
-eval "$(dircolors -b)"
+# eval "$(dircolors -b)"
+type dircolors &/dev/null && . <(dircolors -b)
 type gh &>/dev/null && . <(gh completion -s bash)
 type pandoc &>/dev/null && . <(pandoc --bash-completion)
 type yq &>/dev/null && . <(yq shell-completion bash)
@@ -202,6 +202,7 @@ export PROMPT_COMMAND="my_prompt"
 
 # ---------------------------------------------------------------------
 # OLD aliases used in Arch Linux (when I ran it!)
+# Keeping this around IF i decide to go back to Arch
 
 # # Pacman aliases
 # # Update the system

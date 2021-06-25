@@ -4,7 +4,7 @@
 #
 # Below function runs files in /etc/X11/xinit/xinit.d/ catelog for startup at
 # X11 boot
-if [ -d /etc/X11/xinit/xinitrc.d ]; then
+if test -d /etc/X11/xinit/xinitrc.d; then
   for f in /etc/X11/xinit/xinitrc.d/*; do
     test -x "${f}"  && . "${f}"
   done

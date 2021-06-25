@@ -1,3 +1,4 @@
 #!/bin/sh
 
-exec curl -L "ifconfig.me"
+curl -L "ifconfig.me/$1"
+printf "\n"

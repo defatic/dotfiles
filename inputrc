@@ -1,5 +1,3 @@
-# $include /etc/inputrc
-
 # Set VI mode in the terminal
 set editing-mode vi
 set bell-style none
