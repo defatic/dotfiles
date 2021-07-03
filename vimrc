@@ -241,10 +241,10 @@ nnoremap <silent><leader>ns :set nospell<CR>
 " nnoremap <c-l> <c-w>l
 
 " Strip trailing white spaces
-fun! TrimWhitespace()
-  let l:save = winsaveview()
-  keeppatterns %s/\s\+$//e
-  call winrestview(l:save)
-endfun
+" fun! TrimWhitespace()
+"   let l:save = winsaveview()
+"   keeppatterns %s/\s\+$//e
+"   call winrestview(l:save)
+" endfun
 
 " autocmd BufWritePre * :call TrimWhitespace()
