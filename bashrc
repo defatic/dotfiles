@@ -186,7 +186,7 @@ if test -r /usr/share/bash-completion/bash_completion; then
 fi
 
 # eval "$(dircolors -b)"
-type dircolors &/dev/null && . <(dircolors -b)
+type dircolors &>/dev/null && . <(dircolors -b)
 type gh &>/dev/null && . <(gh completion -s bash)
 type pandoc &>/dev/null && . <(pandoc --bash-completion)
 type yq &>/dev/null && . <(yq shell-completion bash)

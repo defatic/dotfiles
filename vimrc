@@ -4,8 +4,8 @@ Plug 'junegunn/vim-plug'
 Plug 'itchyny/lightline.vim'
 Plug 'itchyny/vim-gitbranch'
 " Colorscheme
-Plug 'tek256/simple-dark'
-Plug 'gruvbox-community/gruvbox'
+" Plug 'tek256/simple-dark'
+" Plug 'gruvbox-community/gruvbox'
 Plug 'arcticicestudio/nord-vim'
 " Delimitmate
 Plug 'Raimondi/delimitMate'
@@ -20,10 +20,8 @@ Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 " Markdown
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'rwxrob/vim-pandoc-syntax-simple'
-" Rip Grep
-Plug 'jremmen/vim-ripgrep'
 " Vim go
-Plug 'fatih/vim-go', { 'do': 'GoInstallBinaries' }
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
 
 " General settings
@@ -70,7 +68,9 @@ set noswapfile
 set noshowmode
 set number
 set relativenumber
-set tabstop=2 shiftwidth=2 softtabstop=2
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set expandtab
 set autoindent
 set smartindent
@@ -93,10 +93,10 @@ set shortmess+=c
 set signcolumn=yes
 set undofile
 set undodir=~/.vim/undotree
-set showcmd
 set viminfo='20,<1000,s1000
 set splitbelow
 set splitright
+set showcmd
 
 " Disable mouse click to go to position
 set mouse-=a
@@ -125,6 +125,9 @@ hi Search cterm=NONE ctermfg=204 ctermbg=236 guifg=#E06C75 guibg=#3E4452
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_use_caching = 0
+
+" DelimitMate
+let delimitmate_expand_cr = 1
 
 " Light Line
 let g:lightline = {
@@ -172,6 +175,13 @@ inoremap <buffer> <silent><expr> <TAB>
 inoremap <buffer> <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 inoremap <buffer> <silent><expr> <C-space> coc#refresh()
 
+" GoTo code navigation.
+nmap <buffer> <leader>gd <Plug>(coc-definition)
+nmap <buffer> <leader>gy <Plug>(coc-type-definition)
+nmap <buffer> <leader>gi <Plug>(coc-implementation)
+nmap <buffer> <leader>gr <Plug>(coc-references)
+nnoremap <buffer> <leader>cr :CocRestart<CR>
+
 " golang
 let g:go_fmt_fail_silently = 0
 let g:go_fmt_command = 'goimports'
@@ -190,23 +200,16 @@ let g:go_highlight_diagnostic_errors = 1
 let g:go_highlight_diagnostic_warnings = 1
 let g:go_auto_type_info = 1
 let g:go_auto_sameids = 0
-"let g:go_metalinter_command='golangci-lint'
-"let g:go_metalinter_command='golint'
-"let g:go_metalinter_autosave=1
-"let g:go_gopls_analyses = { 'composites' : v:false }
-"au FileType go nmap <leader>t :GoTest!<CR>
-"au FileType go nmap <leader>v :GoVet!<CR>
-"au FileType go nmap <leader>b :GoBuild!<CR>
-"au FileType go nmap <leader>c :GoCoverageToggle<CR>
-"au FileType go nmap <leader>i :GoInfo<CR>
-"au FileType go nmap <leader>l :GoMetaLinter!<CR>
-
-" GoTo code navigation.
-nmap <buffer> <leader>gd <Plug>(coc-definition)
-nmap <buffer> <leader>gy <Plug>(coc-type-definition)
-nmap <buffer> <leader>gi <Plug>(coc-implementation)
-nmap <buffer> <leader>gr <Plug>(coc-references)
-nnoremap <buffer> <leader>cr :CocRestart<CR>
+let g:go_metalinter_command='golangci-lint'
+let g:go_metalinter_command='golint'
+let g:go_metalinter_autosave=1
+let g:go_gopls_analyses = { 'composites' : v:false }
+au FileType go nmap <leader>t :GoTest!<CR>
+au FileType go nmap <leader>v :GoVet!<CR>
+au FileType go nmap <leader>b :GoBuild!<CR>
+au FileType go nmap <leader>c :GoCoverageToggle<CR>
+au FileType go nmap <leader>i :GoInfo<CR>
+au FileType go nmap <leader>l :GoMetaLinter!<CR>
 
 " Key maps
 let mapleader="\<space>"
