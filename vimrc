@@ -202,7 +202,7 @@ let g:go_auto_type_info = 1
 let g:go_auto_sameids = 0
 let g:go_metalinter_command='golangci-lint'
 let g:go_metalinter_command='golint'
-let g:go_metalinter_autosave=1
+let g:go_metalinter_autosave=0
 let g:go_gopls_analyses = { 'composites' : v:false }
 au FileType go nmap <leader>t :GoTest!<CR>
 au FileType go nmap <leader>v :GoVet!<CR>

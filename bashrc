@@ -98,6 +98,7 @@ pathprepend() {
 
 pathappend \
   $HOME/.local/bin \
+  /home/dennis/.config/coc/extensions/coc-clangd-data/install/12.0.0/clangd_12.0.0/bin \
   /usr/local/bin \
   /usr/local/sbin \
   /usr/games \
