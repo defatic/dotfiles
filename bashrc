@@ -37,8 +37,6 @@ alias iotop='sudo iotop -oPa'
 alias iftop='sudo iftop -i enp3s0'
 alias nethogs='sudo nethogs enp3s0'
 
-alias apt='sudo apt'
-
 # Mutt aliases
 alias mbsync='mbsync -c "$HOME/.mutt/isync/mbsyncrc" -a'
 alias mutt='mutt -F $HOME/.mutt/muttrc'
@@ -109,7 +107,7 @@ pathappend \
   /bin
 
 # be sure not to remove ./ in CDPATH or stuff gets weird
-export CDPATH=.:\
+export CDPATH=./:\
 $REPOS:\
 $REPOS/dotfiles:\
 $HOME
@@ -190,7 +188,7 @@ fi
 type dircolors &>/dev/null && . <(dircolors -b)
 type gh &>/dev/null && . <(gh completion -s bash)
 type pandoc &>/dev/null && . <(pandoc --bash-completion)
-type yq &>/dev/null && . <(yq shell-completion bash)
+# type yq &>/dev/null && . <(yq shell-completion bash)
 
 # Set promt
 source "$HOME/.git-prompt.sh"
@@ -201,29 +199,25 @@ function my_prompt() {
 
 export PROMPT_COMMAND="my_prompt"
 
-# ---------------------------------------------------------------------
-# OLD aliases used in Arch Linux (when I ran it!)
-# Keeping this around IF i decide to go back to Arch
+# Pacman aliases
+# Update the system
+alias pacupg='sudo pacman -Syyu'
+# Install packages
+alias pacins='sudo pacman -S'
+# Remove (uninstall) packages, configurationfiles and dependencies
+alias pacrem='sudo pacman -Rnus'
+# Remove Orphin packages
+alias pacro='pacman -Qtdq > /dev/null ; sudo pacman -Rns $(pacman -Qtdq | sed -e ":a;N;$!ba;s/ / /g")'
+# Clear Cache of not installed packages
+alias pacclear='sudo pacman -Sc'
+alias paccc="sudo paccache -ruk0 && pacclear"
+# Search the local database for a named package
+alias paclsea='pacman -Qs'
 
-# # Pacman aliases
-# # Update the system
-# alias pacupg='sudo pacman -Syyu'
-# # Install packages
-# alias pacins='sudo pacman -S'
-# # Remove (uninstall) packages, configurationfiles and dependencies
-# alias pacrem='sudo pacman -Rnus'
-# # Remove Orphin packages
-# alias pacro='pacman -Qtdq > /dev/null ; sudo pacman -Rns $(pacman -Qtdq | sed -e ':a;N;$!ba;s/ / /g')'
-# # Clear Cache of not installed packages
-# alias pacclear='sudo pacman -Sc'
-# alias paccc="sudo paccache -ruk0 && pacclear"
-# # Search the local database for a named package
-# alias paclsea='pacman -Qs'
-# 
-# # Pacman AUR aliases
-# # Install packages from AUR
-# alias aurins='pacaur -S'
-# # Update the system with AUR packages
-# alias aurupg='pacaur -Syyu'
-# # Search for packages Official and in the AUR
+# Pacman AUR aliases
+# Install packages from AUR
+alias aurins='yay'
+# Update the system with AUR packages
+alias aurupg='yay -Syyu'
+# Search for packages Official and in the AUR
 # alias pacsea='pacaur -Ss'
