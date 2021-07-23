@@ -20,7 +20,7 @@ HISTFILE="$HOME/.cache/bash/histfile"
 HISTSIZE=10000
 SAVEHIST=10000
 
-# clear () { printf '[H[2J'; }
+clear () { printf '[H[2J'; }
 
 # General aliases
 alias ls='ls --color=auto'
@@ -30,6 +30,27 @@ alias grep='grep --color=auto'
 alias ..='cd ..'
 alias c='clear'
 alias eb='vim $HOME/.bashrc'
+
+# Pacman aliases
+# Update the system
+alias pacupg='sudo pacman -Syyu'
+# Install packages
+alias pacins='sudo pacman -S'
+# Remove (uninstall) packages, configurationfiles and dependencies
+alias pacrem='sudo pacman -Rnus'
+# Remove Orphin packages
+alias pacro='pacman -Qtdq > /dev/null ; sudo pacman -Rns $(pacman -Qtdq | sed -e ":a;N;$!ba;s/ / /g")'
+# Clear Cache of not installed packages
+alias pacclear='sudo pacman -Sc'
+alias paccc="sudo paccache -ruk0 && pacclear"
+# Search the local database for a named package
+alias paclsea='pacman -Qs'
+
+# Pacman AUR aliases
+# Search and Install packages from AUR with yay
+alias aurins='yay'
+# Update the system with AUR packages
+alias aurupg='yay -Syyu'
 
 command -v vim &>/dev/null && alias vi=vim
 
@@ -113,34 +134,34 @@ $REPOS/dotfiles:\
 $HOME
 
 # Colors and escapes
-escape=$'\e'
-reset=$'\e[0m'
-bold=$'\e[1m'
-underline=$'\e[4m'
-blinkon=$'\e[5m'
-blinkoff=$'\e[25m'
-inverse=$'\e[7m'
-inverseoff=$'\e[27m'
-normal=$'\e[39m'
-normalbg=$'\e[49m'
+escape=$''
+reset=$'[0m'
+bold=$'[1m'
+underline=$'[4m'
+blinkon=$'[5m'
+blinkoff=$'[25m'
+inverse=$'[7m'
+inverseoff=$'[27m'
+normal=$'[39m'
+normalbg=$'[49m'
 
-black=$'\e[30m'
-red=$'\e[31m'
-green=$'\e[32m'
-yellow=$'\e[33m'
-blue=$'\e[34m'
-magenta=$'\e[35m'
-cyan=$'\e[36m'
-white=$'\e[37m'
+black=$'\e[30m'
+red=$'[31m'
+green=$'[32m'
+yellow=$'[33m'
+blue=$'[34m'
+magenta=$'[35m'
+cyan=$'[36m'
+white=$'[37m'
 
-brblack=$'\e[90m'
-brred=$'\e[91m'
-brgreen=$'\e[92m'
-bryellow=$'\e[93m'
-brblue=$'\e[94m'
-brmagenta=$'\e[95m'
-brcyan=$'\e[96m'
-brwhite=$'\e[97m'
+brblack=$'[90m'
+brred=$'[91m'
+brgreen=$'[92m'
+bryellow=$'[93m'
+brblue=$'[94m'
+brmagenta=$'[95m'
+brcyan=$'[96m'
+brwhite=$'[97m'
 
 # Colored man pages
 export LESS_TERMCAP_mb=$magenta
@@ -198,26 +219,3 @@ function my_prompt() {
 }
 
 export PROMPT_COMMAND="my_prompt"
-
-# Pacman aliases
-# Update the system
-alias pacupg='sudo pacman -Syyu'
-# Install packages
-alias pacins='sudo pacman -S'
-# Remove (uninstall) packages, configurationfiles and dependencies
-alias pacrem='sudo pacman -Rnus'
-# Remove Orphin packages
-alias pacro='pacman -Qtdq > /dev/null ; sudo pacman -Rns $(pacman -Qtdq | sed -e ":a;N;$!ba;s/ / /g")'
-# Clear Cache of not installed packages
-alias pacclear='sudo pacman -Sc'
-alias paccc="sudo paccache -ruk0 && pacclear"
-# Search the local database for a named package
-alias paclsea='pacman -Qs'
-
-# Pacman AUR aliases
-# Install packages from AUR
-alias aurins='yay'
-# Update the system with AUR packages
-alias aurupg='yay -Syyu'
-# Search for packages Official and in the AUR
-# alias pacsea='pacaur -Ss'

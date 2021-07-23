@@ -5,7 +5,6 @@ Plug 'itchyny/lightline.vim'
 Plug 'itchyny/vim-gitbranch'
 " Colorscheme
 " Plug 'tek256/simple-dark'
-" Plug 'gruvbox-community/gruvbox'
 Plug 'arcticicestudio/nord-vim'
 " Delimitmate
 Plug 'Raimondi/delimitMate'
@@ -105,9 +104,6 @@ set mouse-=a
 set background=dark
 
 "colorscheme simple-dark
-
-"let g:gruvbox_contrast_dark = 'hard' " needs to be set before colorscheme is called
-"colorscheme gruvbox
 
 colorscheme nord
 if (g:colors_name == "nord")
