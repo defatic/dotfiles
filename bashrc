@@ -39,7 +39,7 @@ alias pacins='sudo pacman -S'
 # Remove (uninstall) packages, configurationfiles and dependencies
 alias pacrem='sudo pacman -Rnus'
 # Remove Orphin packages
-alias pacro='pacman -Qtdq > /dev/null ; sudo pacman -Rns $(pacman -Qtdq | sed -e ":a;N;$!ba;s/ / /g")'
+alias pacro='pacman -Qtdq > /dev/null ; sudo pacman -Rns $(pacman -Qtdq | sed -e ":a;N;$!ba;s/ / /g") 2>/dev/null'
 # Clear Cache of not installed packages
 alias pacclear='sudo pacman -Sc'
 alias paccc="sudo paccache -ruk0 && pacclear"
@@ -147,7 +147,6 @@ normalbg=$'[49m'
 
 black=$'\e[30m'
 red=$'[31m'
-green=$'[32m'
 yellow=$'[33m'
 blue=$'[34m'
 magenta=$'[35m'

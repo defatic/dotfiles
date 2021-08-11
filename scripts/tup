@@ -2,6 +2,7 @@
 
 reset='[0m'
 red='[31m'
+green='[32m'
 
 doGitUpdate() {
   cd "$HOME/${1}" 2>/dev/null || exit 1
