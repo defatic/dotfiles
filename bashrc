@@ -39,7 +39,7 @@ alias pacins='sudo pacman -S'
 # Remove (uninstall) packages, configurationfiles and dependencies
 alias pacrem='sudo pacman -Rnus'
 # Remove Orphin packages
-alias pacro='pacman -Qtdq > /dev/null ; sudo pacman -Rns $(pacman -Qtdq | sed -e ":a;N;$!ba;s/ / /g") 2>/dev/null'
+alias pacro='pacman -Qtdq > /dev/null ; sudo pacman -Rns $(pacman -Qtdq | sed -e ":a;N;$!ba;s/ / /g")'
 # Clear Cache of not installed packages
 alias pacclear='sudo pacman -Sc'
 alias paccc="sudo paccache -ruk0 && pacclear"
