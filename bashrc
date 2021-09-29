@@ -30,6 +30,7 @@ alias grep='grep --color=auto'
 alias ..='cd ..'
 alias c='clear'
 alias eb='vim $HOME/.bashrc'
+alias df='df -h'
 
 # Pacman aliases
 # Update the system
@@ -120,6 +121,7 @@ pathappend \
   /home/dennis/.config/coc/extensions/coc-clangd-data/install/12.0.0/clangd_12.0.0/bin \
   /usr/local/bin \
   /usr/local/sbin \
+  /usr/local/go/bin \
   /usr/games \
   /usr/sbin \
   /usr/bin \
