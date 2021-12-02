@@ -1,5 +1,12 @@
 #!/bin/sh
 
+tmuxpath=/usr/bin/tmux
+
+if [ ! -x "$tmuxpath" ]; then
+  echo "Doesn't look like tmux is installed."
+  exit 1
+fi
+
 case "$@" in
   s)
     exec tmux -L main new -s main -n weechat \ weechat \; new-window -a \; last-window;
