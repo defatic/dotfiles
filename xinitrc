@@ -20,8 +20,8 @@ setxkbmap se
 xset m 1/1 4
 # Speed up xrate
 xset r rate 300 50
-# Turn Caps Lock into ESC
-xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+# Turn Caps Lock into ESC - when using a "normal" keyboard, using a plack 48 key layout at right now
+# xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 
 # Set wallpaper
 # feh --no-fehbg --bg-fill "$HOME/Documents/wallpapers/jungle.jpg"

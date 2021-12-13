@@ -6,6 +6,7 @@ Plug 'itchyny/vim-gitbranch'
 " Colorscheme
 " Plug 'tek256/simple-dark'
 Plug 'arcticicestudio/nord-vim'
+Plug 'rakr/vim-one'
 " Delimitmate
 Plug 'Raimondi/delimitMate'
 " CSS Colors
@@ -101,16 +102,22 @@ set showcmd
 set mouse-=a
 
 " Vim Colorscheme
+
+if (has("termguicolors"))
+  set termguicolors
+endif
+
 set background=dark
 
 "colorscheme simple-dark
 
-colorscheme nord
+colorscheme one
+
+" colorscheme nord
 if (g:colors_name == "nord")
   let g:nord_cursor_line_number_background = 1
   let g:nord_uniform_status_lines = 1
   let g:nord_italic = 1
-  set termguicolors
 endif
 
 " Set highlight for search pattern
@@ -127,7 +134,7 @@ let delimitmate_expand_cr = 1
 
 " Light Line
 let g:lightline = {
-      \ 'colorscheme': 'nord',
+      \ 'colorscheme': 'one',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste'],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ] },

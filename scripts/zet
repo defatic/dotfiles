@@ -58,9 +58,7 @@ lquery() {
   test -z "$1" && echo "Missing local search query." && exit 1
   term="$*"
   echo "[$term]"
-  # Rip grep has nicer output
-  rg -i "$*" "$KN/zet/"
-#   grep -inHTr --exclude-dir='.git' --color=auto "$*" "$KN/zet/"
+  grep -inHTr --exclude-dir='.git' --color=auto "$*" "$KN/zet/"
 }
 
 case "$1" in
