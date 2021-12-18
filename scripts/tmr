@@ -1,5 +1,15 @@
 #!/bin/sh
 
+commands="daemon add list remove start stop kill"
+
+if test -n "$COMP_LINE"; then
+  pre="${COMP_LINE##* }"
+  for c in ${commands}; do
+    test -z "${pre}" -o "${c}" != "${c#${pre}}" && echo "$c"
+  done
+  exit
+fi
+
 downloadDir="$HOME/Downloads/dotTorrents"
 
 case "$1" in

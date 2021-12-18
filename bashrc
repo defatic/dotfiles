@@ -206,6 +206,8 @@ if test -r /usr/share/bash-completion/bash_completion; then
   . /usr/share/bash-completion/bash_completion
 fi
 
+complete -C tmr tmr
+
 # eval "$(dircolors -b)"
 type dircolors &>/dev/null && . <(dircolors -b)
 type gh &>/dev/null && . <(gh completion -s bash)
