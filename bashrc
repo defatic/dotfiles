@@ -207,6 +207,7 @@ if test -r /usr/share/bash-completion/bash_completion; then
 fi
 
 complete -C tmr tmr
+complete -C zet zet
 
 # eval "$(dircolors -b)"
 type dircolors &>/dev/null && . <(dircolors -b)

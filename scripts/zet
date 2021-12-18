@@ -8,6 +8,16 @@ set -e
 # Note that you will need one such complete line for every multicall
 # variation of this script (ex: ln -s zet log; complete -C log log)
 
+commands="query lquery"
+
+if test -n "$COMP_LINE"; then
+  pre="${COMP_LINE##* }"
+  for c in ${commands}; do
+    test -z "${pre}" -o "${c}" != "${c#${pre}}" && echo "$c"
+  done
+  exit
+fi
+
 test -z "$KN" && echo "KN (knowledge directory) not set." && exit 1
 test -z "$GITUSER" && echo "GITUSER not set." && exit 1
 
@@ -63,11 +73,11 @@ lquery() {
 
 case "$1" in
   add | "") add ;;
-  q | query)
+  query)
     shift
     query "$@"
     ;;
-  l | lquery)
+  lquery)
     shift
     lquery "$@"
     ;;
