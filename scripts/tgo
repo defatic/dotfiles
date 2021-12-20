@@ -7,8 +7,18 @@ if [ ! -x "$tmuxpath" ]; then
   exit 1
 fi
 
+commands="start"
+
+if test -n "$COMP_LINE"; then
+  pre="${COMP_LINE##* }"
+  for c in ${commands}; do
+    test -z "${pre}" -o "${c}" != "${c#${pre}}" && echo "$c"
+  done
+  exit
+fi
+
 case "$@" in
-  s)
+  start)
     exec tmux -L main new -s main -n weechat \ weechat \; new-window -a \; last-window;
     ;;
   *) 

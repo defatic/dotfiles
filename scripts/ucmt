@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # This script is used for uncommenting lines in vim combined with the bang (!)
-# command. This will insert a hash-tag (#) to be used as a comment line.
+# command. This will remove a hash-tag (#) at the begining of the line.
 
 while IFS= read -r line; do
   echo "${line#* }"
