@@ -208,6 +208,8 @@ fi
 
 complete -C tmr tmr
 complete -C zet zet
+complete -C tgo tgo
+complete -C ? ?
 
 # eval "$(dircolors -b)"
 type dircolors &>/dev/null && . <(dircolors -b)

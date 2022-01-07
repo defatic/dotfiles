@@ -10,7 +10,7 @@ if test -n "$COMP_LINE"; then
   exit
 fi
 
-downloadDir="$HOME/Downloads/dotTorrents"
+downloadDir="$HOME/Downloads"
 
 case "$1" in
   daemon)

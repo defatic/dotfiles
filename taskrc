@@ -25,6 +25,21 @@ data.location=~/.task
 # include /usr/share/taskwarrior/dark-yellow-green.theme
 # include /usr/share/taskwarrior/dark-gray-256.theme
 # include /usr/share/taskwarrior/dark-gray-blue-256.theme
-include /usr/share/taskwarrior/solarized-dark-256.theme
+# include /usr/share/taskwarrior/solarized-dark-256.theme
 # include /usr/share/taskwarrior/solarized-light-256.theme
-# include /usr/share/taskwarrior/no-color.theme
+include /usr/share/taskwarrior/no-color.theme
+
+# user set colors (overwrites the themes).
+_forcecolor=on
+color.tagged=green
+color.overdue=red
+color.calendar.today=black on green
+color.calendar.weekend=red
+color.calendar.overdue=black on red
+color.calendar.holiday=red
+color.calendar.due=cyan
+color.calendar.due.today=black on cyan
+color.calendar.weeknumber=inverse
+color.active=magenta
+color.error=white on red
+color.due=cyan

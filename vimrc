@@ -46,7 +46,6 @@ let &t_SI.="\e[5 q"
 let &t_EI.="\e[1 q"
 let &t_te.="\e[0 q"
 
-" Makes toggling between Insert & Normal mode faster
 set ttimeout
 set ttimeoutlen=1
 set ttyfast
@@ -59,7 +58,6 @@ set fo-=l
 set textwidth=72
 set wrapmargin=2
 
-" All of the other sets
 set hlsearch
 set incsearch
 set nobackup
@@ -80,7 +78,6 @@ set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
 set ignorecase
 set smartcase
 set laststatus=2
-set ls=2
 set backupdir=~/.tmp
 set directory=~/.tmp
 set foldmethod=indent
@@ -98,11 +95,12 @@ set splitbelow
 set splitright
 set showcmd
 
+set ruf=%30(%=%#LineNr#%.50F\ [%{strlen(&ft)?&ft:'none'}]\ %l:%c\ %p%%%)
+
 " Disable mouse click to go to position
 set mouse-=a
 
-" Vim Colorscheme
-
+" Colorscheme
 if (has("termguicolors"))
   set termguicolors
 endif
@@ -110,7 +108,6 @@ endif
 set background=dark
 
 "colorscheme simple-dark
-
 colorscheme one
 
 " colorscheme nord
@@ -122,7 +119,6 @@ endif
 
 " Set highlight for search pattern
 hi Search cterm=NONE ctermfg=204 ctermbg=236 guifg=#E06C75 guibg=#3E4452
-" hi Normal guibg=NONE
 
 " CTRL-P
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
@@ -236,6 +232,7 @@ nnoremap <silent><S-w> :tabclose<CR>
 nnoremap <leader>se :setlocal spell spelllang=sv<CR>
 nnoremap <leader>en :setlocal spell spelllang=en<CR>
 nnoremap <silent><leader>ns :set nospell<CR>
+hi SpellBad guifg=#E06C75
 
 " Window navigation made easy
 " nnoremap <c-j> <c-w>j

@@ -7,7 +7,7 @@ if [ ! -x "$tmuxpath" ]; then
   exit 1
 fi
 
-commands="start"
+commands="start "
 
 if test -n "$COMP_LINE"; then
   pre="${COMP_LINE##* }"

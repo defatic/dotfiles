@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 printf "Path!\n"
 printf "${PATH//:/\\n}\n\n"
