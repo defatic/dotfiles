@@ -41,10 +41,17 @@ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 " Set the cursor as a line in Insert mode & as a block in Normal mode
 " KEEP THE FOUR LINES BELOW EXACTLY AS THEY ARE!
-let &t_ti.="\e[1 q"
-let &t_SI.="\e[5 q"
-let &t_EI.="\e[1 q"
-let &t_te.="\e[0 q"
+" 1 or 0 -> blinking block
+" 2 -> solid block
+" 3 -> blinking underscore
+" 4 -> solid underscore
+" Recent versions of xterm (282 or above) also support
+" 5 -> blinking vertical bar
+" 6 -> solid vertical bar
+let &t_ti.="[0 q"
+let &t_SI.="[6 q"
+let &t_EI.="[0 q"
+let &t_te.="[0 q"
 
 set ttimeout
 set ttimeoutlen=1
@@ -216,7 +223,7 @@ tnoremap <esc> <C-\><C-N>
 nnoremap <silent><leader>up :source ~/.vim/vimrc<CR> :PlugInstall<CR>
 nnoremap <F9> :source ~/.vim/vimrc<CR>
 nnoremap <silent><leader>rc :e ~/.vim/vimrc<CR>
-nnoremap <silent><leader>cl :noh<CR>
+nnoremap <C-L> :nohl<CR><C-L>
 
 " Folding
 nnoremap <leader>f za
