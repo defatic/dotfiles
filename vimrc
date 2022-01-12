@@ -147,11 +147,11 @@ let g:lightline = {
 let g:clang_format#auto_format = 1
 let g:clang_format#code_style = "LLVM"
 let g:clang_format#style_options = {
-      \ "AllowShortIfStatementsOnASingleLine" : "false",
+      \ "AllowShortIfStatementsOnASingleLine" : "true",
       \ "IndentCaseLabels" : "true",
       \ "IndentWidth" : 2,
-      \ "PointerAlignment" : "Left",
       \ "TabWidth" : 2,
+      \ "PointerAlignment" : "Left",
       \ "AlignConsecutiveMacros" : "true",
       \ "AlignConsecutiveAssignments" : "true",
       \ "AlignConsecutiveDeclarations" : "true",
@@ -160,7 +160,7 @@ let g:clang_format#style_options = {
       \ "AlignOperands" : "true",
       \ "AllowShortBlocksOnASingleLine" : "true",
       \ "AllowShortFunctionsOnASingleLine" : "true",
-      \ "ColumnLimit" : 80,
+      \ "ColumnLimit" : 79,
       \ "KeepEmptyLinesAtTheStartOfBlocks" : "false",
       \ "SortIncludes" : "false",
       \ "SpaceAfterCStyleCast" :"false" }

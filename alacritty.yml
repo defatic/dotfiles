@@ -75,7 +75,7 @@ schemes:
       #background: '#2e3440'
       #background: '#222222'
       background: '#282C34'
-      foreground: '#d8dee9'
+      foreground: '#ABB2BF'
       dim_foreground: '#a5abb6'
     cursor:
       text: '#2e3440'
@@ -123,7 +123,8 @@ schemes:
   one: &one
     primary:
       background: '#282C34'
-      foreground: '#ABB2BF'
+      #foreground: '#ABB2BF'
+      foreground: '#A2A2A2'
       dim_foreground: '#828997'
     cursor:
       text: '#282C34'

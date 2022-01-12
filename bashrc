@@ -176,9 +176,9 @@ export LESS_TERMCAP_us=""
 export KEYTIMEOUT=1
 
 # Values for shader caching for use in gaming.
-export __GL_SHADER_DISK_CACHE=1
-export __GL_SHADER_DISK_CACHE_PATH='/tmp/nvidia-shaders'
-export __GL_THREADED_OPTIMIZATION=1
+# export __GL_SHADER_DISK_CACHE=1
+# export __GL_SHADER_DISK_CACHE_PATH='/tmp/nvidia-shaders'
+# export __GL_THREADED_OPTIMIZATION=1
 
 # Format for the time command
 export TIMEFMT=$'\n%U\tuser\n%S\tsystem\n\n%P cpu %*E total'
@@ -215,7 +215,7 @@ complete -C ? ?
 type dircolors &>/dev/null && . <(dircolors -b)
 type gh &>/dev/null && . <(gh completion -s bash)
 type pandoc &>/dev/null && . <(pandoc --bash-completion)
-# type yq &>/dev/null && . <(yq shell-completion bash)
+type yq &>/dev/null && . <(yq shell-completion bash)
 
 # Set promt
 source "$HOME/.git-prompt.sh"
