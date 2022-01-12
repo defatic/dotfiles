@@ -1,3 +1,3 @@
 #!/bin/sh
 
-/opt/balenaEtcher/balena-etcher-electron
+exec /opt/balenaEtcher/balena-etcher-electron

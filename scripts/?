@@ -1,37 +1,3 @@
 #!/usr/bin/sh
 
-commands="d g sh help h abs"
-
-if test -n "$COMP_LINE"; then
-  pre="${COMP_LINE##* }"
-  for c in ${commands}; do
-    test -z "${pre}" -o "${c}" != "${c#${pre}}" && echo "$c"
-  done
-  exit
-fi
-
-case "$1" in
-  d)
-    shift
-    exec lynx "https://lite.duckduckgo.com/lite?kd=-1&kp=-1&q=$(urlencode "$@")"
-    ;;
-  g)
-    shift
-    exec lynx "https://www.google.com/search?q=$(urlencode "$@")"
-    ;;
-  sh)
-    # Sh - the POSIX Shell
-    exec lynx "https://www.grymoire.com/Unix/Sh.html"
-    ;;
-  abs)
-    # Advanced Bash-Scripting Guide
-    exec lynx "https://tldp.org/LDP/abs/html/"
-    ;;
-  * | h | help)
-    echo "Use:
-    d for duckduckgo
-    g for google
-    sh for POSIX shell Guide
-    abs Advanced Bash-Scripting Guide"
-    ;;
-esac
+exec lynx "https://lite.duckduckgo.com/lite?kd=-1&kp=-1&q=$(urlencode "$@")"

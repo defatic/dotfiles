@@ -1,0 +1,21 @@
+#!/bin/bash
+
+set -e
+
+test ! -n "${SCRIPTS}" && echo "SCRIPTS env variable not set!" && exit 1
+test ! -n "${1}" && echo "Useage: newscript <name>" && exit 1
+
+path="${SCRIPTS}/${1}"
+
+if [[ -e "${path}" ]]; then
+  read -p "${1} already exists. edit? [y|yes] " answer
+  case "${answer}" in
+    y|yes) exec "${EDITOR:-vi}" "${path}"
+  esac
+  exit 0
+fi
+
+touch "${path}"
+chmod +x "${path}"
+printf "#!/bin/bash\n\n\n" > "${path}"
+exec "${EDITOR:-vi}" +3 "${path}"
