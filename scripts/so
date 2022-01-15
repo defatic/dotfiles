@@ -1,0 +1,31 @@
+#!/bin/bash
+# Depends on the twitch-cli command from https://github.com/twitchdev/twitch-cli
+
+file="$1"
+defultFile="$HOME/streams"
+
+[[ -z "$1" ]] && file=$defultFile
+[[ -z $(command -v twitch-cli) ]] && echo "You need to install twitch-cli from https://github.com/twitchdev/twitch-cli" && exit 1
+
+declare -a streamerArray
+
+while read -r streamer; do
+  if [[ $(twitch-cli api get streams -uq user_login="$streamer") =~ (\"type\"\:\"live\") ]]; then
+#     echo "$streamer is ${BASH_REMATCH[0]: -5:4}"
+    streamerArray+=("$streamer")
+  fi
+done < "$file"
+
+PS3="Select a streamer to watch: "
+
+select opt in "${streamerArray[@]}" quit; do
+  case $opt in
+    quit)
+      exit 0
+      ;;
+    *)
+      xdg-open "https://twitch.tv/$opt"
+      exit 0
+      ;;
+  esac
+done

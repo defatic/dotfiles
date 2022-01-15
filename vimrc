@@ -225,6 +225,10 @@ nnoremap <F9> :source ~/.vim/vimrc<CR>
 nnoremap <silent><leader>rc :e ~/.vim/vimrc<CR>
 nnoremap <C-L> :nohl<CR><C-L>
 
+" Shellcheck a bash/sh script - Run current file in bash
+nnoremap <leader>sc :!shellcheck %<CR>
+nnoremap <leader>rs :!bash %<CR>
+
 " Folding
 nnoremap <leader>f za
 
