@@ -140,7 +140,9 @@ let g:lightline = {
       \ 'colorscheme': 'one',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste'],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ] },
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
+      \   'right': [ [ 'lineinfo' ],
+      \              [ 'filetype' ] ] },
       \ 'component_function': { 'gitbranch': 'gitbranch#name' }, }
 
 " Clang Format config
@@ -226,8 +228,8 @@ nnoremap <silent><leader>rc :e ~/.vim/vimrc<CR>
 nnoremap <C-L> :nohl<CR><C-L>
 
 " Shellcheck a bash/sh script - Run current file in bash
-nnoremap <leader>sc :!shellcheck %<CR>
-nnoremap <leader>rs :!bash %<CR>
+au FileType sh nnoremap <leader>sc :!shellcheck %<CR>
+au FileType sh nnoremap <leader>rs :!bash %<CR>
 
 " Folding
 nnoremap <leader>f za
