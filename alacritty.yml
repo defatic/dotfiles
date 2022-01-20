@@ -69,7 +69,6 @@ debug:
   ref_test: false
 
 schemes:
-  #colors:
   nord: &nord
     primary:
       #background: '#2e3440'
@@ -120,6 +119,7 @@ schemes:
       magenta: '#8c738c'
       cyan: '#6d96a5'
       white: '#aeb3bb'
+
   one: &one
     primary:
       background: '#282C34'

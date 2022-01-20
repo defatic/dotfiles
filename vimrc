@@ -228,8 +228,8 @@ nnoremap <silent><leader>rc :e ~/.vim/vimrc<CR>
 nnoremap <C-L> :nohl<CR><C-L>
 
 " Shellcheck a bash/sh script - Run current file in bash
-au FileType sh nnoremap <leader>sc :!shellcheck %<CR>
-au FileType sh nnoremap <leader>rs :!bash %<CR>
+au FileType sh nnoremap <leader>sc :!clear && shellcheck %<CR>
+au FileType sh nnoremap <leader>rs :!clear && bash %<CR>
 
 " Folding
 nnoremap <leader>f za
@@ -242,8 +242,8 @@ nnoremap <silent><C-t> :tabnew<CR>
 nnoremap <silent><S-w> :tabclose<CR>
 
 " Spellchecking switching key binds
-nnoremap <leader>se :setlocal spell spelllang=sv<CR>
-nnoremap <leader>en :setlocal spell spelllang=en<CR>
+nnoremap <silent><leader>se :setlocal spell spelllang=sv<CR>
+nnoremap <silent><leader>en :setlocal spell spelllang=en<CR>
 nnoremap <silent><leader>ns :set nospell<CR>
 hi SpellBad guifg=#E06C75
 

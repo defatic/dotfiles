@@ -1,6 +1,6 @@
 
 case $- in
-  *i*) ;;
+  *i*) stty -ixon ;;
   *) return ;;
 esac
 
@@ -73,6 +73,9 @@ export GOPATH="$HOME/.local/go"
 export GOBIN="$HOME/.local/go/bin"
 export GOPROXY="direct"
 export CGO_ENABELD=0
+
+# C Flags
+export CFLAGS="-Wall -Wextra -Werror"
 
 # Default programs
 export EDITOR="vi"
@@ -210,6 +213,8 @@ complete -C tmr tmr
 complete -C zet zet
 complete -C tgo tgo
 complete -C ? ?
+complete -C tslive tslive
+complete -C pomo pomo
 
 # eval "$(dircolors -b)"
 type dircolors &>/dev/null && . <(dircolors -b)
