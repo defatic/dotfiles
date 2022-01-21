@@ -18,3 +18,4 @@ doGitUpdate() {
 doGitUpdate ".task"
 doGitUpdate ".weechat"
 doGitUpdate "repos/priv"
+doGitUpdate "Documents"

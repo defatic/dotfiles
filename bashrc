@@ -1,6 +1,6 @@
 
 case $- in
-  *i*) stty -ixon ;;
+  *i*) stty -ixon ;; # make ctrl-s work for i-search, instead of suspendeing the terminal
   *) return ;;
 esac
 
