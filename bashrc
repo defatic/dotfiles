@@ -32,6 +32,8 @@ alias c='clear'
 alias eb='vim $HOME/.bashrc'
 alias df='df -h'
 
+alias ?='ddg'
+
 # Pacman aliases
 # Update the system
 alias pacupg='sudo pacman -Syyu'

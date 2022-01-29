@@ -140,9 +140,10 @@ let g:lightline = {
       \ 'colorscheme': 'one',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste'],
+      \             [ 'spell' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
       \   'right': [ [ 'lineinfo' ],
-      \              [ 'filetype' ] ] },
+      \              [ 'filetype' ], [ 'bufnum' ] ] },
       \ 'component_function': { 'gitbranch': 'gitbranch#name' }, }
 
 " Clang Format config
