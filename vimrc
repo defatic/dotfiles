@@ -237,6 +237,7 @@ nnoremap <leader>f za
 
 " Undo tree
 nnoremap <silent><leader>ut :UndotreeToggle<CR>
+let g:undotree_WindowLayout=2
 
 " Tabs
 nnoremap <silent><C-t> :tabnew<CR>

@@ -3,5 +3,5 @@
 test ! "$(command -v git)" && echo "git is not installed" && exit 1
 
 git add -A .
-git commit -m "$1"
+git commit -m "${1}"
 git push

@@ -1,4 +1,4 @@
 #!/bin/sh
 
-curl -L "ifconfig.me/$1"
+curl -sSL "ifconfig.me/$1"
 printf "\n"

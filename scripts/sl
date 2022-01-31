@@ -1,5 +1,8 @@
 #!/bin/sh
 
-#streamlink -p "vlc --qt-minimal-view" "$1" best &>/dev/null &
+test -z "${1}" && echo "usage: sl <url to stream>" && exit 1
 
-exec streamlink -p "mpv" "$1" best >/dev/null &
+player="mpv"
+# player="vlc --qt-minimal-view"
+
+exec streamlink -p "${player}" "${1}" best >/dev/null &

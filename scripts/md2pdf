@@ -1,6 +1,6 @@
 #!/bin/sh
 
-test ! -x $(which pandoc) && echo "Install Pandoc" && exit 1
+test ! -x $(command -v pandoc) && echo "Install Pandoc" && exit 1
 
 exec pandoc -s --from markdown \
   -V 'geometry:margin=1in' \
@@ -8,7 +8,7 @@ exec pandoc -s --from markdown \
   --pdf-engine=pdflatex \
   --template="$HOME/Documents/pandoc-templates/eisvogel.latex" \
   --listings \
-  --toc "$1" -o "$2"
+  --toc "${1}" -o "${2}"
 
 
 # Optional
