@@ -53,7 +53,7 @@ _lquery() {
   [[ -z "$1" ]] && echo "Missing local search query." && exit 1
   term="$*"
   echo "[$term]"
-  mapfile -t grepResult < <(grep -iPr --exclude-dir='.git' "$*" "$KN/zet/")
+  mapfile -t grepResult < <(grep -iPTr -m 1 --exclude-dir='.git' "$*" "$KN/zet/")
   select c in "${grepResult[@]}"; do
     ${EDITOR:-vim} "${c%%:*}"
     return "$?"
