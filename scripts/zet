@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 
 # Add the following to bashrc to enable completion:
@@ -8,21 +8,13 @@ set -e
 # Note that you will need one such complete line for every multicall
 # variation of this script (ex: ln -s zet log; complete -C log log)
 
-commands="query lquery"
-
-if test -n "$COMP_LINE"; then
-  pre="${COMP_LINE##* }"
-  for c in ${commands}; do
-    test -z "${pre}" -o "${c}" != "${c#${pre}}" && echo "$c"
-  done
-  exit
-fi
-
-test -z "$KN" && echo "KN (knowledge directory) not set." && exit 1
-test -z "$GITUSER" && echo "GITUSER not set." && exit 1
+[[ -z "$KN" ]] && echo "KN (knowledge directory) not set." && exit 1
+[[ -z "$GITUSER" ]] && echo "GITUSER not set." && exit 1
 
 EXE=${0##*/}
-test -z "$EXE" && echo "Could not determine name of executable." && exit 1
+[[ -z "$EXE" ]] && echo "Could not determine name of executable." && exit 1
+
+declare -a commands=( query lquery add )
 
 # Add creates a Zettelkasten repo entry with an isosec unique directory
 # name within the $KN/$EXE parent directory. Whatever the effective name
@@ -33,53 +25,54 @@ test -z "$EXE" && echo "Could not determine name of executable." && exit 1
 # commiting and pushing to main/master is allowed (which is usually fine
 # for knowledge repos).
 
-add() {
-  test ! -d "$KN/$EXE" && echo "Directory not found: $KN/$EXE" && exit 1
+_add() {
+  [[ ! -d "$KN/$EXE" ]] && echo "Directory not found: $KN/$EXE" && exit 1
   dir="$KN/$EXE/$(isosec)"
   mkdir -p "$dir"
   ${EDITOR:-vim} "$dir/README.md"
   cd "$dir"
-  test ! -e "$dir/README.md" && rmdir "$dir"
+  [[ ! -e "$dir/README.md" ]] && rmdir "$dir"
   line=$(head -1 "$dir/README.md" | sed 's/#\+ *//')
-  test -n "$line"
+  [[ -n "$line" ]]
   echo "Adding: $line"
   git add -A "$dir"
   git commit -m "$line"
   git push
 }
 
-query() {
-  test -z "$1" && echo "Missing search query." && exit 1
+_query() {
+  [[ -z "$1" ]] && echo "Missing search query." && exit 1
   type urlencode >/dev/null 2>&1
   term="$*"
   it="https://github.com/$GITUSER/$EXE/search?q=$(urlencode "$term")"
   ${BROWSER:-echo} "$it"
   echo "[$term]: <$it>"
-
-  # I dont have, use or intent to use rwxrob's wee script
-  # So the two below lines are not needed in my use case
-  # I should remove them at some point
-
-  # type wee >/dev/null 2>&1 || return 0
-  # exec wee "$it"
 }
 
-lquery() {
-  test -z "$1" && echo "Missing local search query." && exit 1
+_lquery() {
+  [[ -z "$1" ]] && echo "Missing local search query." && exit 1
   term="$*"
   echo "[$term]"
-  grep -inHTr --exclude-dir='.git' --color=auto "$*" "$KN/zet/"
+  mapfile -t grepResult < <(grep -iPr --exclude-dir='.git' "$*" "$KN/zet/")
+  select c in "${grepResult[@]}"; do
+    ${EDITOR:-vim} "${c%%:*}"
+    return "$?"
+  done
 }
 
-case "$1" in
-  add | "") add ;;
-  query)
-    shift
-    query "$@"
-    ;;
-  lquery)
-    shift
-    lquery "$@"
-    ;;
-  *) echo Unsupported. ;;
-esac
+# Tab completetion taken from rwxrob. rwxrob.tv
+# add `complete -C <script name> <script name>` to your .bashrc
+if [[ -n $COMP_LINE ]]; then
+  for c in "${commands[@]}"; do
+    [[ ${c:0:${#2}} == "${2,,}" ]] && echo "$c"
+  done
+  exit "$?"
+fi
+
+# Delegation
+if [[ -n "$1" ]]; then
+  declare cmd="$1"; shift
+  for c in "${commands[@]}"; do
+    [[ $c == "$cmd" ]] && "_$cmd" "$@" && exit "$?"
+  done
+fi
