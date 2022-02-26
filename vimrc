@@ -73,9 +73,9 @@ set noswapfile
 set noshowmode
 set number
 set relativenumber
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 set expandtab
 set autoindent
 set smartindent
@@ -219,6 +219,7 @@ au FileType go nmap <leader>b :GoBuild!<CR>
 au FileType go nmap <leader>c :GoCoverageToggle<CR>
 au FileType go nmap <leader>i :GoInfo<CR>
 au FileType go nmap <leader>l :GoMetaLinter!<CR>
+au FileType go nnoremap <leader>rs :!clear && go run %<CR>
 
 " Key maps
 let mapleader="\<space>"
@@ -236,8 +237,8 @@ au FileType sh nnoremap <leader>rs :!clear && bash %<CR>
 nnoremap <leader>f za
 
 " Undo tree
-nnoremap <silent><leader>ut :UndotreeToggle<CR>
 let g:undotree_WindowLayout=2
+nnoremap <silent><leader>ut :UndotreeToggle<CR>
 
 " Tabs
 nnoremap <silent><C-t> :tabnew<CR>

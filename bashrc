@@ -130,7 +130,6 @@ pathappend \
   /usr/games \
   /usr/sbin \
   /usr/bin \
-  /snap/bin \
   /sbin \
   /bin
 
@@ -138,6 +137,7 @@ pathappend \
 export CDPATH=./:\
 $REPOS:\
 $REPOS/dotfiles:\
+$HOME/programming:\
 $HOME
 
 # Colors and escapes
