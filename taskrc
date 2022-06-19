@@ -11,7 +11,7 @@
 # Use the command 'task show' to see all defaults and overrides
 
 # Files
-data.location=~/.task
+data.location=$XDG_DATA_HOME/task
 
 # Color theme (uncomment one to use)
 # include /usr/share/taskwarrior/light-16.theme
@@ -43,3 +43,4 @@ color.calendar.weeknumber=inverse
 color.active=magenta
 color.error=white on red
 color.due=cyan
+news.version=2.6.0
