@@ -15,7 +15,7 @@ doGitUpdate() {
   cd -
 }
 
-doGitUpdate ".task"
+doGitUpdate ".local/share/task"
 doGitUpdate ".weechat"
 doGitUpdate "repos/priv"
 doGitUpdate "Documents"
