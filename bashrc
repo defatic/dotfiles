@@ -84,7 +84,7 @@ export EDITOR="vi"
 export VISUAL="vi"
 export EDITOR_PREFIX="vi"
 export TERMINAL="alacritty"
-export BROWSER="firefox"
+export BROWSER="brave"
 export READER="less"
 
 export GITUSER="$(git config --global user.name)"
