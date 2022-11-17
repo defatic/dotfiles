@@ -89,7 +89,7 @@ schemes:
       matches:
         foreground: '#2e3440'
         background: '#88c0d0'
-      bar:
+      footer_bar:
         background: '#434c5e'
         foreground: '#d8dee9'
     normal:
@@ -139,7 +139,7 @@ schemes:
       matches:
         foreground: '#282C34'
         background: '#56B6C2'
-      bar:
+      footer_bar:
         background: '#3B4048'
         foreground: '#282C34'
     normal:
