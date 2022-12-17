@@ -102,6 +102,8 @@ set splitbelow
 set splitright
 set showcmd
 
+set paste
+
 set ruf=%30(%=%#LineNr#%.50F\ [%{strlen(&ft)?&ft:'none'}]\ %l:%c\ %p%%%)
 
 " Disable mouse click to go to position
