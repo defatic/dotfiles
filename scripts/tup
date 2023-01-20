@@ -16,6 +16,6 @@ doGitUpdate() {
 }
 
 doGitUpdate ".local/share/task"
-doGitUpdate ".weechat"
-doGitUpdate "repos/priv"
 doGitUpdate "Documents"
+doGitUpdate ".weechat"
+# doGitUpdate "repos/priv"

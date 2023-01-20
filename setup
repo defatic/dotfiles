@@ -6,22 +6,6 @@ set -e
 vimdir="$HOME/.vim"
 aladir="$HOME/.config/alacritty"
 
-# Add symlink paths here
-declare -a symlinks=(
-"$PWD/bashrc $HOME/.bashrc"
-"$PWD/bash_profile $HOME/.bash_profile"
-"$PWD/xinitrc $HOME/.xinitrc"
-"$PWD/inputrc $HOME/.inputrc"
-"$PWD/vimrc $vimdir/vimrc"
-"$PWD/tmux.conf $HOME/.tmux.conf"
-"$PWD/git-prompt.sh $HOME/.git-prompt.sh"
-"$PWD/alacritty.yml $HOME/.config/alacritty/alacritty.yml"
-"$PWD/taskrc $HOME/.taskrc"
-"$PWD/lynx/lynx.cfg $HOME/.config/lynx/lynx.cfg"
-"$PWD/lynx/lynx.lss $HOME/.config/lynx/lynx.lss"
-"$PWD/mutt $HOME/.mutt"
-)
-
 checkDir() {
   if [[ ! -d "$1" ]]; then
     mkdir -p "$1"
@@ -36,12 +20,14 @@ checkDir() {
 checkDir "${vimdir}"
 checkDir "${aladir}"
 
-# Create the symlink
-for i in "${symlinks[@]}"; do
-  ln -sf "$i"
-  if [[ "$?" -eq 0 ]]; then
-    printf "%s\\n" "Creating symlink: ${i}"
-  else
-    printf "%s\\n" "Failed to create symlink: ${i}"
-  fi
-done
+ln -sf $PWD/bashrc $HOME/.bashrc
+ln -sf $PWD/bash_profile $HOME/.bash_profile
+ln -sf $PWD/xinitrc $HOME/.xinitrc
+ln -sf $PWD/inputrc $HOME/.inputrc
+ln -sf $PWD/vimrc $vimdir/vimrc
+ln -sf $PWD/tmux.conf $HOME/.tmux.conf
+ln -sf $PWD/git-prompt.sh $HOME/.git-prompt.sh
+ln -sf $PWD/alacritty.yml $HOME/.config/alacritty/alacritty.yml
+ln -sf $PWD/taskrc $HOME/.taskrc
+ln -sf $PWD/lynx/lynx.cfg $HOME/.config/lynx/lynx.cfg
+ln -sf $PWD/lynx/lynx.lss $HOME/.config/lynx/lynx.lss

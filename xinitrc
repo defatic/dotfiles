@@ -16,31 +16,40 @@ test -f "$HOME/.Xresources" && xrdb -merge -I"$HOME $HOME/.Xresources"
 # clipmenud &
 # Sets the keyboard layout to Swedish in X11
 setxkbmap se
+# Turn off keyboard beep sound
+xset b off
+xset b 0 0 0
 # Sets the mouse sensitivity and acceleration
 xset m 1/1 4
 # Speed up xrate
 xset r rate 300 50
-# Turn Caps Lock into ESC - when using a "normal" keyboard, using a plack 48 key layout at right now
-# xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+# Turn Caps Lock into ESC - when using a normal keyboard
+xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+xbindkeys_autostart
 
 # Set wallpaper
-# feh --no-fehbg --bg-fill "$HOME/Documents/wallpapers/jungle.jpg"
+feh --no-fehbg --bg-fill "$HOME/Documents/wallpapers/nature1.jpg"
 
 # Start a window manager
-## dwm settings and launch
-# while true; do
-#   MEM=$(free | awk '/Mem/ {printf "%d MiB ", $3 / 1024.0}')
-#   CPULOAD=$(uptime)
-#   KERNEL=$(uname -r)
-#   VOL=$(pulsemixer --get-volume)
-#   DATE=$(date '+%b %d %H:%M')
-# #   IP=$(for i in $(ip r); do echo "$i"; done | grep -A 1 src | tail -n1)
-# #   TEMP=$(($(cat /sys/class/thermal/thermal_zone0/temp) / 1000))C
-# 
-#   xsetroot -name " ${MEM} / ${CPULOAD##*:} / ${KERNEL%%-*} / [${VOL#* }] ${DATE} "
-# 
-#   sleep 60
-# done &
+## Statusbar setup and launch dwm
+while true; do
+  MEM=$(free | awk '/Mem/ {printf "%d MiB ", $3 / 1024.0}') # if english system lang
+#   MEM=$(free | awk '/Minne/ {printf "%d MiB ", $3 / 1024.0}')
+  CPULOAD=$(uptime)
+  KERNEL=$(uname -r)
+  VOL=$(pulsemixer --get-volume)
+  DATE=$(date '+%b %d %H:%M')
 
-# exec "$HOME/.local/bin/dwm"
+  BAT=$(acpi | head -n 1)
+  BATCUT=${BAT#*, }
+
+#   IP=$(for i in $(ip r); do echo "$i"; done | grep -A 1 src | tail -n1)
+#   TEMP=$(($(cat /sys/class/thermal/thermal_zone0/temp) / 1000))C
+
+  xsetroot -name " [${BATCUT%, *}] ${MEM} / ${CPULOAD##*:} / ${KERNEL%%-*} / [${VOL#* }] ${DATE} "
+
+  sleep 60
+done &
+
+exec dwm
 # exec "$HOME/repos/suckless/dwm/dwm" # for testing new builds

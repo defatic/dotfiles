@@ -12,22 +12,22 @@ window:
 
 font:
   normal:
-    family: monospace
+    family: Hack
     style: Regular
 
   bold:
-    family: monospace
+    family: Hack
     style: Bold
 
   italic:
-    family: monospace
+    family: Hack
     style: Italic
 
   bold_italic:
-    family: monospace
+    family: Hack
     style: Bold Italic
 
-  size: 9
+  size: 6
 
   offset:
     x: 0

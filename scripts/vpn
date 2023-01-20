@@ -1,0 +1,27 @@
+#!/bin/sh
+
+commands="up down status "
+
+if test -n "$COMP_LINE"; then
+  pre="${COMP_LINE##* }"
+  for c in ${commands}; do
+    test -z "${pre}" -o "${c}" != "${c#${pre}}" && echo "$c"
+  done
+  exit
+fi
+
+case "$@" in
+  up)
+	mullvad connect
+	mullvad status
+    ;;
+  down)
+	mullvad disconnect
+	mullvad status
+	;;
+  status)
+	mullvad status
+	;;
+  *) 
+	echo "Usage: vpn [up|down|status]"
+esac

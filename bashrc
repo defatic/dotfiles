@@ -18,13 +18,14 @@ shopt -s nocaseglob
 # History settings
 HISTFILE="$HOME/.cache/bash/histfile"
 HISTSIZE=10000
+HISTCONTROL=ignorespace
 SAVEHIST=10000
 
 clear () { printf '[H[2J'; }
 
 # General aliases
 alias ls='ls --color=auto'
-alias la='ls -lAh --color=auto'
+alias la='ls -lAph --color=auto'
 alias ll='ls -ghSX --color=auto'
 alias grep='grep --color=auto'
 alias ..='cd ..'
@@ -65,6 +66,9 @@ alias nethogs='sudo nethogs enp3s0'
 alias mbsync='mbsync -c "$HOME/.mutt/isync/mbsyncrc" -a'
 alias mutt='mutt -F $HOME/.mutt/muttrc'
 
+export LANG="en_US.UTF-8"
+export LANGUAGE="en_US.UTF-8"
+
 export REPOS="$HOME/repos"
 export SCRIPTS="$REPOS/dotfiles/scripts"
 export KN="$REPOS" # Knowledge Node repo
@@ -84,7 +88,7 @@ export EDITOR="vi"
 export VISUAL="vi"
 export EDITOR_PREFIX="vi"
 export TERMINAL="alacritty"
-export BROWSER="brave"
+export BROWSER="brave-browser"
 export READER="less"
 
 export GITUSER="$(git config --global user.name)"
@@ -121,9 +125,9 @@ pathprepend() {
 # Last arg will be first in path
 # pathprepend \
 
+  #/home/dennis/.config/coc/extensions/coc-clangd-data/install/12.0.0/clangd_12.0.0/bin \
 pathappend \
   $HOME/.local/bin \
-  /home/dennis/.config/coc/extensions/coc-clangd-data/install/12.0.0/clangd_12.0.0/bin \
   /usr/local/bin \
   /usr/local/sbin \
   /usr/local/go/bin \
@@ -217,6 +221,7 @@ complete -C tgo tgo
 complete -C ? ?
 complete -C tslive tslive
 complete -C pomo pomo
+complete -C vpn vpn
 
 # eval "$(dircolors -b)"
 type dircolors &>/dev/null && . <(dircolors -b)
@@ -229,6 +234,7 @@ source "$HOME/.git-prompt.sh"
 function my_prompt() {
   local tNum="$(task status:pending count)"
   export PS1=" ${yellow}$tNum${reset} $(task_indicator) ${cyan}\W${red}$(__git_ps1 ':%s') ${yellow}\$${reset} "
+#   export PS1=" ${cyan}\W${red}$(__git_ps1 ':%s') ${yellow}\$${reset} "
 }
 
 export PROMPT_COMMAND="my_prompt"
