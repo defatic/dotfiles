@@ -10,14 +10,18 @@ if test -n "$COMP_LINE"; then
   exit
 fi
 
+cmd() {
+	mullvad "$1"
+	sleep 0.5
+	mullvad status
+}
+
 case "$@" in
   up)
-	mullvad connect
-	mullvad status
+	cmd "connect"
     ;;
   down)
-	mullvad disconnect
-	mullvad status
+	cmd "disconnect"
 	;;
   status)
 	mullvad status

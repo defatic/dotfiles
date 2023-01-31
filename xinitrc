@@ -48,7 +48,7 @@ while true; do
 
   xsetroot -name " [${BATCUT%, *}] ${MEM} / ${CPULOAD##*:} / ${KERNEL%%-*} / [${VOL#* }] ${DATE} "
 
-  sleep 60
+  sleep 20
 done &
 
 exec dwm
