@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ccal -noc -e $1

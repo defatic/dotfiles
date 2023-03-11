@@ -17,7 +17,8 @@ fi
 case "$@" in
   start)
 #     exec tmux -L main new -s main -n weechat \ weechat \; new-window -a \; last-window;
-    exec tmux -L main new -s main -n weechat \ weechat \; split-window -v \; resize-pane -D 15;
+#     exec tmux -L main new -s main -n weechat \ weechat \; split-window -v \; resize-pane -D 15;
+    exec tmux -L main new -s main -n weechat \ weechat \;
     ;;
   *) 
     exec tmux -L main attach ;;

@@ -52,4 +52,3 @@ while true; do
 done &
 
 exec dwm
-# exec "$HOME/repos/suckless/dwm/dwm" # for testing new builds

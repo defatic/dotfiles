@@ -30,7 +30,6 @@ alias ll='ls -ghSX --color=auto'
 alias grep='grep --color=auto'
 alias ..='cd ..'
 alias c='clear'
-alias eb='vim $HOME/.bashrc'
 alias df='df -h'
 
 alias ?='ddg'
@@ -233,7 +232,7 @@ type yq &>/dev/null && . <(yq shell-completion bash)
 source "$HOME/.git-prompt.sh"
 function my_prompt() {
   local tNum="$(task status:pending count)"
-  export PS1=" ${yellow}$tNum${reset} $(task_indicator) ${cyan}\W${red}$(__git_ps1 ':%s') ${yellow}\$${reset} "
+  export PS1=" ${yellow}$tNum${reset} $(task_indicator) ${cyan}\W${red}$(__git_ps1 ':%s')${yellow} \$ ${reset}"
 #   export PS1=" ${cyan}\W${red}$(__git_ps1 ':%s') ${yellow}\$${reset} "
 }
 
