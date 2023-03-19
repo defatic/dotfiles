@@ -144,49 +144,49 @@ $HOME/programming:\
 $HOME
 
 # Colors and escapes
-escape=$''
-reset=$'[0m'
-bold=$'[1m'
-underline=$'[4m'
-blinkon=$'[5m'
-blinkoff=$'[25m'
-inverse=$'[7m'
-inverseoff=$'[27m'
-normal=$'[39m'
-normalbg=$'[49m'
+escape=$'\[\]'
+reset=$'\[[0m\]'
+bold=$'\[[1m\]'
+underline=$'\[[4m\]'
+blinkon=$'\[[5m\]'
+blinkoff=$'\[[25m\]'
+inverse=$'\[[7m\]'
+inverseoff=$'\[[27m\]'
+normal=$'\[[39m\]'
+normalbg=$'\[[49m\]'
 
-black=$'\e[30m'
-red=$'[31m'
-yellow=$'[33m'
-blue=$'[34m'
-magenta=$'[35m'
-cyan=$'[36m'
-white=$'[37m'
+black=$'\[\e[30m\]'
+red=$'\[[31m\]'
+yellow=$'\[[33m\]'
+blue=$'\[[34m\]'
+magenta=$'\[[35m\]'
+cyan=$'\[[36m\]'
+white=$'\[[37m\]'
 
-brblack=$'[90m'
-brred=$'[91m'
-brgreen=$'[92m'
-bryellow=$'[93m'
-brblue=$'[94m'
-brmagenta=$'[95m'
-brcyan=$'[96m'
-brwhite=$'[97m'
+brblack=$'\[[90m\]'
+brred=$'\[[91m\]'
+brgreen=$'\[[92m\]'
+bryellow=$'\[[93m\]'
+brblue=$'\[[94m\]'
+brmagenta=$'\[[95m\]'
+brcyan=$'\[[96m\]'
+brwhite=$'\[[97m\]'
 
 # Colored man pages
-export LESS_TERMCAP_mb=$magenta
-export LESS_TERMCAP_md=$yellow
-export LESS_TERMCAP_me=$reset
-export LESS_TERMCAP_se=$reset
-export LESS_TERMCAP_so=$blue
-export LESS_TERMCAP_ue=$reset
-export LESS_TERMCAP_us=""
+less_reset=$'[0m'
+less_magenta=$'[35m'
+less_yellow=$'[33m'
+less_blue=$'[34m'
+
+export LESS_TERMCAP_mb=$less_magenta # $magenta
+export LESS_TERMCAP_md=$less_yellow # $yellow
+export LESS_TERMCAP_me=$less_reset # $reset
+export LESS_TERMCAP_se=$less_reset # $reset
+export LESS_TERMCAP_so=$less_blue # $blue
+export LESS_TERMCAP_ue=$less_reset # $reset
+export LESS_TERMCAP_us=''
 
 export KEYTIMEOUT=1
-
-# Values for shader caching for use in gaming.
-# export __GL_SHADER_DISK_CACHE=1
-# export __GL_SHADER_DISK_CACHE_PATH='/tmp/nvidia-shaders'
-# export __GL_THREADED_OPTIMIZATION=1
 
 # Format for the time command
 export TIMEFMT=$'\n%U\tuser\n%S\tsystem\n\n%P cpu %*E total'
@@ -219,6 +219,7 @@ complete -C zet zet
 complete -C tgo tgo
 complete -C ? ?
 complete -C tslive tslive
+complete -C tsl tsl
 complete -C pomo pomo
 complete -C vpn vpn
 
