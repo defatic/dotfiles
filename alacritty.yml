@@ -8,26 +8,26 @@ window:
   dynamic_padding: false
   decorations: none
 
-# tabspaces: 2
+tabspaces: 4
 
 font:
   normal:
-    family: Inconsolata
+    family: Fira Mono
     style: Regular
 
   bold:
-    family: Inconsolata
+    family: Fira Mono
     style: Bold
 
   italic:
-    family: Inconsolata
+    family: Fira Mono
     style: Italic
 
   bold_italic:
-    family: Inconsolata
+    family: Fira Mono
     style: Bold Italic
 
-  size: 7.5
+  size: 6.5
 
   offset:
     x: 0

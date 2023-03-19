@@ -5,4 +5,4 @@ test -z "${1}" && echo "usage: sl <url to stream>" && exit 1
 player="mpv"
 # player="vlc --qt-minimal-view"
 
-exec streamlink -p "${player}" "${1}" best >/dev/null &
+exec streamlink --twitch-disable-ads -p "${player}" "${1}" best >/dev/null &

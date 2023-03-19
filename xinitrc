@@ -20,7 +20,7 @@ setxkbmap se
 xset b off
 xset b 0 0 0
 # Sets the mouse sensitivity and acceleration
-xset m 1/1 4
+xset m 1/1 1
 # Speed up xrate
 xset r rate 300 50
 # Turn Caps Lock into ESC - when using a normal keyboard
@@ -46,7 +46,7 @@ while true; do
 #   IP=$(for i in $(ip r); do echo "$i"; done | grep -A 1 src | tail -n1)
 #   TEMP=$(($(cat /sys/class/thermal/thermal_zone0/temp) / 1000))C
 
-  xsetroot -name " [${BATCUT%, *}] ${MEM} / ${CPULOAD##*:} / ${KERNEL%%-*} / [${VOL#* }] ${DATE} "
+  xsetroot -name " [${BATCUT%, *}] ${MEM} / ${CPULOAD##*:} / ${KERNEL%%-*} / [Vol: ${VOL#* }] ${DATE} "
 
   sleep 20
 done &

@@ -10,7 +10,7 @@ Plug 'rakr/vim-one'
 " Delimitmate
 Plug 'Raimondi/delimitMate'
 " CSS Colors
-Plug 'ap/vim-css-color'
+"Plug 'ap/vim-css-color'
 " CoC - Code Completion
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 " CTRL-P
@@ -21,7 +21,10 @@ Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'rwxrob/vim-pandoc-syntax-simple'
 " Vim go
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+"Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'govim/govim'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'yami-beta/asyncomplete-omni.vim'
 call plug#end()
 
 " General settings
@@ -73,10 +76,9 @@ set noswapfile
 set noshowmode
 set number
 set relativenumber
+set expandtab
 set tabstop=4
 set shiftwidth=4
-set softtabstop=4
-set expandtab
 set autoindent
 set smartindent
 set showmatch
@@ -101,8 +103,6 @@ set viminfo='20,<1000,s1000
 set splitbelow
 set splitright
 set showcmd
-
-set paste
 
 set ruf=%30(%=%#LineNr#%.50F\ [%{strlen(&ft)?&ft:'none'}]\ %l:%c\ %p%%%)
 
@@ -152,23 +152,23 @@ let g:lightline = {
 let g:clang_format#auto_format = 1
 let g:clang_format#code_style = "LLVM"
 let g:clang_format#style_options = {
-      \ "AllowShortIfStatementsOnASingleLine" : "true",
-      \ "IndentCaseLabels" : "true",
-      \ "IndentWidth" : 2,
-      \ "TabWidth" : 2,
-      \ "PointerAlignment" : "Left",
-      \ "AlignConsecutiveMacros" : "true",
-      \ "AlignConsecutiveAssignments" : "true",
-      \ "AlignConsecutiveDeclarations" : "true",
-      \ "AlignEscapedNewlines" : "true",
-      \ "AlignTrailingComments" : "true",
-      \ "AlignOperands" : "true",
-      \ "AllowShortBlocksOnASingleLine" : "true",
-      \ "AllowShortFunctionsOnASingleLine" : "true",
-      \ "ColumnLimit" : 79,
-      \ "KeepEmptyLinesAtTheStartOfBlocks" : "false",
-      \ "SortIncludes" : "false",
-      \ "SpaceAfterCStyleCast" :"false" }
+     \ "AllowShortIfStatementsOnASingleLine" : "true",
+     \ "IndentCaseLabels" : "true",
+     \ "IndentWidth" : 4,
+     \ "TabWidth" : 4,
+     \ "PointerAlignment" : "Left",
+     \ "AlignConsecutiveMacros" : "true",
+     \ "AlignConsecutiveAssignments" : "true",
+     \ "AlignConsecutiveDeclarations" : "true",
+     \ "AlignEscapedNewlines" : "true",
+     \ "AlignTrailingComments" : "true",
+     \ "AlignOperands" : "true",
+     \ "AllowShortBlocksOnASingleLine" : "true",
+     \ "AllowShortFunctionsOnASingleLine" : "true",
+     \ "ColumnLimit" : 79,
+     \ "KeepEmptyLinesAtTheStartOfBlocks" : "false",
+     \ "SortIncludes" : "false",
+     \ "SpaceAfterCStyleCast" :"false" }
 
 " CoC Settings
 let g:coc_disable_startup_warning = 1
@@ -194,34 +194,66 @@ nmap <buffer> <leader>gr <Plug>(coc-references)
 nnoremap <buffer> <leader>cr :CocRestart<CR>
 
 " golang
-let g:go_fmt_fail_silently = 0
-let g:go_fmt_command = 'goimports'
-let g:go_fmt_autosave = 1
-let g:go_gopls_enabled = 1
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_function_calls = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_variable_declarations = 1
-let g:go_highlight_variable_assignments = 1
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_diagnostic_errors = 1
-let g:go_highlight_diagnostic_warnings = 1
-let g:go_auto_type_info = 1
-let g:go_auto_sameids = 0
-let g:go_metalinter_command='golangci-lint'
-let g:go_metalinter_command='golint'
-let g:go_metalinter_autosave=0
-let g:go_gopls_analyses = { 'composites' : v:false }
-au FileType go nmap <leader>t :GoTest!<CR>
-au FileType go nmap <leader>v :GoVet!<CR>
-au FileType go nmap <leader>b :GoBuild!<CR>
-au FileType go nmap <leader>c :GoCoverageToggle<CR>
-au FileType go nmap <leader>i :GoInfo<CR>
-au FileType go nmap <leader>l :GoMetaLinter!<CR>
-au FileType go nnoremap <leader>rs :!clear && go run %<CR>
+" let g:go_fmt_fail_silently = 0
+" let g:go_fmt_command = 'goimports'
+" let g:go_fmt_autosave = 1
+" let g:go_gopls_enabled = 1
+" let g:go_def_mode = 'gopls'
+" let g:go_info_mode = 'gopls'
+" let g:go_highlight_types = 1
+" let g:go_highlight_fields = 1
+" let g:go_highlight_functions = 1
+" let g:go_highlight_function_calls = 1
+" let g:go_highlight_operators = 1
+" let g:go_highlight_extra_types = 1
+" let g:go_highlight_variable_declarations = 1
+" let g:go_highlight_variable_assignments = 1
+" let g:go_highlight_build_constraints = 1
+" let g:go_highlight_diagnostic_errors = 1
+" let g:go_highlight_diagnostic_warnings = 1
+" let g:go_auto_type_info = 1
+" let g:go_auto_sameids = 0
+" let g:go_metalinter_command='golangci-lint'
+" let g:go_metalinter_command='golint'
+" let g:go_metalinter_autosave=0
+" let g:go_gopls_analyses = { 'composites' : v:false }
+" au FileType go nmap <leader>t :GoTest!<CR>
+" au FileType go nmap <leader>v :GoVet!<CR>
+" au FileType go nmap <leader>b :GoBuild!<CR>
+" au FileType go nmap <leader>c :GoCoverageToggle<CR>
+" au FileType go nmap <leader>i :GoInfo<CR>
+" au FileType go nmap <leader>l :GoMetaLinter!<CR>
+" au FileType go nnoremap <leader>rs :!clear && go run %<CR>
+
+call govim#config#Set("ExperimentalMouseTriggeredHoverPopupOptions", {
+      \ "mousemoved": "any",
+      \ "pos": "topleft",
+      \ "line": +1,
+      \ "col": 0,
+      \ "moved": "any",
+      \ "wrap": v:false,
+      \ "close": "click",
+      \ "padding": [0, 1, 0, 1],
+      \})
+
+if has("patch-8.1.1904")
+    set completeopt+=popup
+    set completepopup=align:menu,border:off,highlight:Pmenu
+endif
+
+function! Omni()
+    call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
+                    \ 'name': 'omni',
+                    \ 'whitelist': ['go'],
+                    \ 'completor': function('asyncomplete#sources#omni#completor')
+                    \  }))
+endfunction
+
+au VimEnter * :call Omni()
+
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
 
 " Key maps
 let mapleader="\<space>"
