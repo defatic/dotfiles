@@ -178,19 +178,11 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-inoremap <buffer> <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-
-inoremap <buffer> <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-inoremap <buffer> <silent><expr> <C-space> coc#refresh()
-
 " GoTo code navigation.
-nmap <buffer> <leader>gd <Plug>(coc-definition)
-nmap <buffer> <leader>gy <Plug>(coc-type-definition)
-nmap <buffer> <leader>gi <Plug>(coc-implementation)
-nmap <buffer> <leader>gr <Plug>(coc-references)
+nmap <buffer><leader>gd <Plug>(coc-definition)
+nmap <buffer><leader>gy <Plug>(coc-type-definition)
+nmap <buffer><leader>gi <Plug>(coc-implementation)
+nmap <buffer><leader>gr <Plug>(coc-references)
 nnoremap <buffer> <leader>cr :CocRestart<CR>
 
 " golang
@@ -225,16 +217,16 @@ nnoremap <buffer> <leader>cr :CocRestart<CR>
 " au FileType go nmap <leader>l :GoMetaLinter!<CR>
 " au FileType go nnoremap <leader>rs :!clear && go run %<CR>
 
-call govim#config#Set("ExperimentalMouseTriggeredHoverPopupOptions", {
-      \ "mousemoved": "any",
-      \ "pos": "topleft",
-      \ "line": +1,
-      \ "col": 0,
-      \ "moved": "any",
-      \ "wrap": v:false,
-      \ "close": "click",
-      \ "padding": [0, 1, 0, 1],
-      \})
+" call govim#config#Set("ExperimentalMouseTriggeredHoverPopupOptions", {
+      " \ "mousemoved": "any",
+      " \ "pos": "topleft",
+      " \ "line": +1,
+      " \ "col": 0,
+      " \ "moved": "any",
+      " \ "wrap": v:false,
+      " \ "close": "click",
+      " \ "padding": [0, 1, 0, 1],
+      " \})
 
 if has("patch-8.1.1904")
     set completeopt+=popup
@@ -251,9 +243,9 @@ endfunction
 
 au VimEnter * :call Omni()
 
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
+inoremap <expr><Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr><cr>    pumvisible() ? "\<C-y>" : "\<cr>"
 
 " Key maps
 let mapleader="\<space>"
@@ -262,6 +254,17 @@ nnoremap <silent><leader>up :source ~/.vim/vimrc<CR> :PlugInstall<CR>
 nnoremap <F9> :source ~/.vim/vimrc<CR>
 nnoremap <silent><leader>rc :e ~/.vim/vimrc<CR>
 nnoremap <C-L> :nohl<CR><C-L>
+
+" Toggle Quickfix Window
+function! ToggleQuickFix()
+    if empty(filter(getwininfo(), 'v:val.quickfix'))
+        copen 10
+    else
+        cclose
+    endif
+endfunction
+
+nnoremap <silent> <leader>cc :call ToggleQuickFix()<CR>
 
 " Shellcheck a bash/sh script - Run current file in bash
 au FileType sh nnoremap <leader>sc :!clear && shellcheck %<CR>
@@ -275,8 +278,8 @@ let g:undotree_WindowLayout=2
 nnoremap <silent><leader>ut :UndotreeToggle<CR>
 
 " Tabs
-nnoremap <silent><C-t> :tabnew<CR>
-nnoremap <silent><S-w> :tabclose<CR>
+" nnoremap <silent><C-t> :tabnew<CR>
+" nnoremap <silent><S-w> :tabclose<CR>
 
 " Spellchecking switching key binds
 nnoremap <silent><leader>se :setlocal spell spelllang=sv<CR>

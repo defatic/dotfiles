@@ -33,7 +33,7 @@ feh --no-fehbg --bg-fill "$HOME/Documents/wallpapers/nature1.jpg"
 # Start a window manager
 ## Statusbar setup and launch dwm
 while true; do
-  MEM=$(free | awk '/Mem/ {printf "%d MiB ", $3 / 1024.0}') # if english system lang
+  MEM=$(free | awk '/Mem/ {printf "%d MiB", $3 / 1024.0}') # if english system lang
 #   MEM=$(free | awk '/Minne/ {printf "%d MiB ", $3 / 1024.0}')
   CPULOAD=$(uptime)
   KERNEL=$(uname -r)
@@ -46,7 +46,7 @@ while true; do
 #   IP=$(for i in $(ip r); do echo "$i"; done | grep -A 1 src | tail -n1)
 #   TEMP=$(($(cat /sys/class/thermal/thermal_zone0/temp) / 1000))C
 
-  xsetroot -name " [${BATCUT%, *}] ${MEM} / ${CPULOAD##*:} / ${KERNEL%%-*} / [Vol: ${VOL#* }] ${DATE} "
+  xsetroot -name " [${BATCUT%, *}] ${MEM} ${CPULOAD##*:} / ${KERNEL%%-*} / [${VOL#* }] ${DATE} "
 
   sleep 20
 done &
