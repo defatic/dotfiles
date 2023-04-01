@@ -1,8 +1,13 @@
 #!/usr/bin/bash
 
-printf "Path!\n"
+reset=$'[0m'
+cyan=$'[34m'
+magenta=$'[35m'
+yellow=$'[33m'
+
+printf "${cyan}Path!${reset}\n"
 printf "${PATH//:/\\n}\n\n"
-printf "CD Path!\n"
+printf "${yellow}CD Path!${reset}\n"
 printf "${CDPATH//:/\\n}\n\n"
-printf "Go Path!\n"
+printf "${magenta}Go Path!${reset}\n"
 printf "${GOPATH//:/\\n}\n\n"
