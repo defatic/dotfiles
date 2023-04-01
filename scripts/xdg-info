@@ -1,0 +1,14 @@
+#!/bin/bash
+
+reset=$'[0m'
+cyan=$'[34m'
+magenta=$'[35m'
+yellow=$'[33m'
+
+echo "${cyan}XDG Data, Config & Cache user home directories${reset}"
+echo "${XDG_DATA_HOME}"
+echo "${XDG_CONFIG_HOME}"
+echo "${XDG_CACHE_HOME}"
+echo ""
+echo "${magenta}XDG Data directories${reset}"
+echo -e "${XDG_DATA_DIRS//:/\\n}"
