@@ -5,23 +5,20 @@ Plug 'itchyny/lightline.vim'
 Plug 'itchyny/vim-gitbranch'
 " Colorscheme
 " Plug 'tek256/simple-dark'
-Plug 'arcticicestudio/nord-vim'
+" Plug 'arcticicestudio/nord-vim'
 Plug 'rakr/vim-one'
 " Delimitmate
 Plug 'Raimondi/delimitMate'
-" CSS Colors
-"Plug 'ap/vim-css-color'
 " CoC - Code Completion
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 " CTRL-P
 Plug 'ctrlpvim/ctrlp.vim'
 " Undotree
-Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
+" Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 " Markdown
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'rwxrob/vim-pandoc-syntax-simple'
 " Vim go
-"Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'govim/govim'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'yami-beta/asyncomplete-omni.vim'
@@ -186,47 +183,48 @@ nmap <buffer><leader>gr <Plug>(coc-references)
 nnoremap <buffer> <leader>cr :CocRestart<CR>
 
 " golang
-" let g:go_fmt_fail_silently = 0
-" let g:go_fmt_command = 'goimports'
-" let g:go_fmt_autosave = 1
-" let g:go_gopls_enabled = 1
-" let g:go_def_mode = 'gopls'
-" let g:go_info_mode = 'gopls'
-" let g:go_highlight_types = 1
-" let g:go_highlight_fields = 1
-" let g:go_highlight_functions = 1
-" let g:go_highlight_function_calls = 1
-" let g:go_highlight_operators = 1
-" let g:go_highlight_extra_types = 1
-" let g:go_highlight_variable_declarations = 1
-" let g:go_highlight_variable_assignments = 1
-" let g:go_highlight_build_constraints = 1
-" let g:go_highlight_diagnostic_errors = 1
-" let g:go_highlight_diagnostic_warnings = 1
-" let g:go_auto_type_info = 1
-" let g:go_auto_sameids = 0
-" let g:go_metalinter_command='golangci-lint'
-" let g:go_metalinter_command='golint'
-" let g:go_metalinter_autosave=0
-" let g:go_gopls_analyses = { 'composites' : v:false }
+let g:go_fmt_fail_silently = 0
+let g:go_fmt_command = 'goimports'
+let g:go_fmt_autosave = 1
+let g:go_gopls_enabled = 1
+let g:go_def_mode = 'gopls'
+let g:go_info_mode = 'gopls'
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_variable_declarations = 1
+let g:go_highlight_variable_assignments = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_diagnostic_errors = 1
+let g:go_highlight_diagnostic_warnings = 1
+let g:go_auto_type_info = 1
+let g:go_auto_sameids = 0
+let g:go_metalinter_command='golangci-lint'
+let g:go_metalinter_command='golint'
+let g:go_metalinter_autosave=0
+let g:go_gopls_analyses = { 'composites' : v:false }
 " au FileType go nmap <leader>t :GoTest!<CR>
 " au FileType go nmap <leader>v :GoVet!<CR>
 " au FileType go nmap <leader>b :GoBuild!<CR>
 " au FileType go nmap <leader>c :GoCoverageToggle<CR>
 " au FileType go nmap <leader>i :GoInfo<CR>
 " au FileType go nmap <leader>l :GoMetaLinter!<CR>
-" au FileType go nnoremap <leader>rs :!clear && go run %<CR>
+au FileType go nnoremap <leader>rs :!clear && go run %<CR>
+au FileType go nnoremap <leader>rn :GOVIMRename<CR>
 
-" call govim#config#Set("ExperimentalMouseTriggeredHoverPopupOptions", {
-      " \ "mousemoved": "any",
-      " \ "pos": "topleft",
-      " \ "line": +1,
-      " \ "col": 0,
-      " \ "moved": "any",
-      " \ "wrap": v:false,
-      " \ "close": "click",
-      " \ "padding": [0, 1, 0, 1],
-      " \})
+call govim#config#Set("ExperimentalMouseTriggeredHoverPopupOptions", {
+      \ "mousemoved": "any",
+      \ "pos": "topleft",
+      \ "line": +1,
+      \ "col": 0,
+      \ "moved": "any",
+      \ "wrap": v:false,
+      \ "close": "click",
+      \ "padding": [0, 1, 0, 1],
+      \})
 
 if has("patch-8.1.1904")
     set completeopt+=popup
@@ -235,10 +233,10 @@ endif
 
 function! Omni()
     call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
-                    \ 'name': 'omni',
-                    \ 'whitelist': ['go'],
-                    \ 'completor': function('asyncomplete#sources#omni#completor')
-                    \  }))
+       \ 'name': 'omni',
+       \ 'whitelist': ['go'],
+       \ 'completor': function('asyncomplete#sources#omni#completor')
+       \  }))
 endfunction
 
 au VimEnter * :call Omni()
@@ -258,9 +256,9 @@ nnoremap <C-L> :nohl<CR><C-L>
 " Toggle Quickfix Window
 function! ToggleQuickFix()
     if empty(filter(getwininfo(), 'v:val.quickfix'))
-        copen 10
-    else
-        cclose
+        :top cw 10
+     else
+        cw
     endif
 endfunction
 
@@ -277,27 +275,8 @@ nnoremap <leader>f za
 let g:undotree_WindowLayout=2
 nnoremap <silent><leader>ut :UndotreeToggle<CR>
 
-" Tabs
-" nnoremap <silent><C-t> :tabnew<CR>
-" nnoremap <silent><S-w> :tabclose<CR>
-
 " Spellchecking switching key binds
 nnoremap <silent><leader>se :setlocal spell spelllang=sv<CR>
 nnoremap <silent><leader>en :setlocal spell spelllang=en<CR>
 nnoremap <silent><leader>ns :set nospell<CR>
 hi SpellBad guifg=#E06C75
-
-" Window navigation made easy
-" nnoremap <c-j> <c-w>j
-" nnoremap <c-k> <c-w>k
-" nnoremap <c-h> <c-w>h
-" nnoremap <c-l> <c-w>l
-
-" Strip trailing white spaces
-" fun! TrimWhitespace()
-"   let l:save = winsaveview()
-"   keeppatterns %s/\s\+$//e
-"   call winrestview(l:save)
-" endfun
-
-" autocmd BufWritePre * :call TrimWhitespace()

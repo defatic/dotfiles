@@ -99,6 +99,8 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export WGETRC="${XDG_CONFIG_HOME:-$HOME/.config}/wget/wgetrc"
 export WINEPREFIX="${XDG_DATA_HOME:-$HOME/.local/share}/wineprefixes/default"
 
+source "$HOME/.passenv"
+
 # Path
 pathappend() {
   for arg in "$@"; do
