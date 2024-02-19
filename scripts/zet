@@ -14,7 +14,7 @@ set -e
 EXE=${0##*/}
 [[ -z "$EXE" ]] && echo "Could not determine name of executable." && exit 1
 
-declare -a commands=( query lquery add )
+declare -a commands=( query lquery add tag )
 
 # Add creates a Zettelkasten repo entry with an isosec unique directory
 # name within the $KN/$EXE parent directory. Whatever the effective name
