@@ -161,14 +161,6 @@ inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
 
-" if executable('pylsp')
-"     au User lsp_setup call lsp#register_server({
-"        \ 'name': 'pyls',
-"        \ 'cmd': {server_info->['pylsp']},
-"        \ 'allowlist': ['python'],
-"        \ })
-" endif
-
 " GoTo code navigation.
 nmap <buffer><leader>gd <Plug>(coc-definition)
 nmap <buffer><leader>gy <Plug>(coc-type-definition)
