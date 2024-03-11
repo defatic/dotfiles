@@ -18,10 +18,12 @@ Plug 'ctrlpvim/ctrlp.vim'
 " Markdown
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'rwxrob/vim-pandoc-syntax-simple'
-" Vim go
-Plug 'govim/govim'
+" Auto Completion
 Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'yami-beta/asyncomplete-omni.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+" Vim go
+" Plug 'govim/govim'
 call plug#end()
 
 " General settings
@@ -79,6 +81,7 @@ set shiftwidth=4
 set autoindent
 set smartindent
 set showmatch
+set wildmode=longest,list,full
 set wildmenu
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
 set ignorecase
@@ -95,11 +98,12 @@ set updatetime=50
 set shortmess+=c
 set signcolumn=yes
 set undofile
-set undodir=~/.vim/undotree
+" set undodir=~/.vim/undotree
 set viminfo='20,<1000,s1000
 set splitbelow
 set splitright
 set showcmd
+set encoding=utf-8
 
 set ruf=%30(%=%#LineNr#%.50F\ [%{strlen(&ft)?&ft:'none'}]\ %l:%c\ %p%%%)
 
@@ -138,42 +142,32 @@ let delimitmate_expand_cr = 1
 let g:lightline = {
       \ 'colorscheme': 'one',
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste'],
-      \             [ 'spell' ],
+      \   'left': [ [ 'mode', 'paste', 'spell' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
-      \   'right': [ [ 'lineinfo' ],
-      \              [ 'filetype' ], [ 'bufnum' ] ] },
+      \   'right': [ [ 'lineinfo', 'filetype', 'bufnum' ] ] },
       \ 'component_function': { 'gitbranch': 'gitbranch#name' }, }
-
-" Clang Format config
-let g:clang_format#auto_format = 1
-let g:clang_format#code_style = "LLVM"
-let g:clang_format#style_options = {
-     \ "AllowShortIfStatementsOnASingleLine" : "true",
-     \ "IndentCaseLabels" : "true",
-     \ "IndentWidth" : 4,
-     \ "TabWidth" : 4,
-     \ "PointerAlignment" : "Left",
-     \ "AlignConsecutiveMacros" : "true",
-     \ "AlignConsecutiveAssignments" : "true",
-     \ "AlignConsecutiveDeclarations" : "true",
-     \ "AlignEscapedNewlines" : "true",
-     \ "AlignTrailingComments" : "true",
-     \ "AlignOperands" : "true",
-     \ "AllowShortBlocksOnASingleLine" : "true",
-     \ "AllowShortFunctionsOnASingleLine" : "true",
-     \ "ColumnLimit" : 79,
-     \ "KeepEmptyLinesAtTheStartOfBlocks" : "false",
-     \ "SortIncludes" : "false",
-     \ "SpaceAfterCStyleCast" :"false" }
 
 " CoC Settings
 let g:coc_disable_startup_warning = 1
+inoremap <silent><expr> <c-space> coc#refresh()
 
+" Asyncomplete
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
+
+" if executable('pylsp')
+"     au User lsp_setup call lsp#register_server({
+"        \ 'name': 'pyls',
+"        \ 'cmd': {server_info->['pylsp']},
+"        \ 'allowlist': ['python'],
+"        \ })
+" endif
 
 " GoTo code navigation.
 nmap <buffer><leader>gd <Plug>(coc-definition)
@@ -182,68 +176,50 @@ nmap <buffer><leader>gi <Plug>(coc-implementation)
 nmap <buffer><leader>gr <Plug>(coc-references)
 nnoremap <buffer> <leader>cr :CocRestart<CR>
 
-" golang
-let g:go_fmt_fail_silently = 0
-let g:go_fmt_command = 'goimports'
-let g:go_fmt_autosave = 1
-let g:go_gopls_enabled = 1
-let g:go_def_mode = 'gopls'
-let g:go_info_mode = 'gopls'
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_function_calls = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_variable_declarations = 1
-let g:go_highlight_variable_assignments = 1
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_diagnostic_errors = 1
-let g:go_highlight_diagnostic_warnings = 1
-let g:go_auto_type_info = 1
-let g:go_auto_sameids = 0
-let g:go_metalinter_command='golangci-lint'
-let g:go_metalinter_command='golint'
-let g:go_metalinter_autosave=0
-let g:go_gopls_analyses = { 'composites' : v:false }
-" au FileType go nmap <leader>t :GoTest!<CR>
-" au FileType go nmap <leader>v :GoVet!<CR>
-" au FileType go nmap <leader>b :GoBuild!<CR>
-" au FileType go nmap <leader>c :GoCoverageToggle<CR>
-" au FileType go nmap <leader>i :GoInfo<CR>
-" au FileType go nmap <leader>l :GoMetaLinter!<CR>
-au FileType go nnoremap <leader>rs :!clear && go run %<CR>
-au FileType go nnoremap <leader>rn :GOVIMRename<CR>
-
-call govim#config#Set("ExperimentalMouseTriggeredHoverPopupOptions", {
-      \ "mousemoved": "any",
-      \ "pos": "topleft",
-      \ "line": +1,
-      \ "col": 0,
-      \ "moved": "any",
-      \ "wrap": v:false,
-      \ "close": "click",
-      \ "padding": [0, 1, 0, 1],
-      \})
-
-if has("patch-8.1.1904")
-    set completeopt+=popup
-    set completepopup=align:menu,border:off,highlight:Pmenu
-endif
-
-function! Omni()
-    call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
-       \ 'name': 'omni',
-       \ 'whitelist': ['go'],
-       \ 'completor': function('asyncomplete#sources#omni#completor')
-       \  }))
-endfunction
-
-au VimEnter * :call Omni()
-
-inoremap <expr><Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr><cr>    pumvisible() ? "\<C-y>" : "\<cr>"
+" " golang
+" let g:go_fmt_fail_silently = 0
+" let g:go_fmt_command = 'goimports'
+" let g:go_fmt_autosave = 1
+" let g:go_gopls_enabled = 1
+" let g:go_def_mode = 'gopls'
+" let g:go_info_mode = 'gopls'
+" let g:go_highlight_types = 1
+" let g:go_highlight_fields = 1
+" let g:go_highlight_functions = 1
+" let g:go_highlight_function_calls = 1
+" let g:go_highlight_operators = 1
+" let g:go_highlight_extra_types = 1
+" let g:go_highlight_variable_declarations = 1
+" let g:go_highlight_variable_assignments = 1
+" let g:go_highlight_build_constraints = 1
+" let g:go_highlight_diagnostic_errors = 1
+" let g:go_highlight_diagnostic_warnings = 1
+" let g:go_auto_type_info = 1
+" let g:go_auto_sameids = 0
+" let g:go_metalinter_command='golangci-lint'
+" let g:go_metalinter_command='golint'
+" let g:go_metalinter_autosave=0
+" let g:go_gopls_analyses = { 'composites' : v:false }
+" " au FileType go nmap <leader>t :GoTest!<CR>
+" " au FileType go nmap <leader>v :GoVet!<CR>
+" " au FileType go nmap <leader>b :GoBuild!<CR>
+" " au FileType go nmap <leader>c :GoCoverageToggle<CR>
+" " au FileType go nmap <leader>i :GoInfo<CR>
+" " au FileType go nmap <leader>l :GoMetaLinter!<CR>
+" au FileType go nnoremap <leader>rs :!clear && go run %<CR>
+" au FileType go nnoremap <leader>rn :GOVIMRename<CR>
+" 
+" call govim#config#Set("ExperimentalMouseTriggeredHoverPopupOptions", {
+"       \ "mousemoved": "any",
+"       \ "pos": "topleft",
+"       \ "line": +1,
+"       \ "col": 0,
+"       \ "moved": "any",
+"       \ "wrap": v:false,
+"       \ "close": "click",
+"       \ "padding": [0, 1, 0, 1],
+"       \})
+" 
 
 " Key maps
 let mapleader="\<space>"
@@ -262,7 +238,7 @@ function! ToggleQuickFix()
     endif
 endfunction
 
-nnoremap <silent> <leader>cc :call ToggleQuickFix()<CR>
+nnoremap <silent><leader>cc :call ToggleQuickFix()<CR>
 
 " Shellcheck a bash/sh script - Run current file in bash
 au FileType sh nnoremap <leader>sc :!clear && shellcheck %<CR>

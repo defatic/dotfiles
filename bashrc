@@ -55,7 +55,8 @@ alias aurins='yay'
 # Update the system with AUR packages
 alias aurupg='yay -Syyu'
 
-command -v vim &>/dev/null && alias vi=vim
+# command -v vim &>/dev/null && alias vi=vim
+command -v nvim &>/dev/null && alias vi=nvim
 
 alias iotop='sudo iotop -oPa'
 alias iftop='sudo iftop -i enp3s0'
@@ -235,7 +236,7 @@ type yq &>/dev/null && . <(yq shell-completion bash)
 source "$HOME/.git-prompt.sh"
 function my_prompt() {
   local tNum="$(task status:pending count)"
-  export PS1=" ${yellow}$tNum${reset} $(task_indicator) ${cyan}\W${red}$(__git_ps1 ':%s')${yellow} \$ ${reset}"
+  export PS1=" ${yellow}$tNum${reset} $(task_indicator) ${cyan}\W${red}$(__git_ps1 ':%s') ${magenta}$(echo $VIRTUAL_ENV_PROMPT)${yellow} \$ ${reset}"
 #   export PS1=" ${cyan}\W${red}$(__git_ps1 ':%s') ${yellow}\$${reset} "
 }
 
