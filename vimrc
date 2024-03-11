@@ -98,7 +98,10 @@ set updatetime=50
 set shortmess+=c
 set signcolumn=yes
 set undofile
-" set undodir=~/.vim/undotree
+set undodir=~/.vim/undotree
+" set backupdir=.backup/,~/.backup/,/tmp//
+" set directory=.swp/,~/.swp/,/tmp//
+" set undodir=.undo/,~/.undo/,/tmp//
 set viminfo='20,<1000,s1000
 set splitbelow
 set splitright
