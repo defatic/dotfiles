@@ -14,7 +14,7 @@ Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 " CTRL-P
 Plug 'ctrlpvim/ctrlp.vim'
 " Undotree
-" Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
+Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 " Markdown
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'rwxrob/vim-pandoc-syntax-simple'
