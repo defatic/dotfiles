@@ -55,7 +55,7 @@ alias aurins='yay'
 # Update the system with AUR packages
 alias aurupg='yay -Syyu'
 
-# command -v vim &>/dev/null && alias vi=vim
+command -v vim &>/dev/null && alias vi=vim
 command -v nvim &>/dev/null && alias vi=nvim
 
 alias iotop='sudo iotop -oPa'

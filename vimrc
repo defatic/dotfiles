@@ -99,9 +99,6 @@ set shortmess+=c
 set signcolumn=yes
 set undofile
 set undodir=~/.vim/undotree
-" set backupdir=.backup/,~/.backup/,/tmp//
-" set directory=.swp/,~/.swp/,/tmp//
-" set undodir=.undo/,~/.undo/,/tmp//
 set viminfo='20,<1000,s1000
 set splitbelow
 set splitright
@@ -165,11 +162,11 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
 
 " GoTo code navigation.
-nmap <buffer><leader>gd <Plug>(coc-definition)
-nmap <buffer><leader>gy <Plug>(coc-type-definition)
-nmap <buffer><leader>gi <Plug>(coc-implementation)
-nmap <buffer><leader>gr <Plug>(coc-references)
-nnoremap <buffer> <leader>cr :CocRestart<CR>
+nmap <buffer>gd <Plug>(coc-definition)
+nmap <buffer>gy <Plug>(coc-type-definition)
+nmap <buffer>gi <Plug>(coc-implementation)
+nmap <buffer>gr <Plug>(coc-references)
+nnoremap <buffer><leader>cr :CocRestart<CR>
 
 " " golang
 " let g:go_fmt_fail_silently = 0
