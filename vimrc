@@ -24,6 +24,8 @@ Plug 'prabirshrestha/vim-lsp'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 " Vim go
 " Plug 'govim/govim'
+" AI
+Plug 'Exafunction/codeium.vim', { 'branch': 'main' }
 call plug#end()
 
 " General settings
@@ -248,3 +250,7 @@ nnoremap <silent><leader>se :setlocal spell spelllang=sv<CR>
 nnoremap <silent><leader>en :setlocal spell spelllang=en<CR>
 nnoremap <silent><leader>ns :set nospell<CR>
 hi SpellBad guifg=#E06C75
+
+" Codeium Settings
+" let g:codeium_enabled = v:false
+let g:codeium_disable_bindings = 1
