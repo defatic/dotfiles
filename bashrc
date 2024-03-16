@@ -31,6 +31,8 @@ alias grep='grep --color=auto'
 alias ..='cd ..'
 alias c='clear'
 alias df='df -h'
+alias py='python3'
+alias pip='python3 -m pip'
 
 alias ?='ddg'
 

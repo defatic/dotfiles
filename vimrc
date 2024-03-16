@@ -232,7 +232,7 @@ function! ToggleQuickFix()
     endif
 endfunction
 
-nnoremap <silent><leader>cc :call ToggleQuickFix()<CR>
+nnoremap <silent><leader>qw :call ToggleQuickFix()<CR>
 
 " Shellcheck a bash/sh script - Run current file in bash
 au FileType sh nnoremap <leader>sc :!clear && shellcheck %<CR>
@@ -254,3 +254,4 @@ hi SpellBad guifg=#E06C75
 " Codeium Settings
 " let g:codeium_enabled = v:false
 let g:codeium_disable_bindings = 1
+imap <script><silent><nowait><expr> <C-g> codeium#Accept()
