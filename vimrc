@@ -222,6 +222,7 @@ nnoremap <silent><leader>up :source ~/.vim/vimrc<CR> :PlugInstall<CR>
 nnoremap <F9> :source ~/.vim/vimrc<CR>
 nnoremap <silent><leader>rc :e ~/.vim/vimrc<CR>
 nnoremap <C-L> :nohl<CR><C-L>
+nnoremap <silent><leader>b :buffers<CR>
 
 " Toggle Quickfix Window
 function! ToggleQuickFix()
