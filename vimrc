@@ -205,11 +205,7 @@ let g:go_gopls_analyses = { 'composites' : v:false }
 " au FileType go nmap <leader>l :GoMetaLinter!<CR>
 au FileType go nnoremap <leader>rs :!clear && go run %<CR>
 au FileType go nnoremap <leader>rn :GOVIMRename<CR>
-<<<<<<< HEAD
- 
-=======
 
->>>>>>> 14868d4f7313d307a351e3aa18f884682f784a9b
 call govim#config#Set("ExperimentalMouseTriggeredHoverPopupOptions", {
       \ "mousemoved": "any",
       \ "pos": "topleft",
