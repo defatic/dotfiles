@@ -23,7 +23,7 @@ Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 " Vim go
-" Plug 'govim/govim'
+Plug 'govim/govim'
 " AI
 Plug 'Exafunction/codeium.vim', { 'branch': 'main' }
 call plug#end()
@@ -112,6 +112,9 @@ set ruf=%30(%=%#LineNr#%.50F\ [%{strlen(&ft)?&ft:'none'}]\ %l:%c\ %p%%%)
 " Disable mouse click to go to position
 set mouse-=a
 
+" Better grep
+command! -nargs=+ Grep execute 'silent vimgrep! <args>' | copen
+
 " Colorscheme
 if (has("termguicolors"))
   set termguicolors
@@ -170,50 +173,50 @@ nmap <buffer>gi <Plug>(coc-implementation)
 nmap <buffer>gr <Plug>(coc-references)
 nnoremap <buffer><leader>cr :CocRestart<CR>
 
-" " golang
-" let g:go_fmt_fail_silently = 0
-" let g:go_fmt_command = 'goimports'
-" let g:go_fmt_autosave = 1
-" let g:go_gopls_enabled = 1
-" let g:go_def_mode = 'gopls'
-" let g:go_info_mode = 'gopls'
-" let g:go_highlight_types = 1
-" let g:go_highlight_fields = 1
-" let g:go_highlight_functions = 1
-" let g:go_highlight_function_calls = 1
-" let g:go_highlight_operators = 1
-" let g:go_highlight_extra_types = 1
-" let g:go_highlight_variable_declarations = 1
-" let g:go_highlight_variable_assignments = 1
-" let g:go_highlight_build_constraints = 1
-" let g:go_highlight_diagnostic_errors = 1
-" let g:go_highlight_diagnostic_warnings = 1
-" let g:go_auto_type_info = 1
-" let g:go_auto_sameids = 0
-" let g:go_metalinter_command='golangci-lint'
-" let g:go_metalinter_command='golint'
-" let g:go_metalinter_autosave=0
-" let g:go_gopls_analyses = { 'composites' : v:false }
-" " au FileType go nmap <leader>t :GoTest!<CR>
-" " au FileType go nmap <leader>v :GoVet!<CR>
-" " au FileType go nmap <leader>b :GoBuild!<CR>
-" " au FileType go nmap <leader>c :GoCoverageToggle<CR>
-" " au FileType go nmap <leader>i :GoInfo<CR>
-" " au FileType go nmap <leader>l :GoMetaLinter!<CR>
-" au FileType go nnoremap <leader>rs :!clear && go run %<CR>
-" au FileType go nnoremap <leader>rn :GOVIMRename<CR>
-" 
-" call govim#config#Set("ExperimentalMouseTriggeredHoverPopupOptions", {
-"       \ "mousemoved": "any",
-"       \ "pos": "topleft",
-"       \ "line": +1,
-"       \ "col": 0,
-"       \ "moved": "any",
-"       \ "wrap": v:false,
-"       \ "close": "click",
-"       \ "padding": [0, 1, 0, 1],
-"       \})
-" 
+" golang
+let g:go_fmt_fail_silently = 0
+let g:go_fmt_command = 'goimports'
+let g:go_fmt_autosave = 1
+let g:go_gopls_enabled = 1
+let g:go_def_mode = 'gopls'
+let g:go_info_mode = 'gopls'
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_variable_declarations = 1
+let g:go_highlight_variable_assignments = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_diagnostic_errors = 1
+let g:go_highlight_diagnostic_warnings = 1
+let g:go_auto_type_info = 1
+let g:go_auto_sameids = 0
+let g:go_metalinter_command='golangci-lint'
+let g:go_metalinter_command='golint'
+let g:go_metalinter_autosave=0
+let g:go_gopls_analyses = { 'composites' : v:false }
+" au FileType go nmap <leader>t :GoTest!<CR>
+" au FileType go nmap <leader>v :GoVet!<CR>
+" au FileType go nmap <leader>b :GoBuild!<CR>
+" au FileType go nmap <leader>c :GoCoverageToggle<CR>
+" au FileType go nmap <leader>i :GoInfo<CR>
+" au FileType go nmap <leader>l :GoMetaLinter!<CR>
+au FileType go nnoremap <leader>rs :!clear && go run %<CR>
+au FileType go nnoremap <leader>rn :GOVIMRename<CR>
+ 
+call govim#config#Set("ExperimentalMouseTriggeredHoverPopupOptions", {
+      \ "mousemoved": "any",
+      \ "pos": "topleft",
+      \ "line": +1,
+      \ "col": 0,
+      \ "moved": "any",
+      \ "wrap": v:false,
+      \ "close": "click",
+      \ "padding": [0, 1, 0, 1],
+      \})
+
 
 " Key maps
 let mapleader="\<space>"

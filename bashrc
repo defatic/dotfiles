@@ -57,7 +57,7 @@ alias aurins='yay'
 alias aurupg='yay -Syyu'
 
 command -v vim &>/dev/null && alias vi=vim
-command -v nvim &>/dev/null && alias vi=nvim
+# command -v nvim &>/dev/null && alias vi=nvim
 
 alias iotop='sudo iotop -oPa'
 alias iftop='sudo iftop -i enp3s0'
