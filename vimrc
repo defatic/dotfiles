@@ -214,7 +214,6 @@ call govim#config#Set("ExperimentalMouseTriggeredHoverPopupOptions", {
       \ "padding": [0, 1, 0, 1],
       \})
 
-
 " Key maps
 let mapleader="\<space>"
 tnoremap <esc> <C-\><C-N>
