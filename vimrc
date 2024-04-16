@@ -112,6 +112,9 @@ set ruf=%30(%=%#LineNr#%.50F\ [%{strlen(&ft)?&ft:'none'}]\ %l:%c\ %p%%%)
 " Disable mouse click to go to position
 set mouse-=a
 
+" Better grep
+command! -nargs=+ Grep execute 'silent vimgrep! <args>' | copen
+
 " Colorscheme
 if (has("termguicolors"))
   set termguicolors
