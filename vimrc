@@ -1,4 +1,4 @@
-call plug#begin('$HOME/.vim/plugged')
+call plug#begin()
 Plug 'junegunn/vim-plug'
 " Light Line status bar [nice to have]
 Plug 'itchyny/lightline.vim'
@@ -10,22 +10,22 @@ Plug 'rakr/vim-one'
 " Delimitmate
 Plug 'Raimondi/delimitMate'
 " CoC - Code Completion
-Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+" Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 " CTRL-P
 Plug 'ctrlpvim/ctrlp.vim'
 " Undotree
-Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
+" Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 " Markdown
-Plug 'vim-pandoc/vim-pandoc'
-Plug 'rwxrob/vim-pandoc-syntax-simple'
+" Plug 'vim-pandoc/vim-pandoc'
+" Plug 'rwxrob/vim-pandoc-syntax-simple'
 " Auto Completion
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
+" Plug 'prabirshrestha/asyncomplete.vim'
+" Plug 'prabirshrestha/vim-lsp'
+" Plug 'prabirshrestha/asyncomplete-lsp.vim'
 " Vim go
 Plug 'govim/govim'
 " AI
-Plug 'Exafunction/codeium.vim', { 'branch': 'main' }
+" Plug 'Exafunction/codeium.vim', { 'branch': 'main' }
 call plug#end()
 
 " General settings

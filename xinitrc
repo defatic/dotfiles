@@ -25,7 +25,7 @@ xset m 1/1 1
 xset r rate 300 50
 # Turn Caps Lock into ESC - when using a normal keyboard
 xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
-xbindkeys_autostart
+#xbindkeys_autostart
 
 # Set wallpaper
 feh --no-fehbg --bg-fill "$HOME/Documents/wallpapers/nature1.jpg"

@@ -33,7 +33,8 @@ alias c='clear'
 alias df='df -h'
 alias py='python3'
 
-alias ?='ddg'
+# alias ?='ddg'
+alias ?='gpt'
 
 # Pacman aliases
 # Update the system
@@ -127,8 +128,8 @@ pathprepend() {
 # be sure NOT to add ./ in PATH cuz it's unsafe
 # Last arg will be first in path
 # pathprepend \
-
   #/home/dennis/.config/coc/extensions/coc-clangd-data/install/12.0.0/clangd_12.0.0/bin \
+
 pathappend \
   $HOME/.local/bin \
   /usr/local/bin \
