@@ -1,0 +1,218 @@
+live_config_reload = true
+# tabspaces = 4
+# "window.opacity" = 0.5
+
+[bell]
+animation = "EaseOutExpo"
+color = "0xffffff"
+duration = 0
+
+[colors.bright]
+black = "#4c566a"
+blue = "#4078F2"
+cyan = "#0184BC"
+green = "#50A14F"
+magenta = "#A626A4"
+red = "#E45649"
+white = "#FAFAFA"
+yellow = "#C18401"
+
+[colors.cursor]
+cursor = "#ABB2BF"
+text = "#282C34"
+
+[colors.normal]
+black = "#3b4252"
+blue = "#61AFEF"
+cyan = "#56B6C2"
+green = "#98C379"
+magenta = "#C678DD"
+red = "#E06C75"
+white = "#FAFAFA"
+yellow = "#E5C07B"
+
+[colors.primary]
+background = "#282C34"
+dim_foreground = "#828997"
+foreground = "#A2A2A2"
+
+# [colors.search.footer_bar]
+# background = "#3B4048"
+# foreground = "#282C34"
+
+[colors.search.matches]
+background = "#56B6C2"
+foreground = "#282C34"
+
+[colors.selection]
+background = "#4c566a"
+text = "#282C34"
+
+[colors.vi_mode_cursor]
+cursor = "#ABB2BF"
+text = "#282C34"
+
+[cursor]
+style = "Block"
+unfocused_hollow = true
+
+[debug]
+log_level = "off"
+persistent_logging = false
+print_events = false
+# ref_test = false
+render_timer = false
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 6.5
+
+[font.bold]
+family = "JetBrains Mono"
+style = "Bold"
+
+[font.bold_italic]
+family = "JetBrains Mono"
+style = "Bold Italic"
+
+[font.glyph_offset]
+x = 0
+y = 0
+
+[font.italic]
+family = "JetBrains Mono"
+style = "Italic"
+
+[font.normal]
+family = "JetBrains Mono"
+style = "Regular"
+
+[font.offset]
+x = 0
+y = 0
+
+[mouse]
+hide_when_typing = true
+
+[[mouse.bindings]]
+action = "PasteSelection"
+mouse = "Middle"
+
+# [mouse.double_click]
+# threshold = 300
+
+# [mouse.triple_click]
+# threshold = 300
+
+# [schemes.nord.bright]
+# black = "#4c566a"
+# blue = "#81a1c1"
+# cyan = "#8fbcbb"
+# green = "#a3be8c"
+# magenta = "#b48ead"
+# red = "#bf616a"
+# white = "#eceff4"
+# yellow = "#ebcb8b"
+
+# [schemes.nord.cursor]
+# cursor = "#d8dee9"
+# text = "#2e3440"
+# 
+# [schemes.nord.dim]
+# black = "#373e4d"
+# blue = "#68809a"
+# cyan = "#6d96a5"
+# green = "#809575"
+# magenta = "#8c738c"
+# red = "#94545d"
+# white = "#aeb3bb"
+# yellow = "#b29e75"
+# 
+# [schemes.nord.normal]
+# black = "#3b4252"
+# blue = "#81a1c1"
+# cyan = "#88c0d0"
+# green = "#a3be8c"
+# magenta = "#b48ead"
+# red = "#bf616a"
+# white = "#e5e9f0"
+# yellow = "#ebcb8b"
+# 
+# [schemes.nord.primary]
+# background = "#282C34"
+# dim_foreground = "#a5abb6"
+# foreground = "#ABB2BF"
+
+# [schemes.nord.search.footer_bar]
+# background = "#434c5e"
+# foreground = "#d8dee9"
+
+# [schemes.nord.search.matches]
+# background = "#88c0d0"
+# foreground = "#2e3440"
+
+# [schemes.nord.selection]
+# background = "#4c566a"
+# text = "#d8dee9"
+
+# [schemes.nord.vi_mode_cursor]
+# cursor = "#d8dee9"
+# text = "#2e3440"
+
+# [schemes.one.bright]
+# black = "#4c566a"
+# blue = "#4078F2"
+# cyan = "#0184BC"
+# green = "#50A14F"
+# magenta = "#A626A4"
+# red = "#E45649"
+# white = "#FAFAFA"
+# yellow = "#C18401"
+
+# [schemes.one.cursor]
+# cursor = "#ABB2BF"
+# text = "#282C34"
+
+# [schemes.one.normal]
+# black = "#3b4252"
+# blue = "#61AFEF"
+# cyan = "#56B6C2"
+# green = "#98C379"
+# magenta = "#C678DD"
+# red = "#E06C75"
+# white = "#FAFAFA"
+# yellow = "#E5C07B"
+# 
+# [schemes.one.primary]
+# background = "#282C34"
+# dim_foreground = "#828997"
+# foreground = "#A2A2A2"
+# # 
+# [schemes.one.search.footer_bar]
+# background = "#3B4048"
+# foreground = "#282C34"
+
+# [schemes.one.search.matches]
+# background = "#56B6C2"
+# foreground = "#282C34"
+# # 
+# [schemes.one.selection]
+# background = "#4c566a"
+# text = "#282C34"
+
+# [schemes.one.vi_mode_cursor]
+# cursor = "#ABB2BF"
+# text = "#282C34"
+
+[selection]
+save_to_clipboard = true
+semantic_escape_chars = ''',│`|:"' ()[]{}<>'''
+
+[shell]
+program = "bash"
+
+[window]
+decorations = "none"
+dynamic_padding = false
