@@ -1,0 +1,7 @@
+#!/bin/bash
+
+cd $HOME/programing/python/brfnews
+source .venv/bin/activate
+python3 main.py
+deactivate
+cd - 1>/dev/null
