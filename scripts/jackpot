@@ -1,7 +1,27 @@
 #!/bin/bash
 
-cd $HOME/programing/python/jackpotAnalyzer
-source .venv/bin/activate
-python3 main.py
-deactivate
-cd - 1>/dev/null
+commands="view "
+
+if test -n "$COMP_LINE"; then
+  pre="${COMP_LINE##* }"
+  for c in ${commands}; do
+    test -z "${pre}" -o "${c}" != "${c#${pre}}" && echo "$c"
+  done
+  exit
+fi
+
+case "$@" in
+  view)
+    cd $HOME/programing/python/jackpotAnalyzer
+    source .venv/bin/activate
+    python3 view.py
+    deactivate
+    cd - 1>/dev/null
+    ;;
+  *) 
+    cd $HOME/programing/python/jackpotAnalyzer
+    source .venv/bin/activate
+    python3 main.py
+    deactivate
+    cd - 1>/dev/null
+esac

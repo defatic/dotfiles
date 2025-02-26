@@ -219,14 +219,19 @@ if test -r /usr/share/bash-completion/bash_completion; then
   . /usr/share/bash-completion/bash_completion
 fi
 
+if [ -f /etc/bash_completion ]; then
+  source /etc/bash_completion
+fi
+
 complete -C tmr tmr
 complete -C zet zet
 complete -C tgo tgo
 complete -C ? ?
-complete -C tslive tslive
 complete -C tsl tsl
-complete -C pomo pomo
 complete -C vpn vpn
+complete -C jackpot jackpot
+# complete -C pomo pomo
+# complete -C tslive tslive
 
 # eval "$(dircolors -b)"
 type dircolors &>/dev/null && . <(dircolors -b)
