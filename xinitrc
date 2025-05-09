@@ -27,6 +27,10 @@ xset r rate 300 50
 xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 xbindkeys_autostart
 
+synclient PalmDetec=1 &
+synclient PalmMinWidt=10 &
+synclient PalmMin=100 &
+
 # Set wallpaper
 feh --no-fehbg --bg-fill "$HOME/Documents/wallpapers/nature1.jpg"
 

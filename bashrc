@@ -89,7 +89,8 @@ export CFLAGS="-Wall -Wextra -Werror"
 export EDITOR="vi"
 export VISUAL="vi"
 export EDITOR_PREFIX="vi"
-export TERMINAL="alacritty"
+# export TERMINAL="alacritty"
+export TERMINAL="ghostty"
 export BROWSER="brave-browser"
 export READER="less"
 
@@ -194,7 +195,7 @@ export LESS_TERMCAP_us=''
 export KEYTIMEOUT=1
 
 # Format for the time command
-export TIMEFMT=$'\n%U\tuser\n%S\tsystem\n\n%P cpu %*E total'
+export TIMEFMT=$'\n%Us\tuser\n%Ss\tsystem\n\n%P cpu %E total'
 
 # Task promt
 task_indicator() {
