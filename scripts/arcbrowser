@@ -1,4 +1,0 @@
-#!/bin/bash
-
-curl -Lso /tmp/arcfaq https://arc.net/faq
-grep -iPTr -m 2 'Linux' /tmp/arcfaq | tail -n 1
