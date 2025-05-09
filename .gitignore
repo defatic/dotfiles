@@ -1,4 +1,5 @@
 .gitignore
+
 scripts/mop
 scripts/ghostty
 scripts/alacritty
