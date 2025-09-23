@@ -33,8 +33,8 @@ alias c='clear'
 alias df='df -h'
 alias py='python3'
 
-# alias ?='ddg'
-alias ?='gpt'
+alias ?='ddg'
+# alias ?='gpt'
 
 # Pacman aliases
 # Update the system
