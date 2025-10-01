@@ -1,50 +1,18 @@
 general.live_config_reload = true
+general.import = [
+    "~/.config/alacritty/themes/one_dark.toml"
+    # "~/.config/alacritty/themes/ayu_mirage.toml"
+    # "~/.config/alacritty/themes/catppuccin-mocha.toml"
+    # "~/.config/alacritty/themes/catppuccin-frappe.toml"
+    # "~/.config/alacritty/themes/catppuccin-macchiato.toml"
+    # "~/.config/alacritty/themes/catppuccin-mocha.toml"
+    # "~/.config/alacritty/themes/github_dark_dimmed.toml"
+]
 
 [bell]
 animation = "EaseOutExpo"
 color = "0xffffff"
 duration = 0
-
-[colors.bright]
-black = "#4c566a"
-blue = "#4078F2"
-cyan = "#0184BC"
-green = "#50A14F"
-magenta = "#A626A4"
-red = "#E45649"
-white = "#FAFAFA"
-yellow = "#C18401"
-
-[colors.cursor]
-cursor = "#ABB2BF"
-text = "#282C34"
-
-[colors.normal]
-black = "#3b4252"
-blue = "#61AFEF"
-cyan = "#56B6C2"
-green = "#98C379"
-magenta = "#C678DD"
-red = "#E06C75"
-white = "#FAFAFA"
-yellow = "#E5C07B"
-
-[colors.primary]
-background = "#282C34"
-dim_foreground = "#828997"
-foreground = "#A2A2A2"
-
-[colors.search.matches]
-background = "#56B6C2"
-foreground = "#282C34"
-
-[colors.selection]
-background = "#4c566a"
-text = "#282C34"
-
-[colors.vi_mode_cursor]
-cursor = "#ABB2BF"
-text = "#282C34"
 
 [cursor]
 style = "Block"
@@ -103,5 +71,3 @@ program = "bash"
 [window]
 decorations = "none"
 dynamic_padding = false
-
-[terminal]
