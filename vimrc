@@ -5,8 +5,8 @@ Plug 'itchyny/lightline.vim'
 Plug 'itchyny/vim-gitbranch'
 " Colorscheme
 " Plug 'tek256/simple-dark'
-" Plug 'arcticicestudio/nord-vim'
 Plug 'rakr/vim-one'
+Plug 'ayu-theme/ayu-vim'
 " Delimitmate
 Plug 'Raimondi/delimitMate'
 " CoC - Code Completion
@@ -111,6 +111,21 @@ set ruf=%30(%=%#LineNr#%.50F\ [%{strlen(&ft)?&ft:'none'}]\ %l:%c\ %p%%%)
 
 " Disable mouse click to go to position
 set mouse-=a
+"
+" disable arrow keys
+" also disables two-finger scrolling on laptop trackpads
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+vnoremap <up> <nop>
+vnoremap <down> <nop>
+vnoremap <left> <nop>
+vnoremap <right> <nop>
 
 " Better grep
 command! -nargs=+ Grep execute 'silent vimgrep! <args>' | copen
@@ -122,15 +137,12 @@ endif
 
 set background=dark
 
-"colorscheme simple-dark
+" colorscheme simple-dark
 colorscheme one
 
-" colorscheme nord
-if (g:colors_name == "nord")
-  let g:nord_cursor_line_number_background = 1
-  let g:nord_uniform_status_lines = 1
-  let g:nord_italic = 1
-endif
+" let ayucolor="mirage"
+" colorscheme ayu
+
 
 " Set highlight for search pattern
 hi Search cterm=NONE ctermfg=204 ctermbg=236 guifg=#E06C75 guibg=#3E4452
