@@ -20,15 +20,15 @@ checkDir() {
 checkDir "${vimdir}"
 checkDir "${aladir}"
 
-ln -sf $PWD/bashrc $HOME/.bashrc
-ln -sf $PWD/bash_completion $HOME/.bash_completion
-ln -sf $PWD/profile $HOME/.bash_profile
-ln -sf $PWD/xinitrc $HOME/.xinitrc
-ln -sf $PWD/inputrc $HOME/.inputrc
-ln -sf $PWD/vimrc $vimdir/vimrc
-ln -sf $PWD/tmux.conf $HOME/.tmux.conf
-ln -sf $PWD/git-prompt.sh $HOME/.git-prompt.sh
-ln -sf $PWD/alacritty.yml $HOME/.config/alacritty/alacritty.yml
-ln -sf $PWD/taskrc $HOME/.taskrc
-ln -sf $PWD/lynx/lynx.cfg $HOME/.config/lynx/lynx.cfg
-ln -sf $PWD/lynx/lynx.lss $HOME/.config/lynx/lynx.lss
+ln -sf "${PWD}"/bashrc "${HOME}"/.bashrc
+ln -sf "${PWD}"/bash_completion "${HOME}"/.bash_completion
+ln -sf "${PWD}"/profile "${HOME}"/.bash_profile
+ln -sf "${PWD}"/xinitrc "${HOME}"/.xinitrc
+ln -sf "${PWD}"/inputrc "${HOME}"/.inputrc
+ln -sf "${PWD}"/vimrc "${HOME}"/vimrc
+ln -sf "${PWD}"/tmux.conf "${HOME}"/.tmux.conf
+ln -sf "${PWD}"/git-prompt.sh "${HOME}"/.git-prompt.sh
+ln -sf "${PWD}"/alacritty.yml "${HOME}"/.config/alacritty/alacritty.yml
+ln -sf "${PWD}"/taskrc "${HOME}"/.taskrc
+ln -sf "${PWD}"/lynx/lynx.cfg "${HOME}"/.config/lynx/lynx.cfg
+ln -sf "${PWD}"/lynx/lynx.lss "${HOME}"/.config/lynx/lynx.lss
