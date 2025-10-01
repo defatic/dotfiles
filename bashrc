@@ -4,6 +4,8 @@ case $- in
   *) return ;;
 esac
 
+bind "set completion-ignore-case on"
+
 set -o vi
 set -o noclobber
 
@@ -144,10 +146,10 @@ pathappend \
 
 # be sure not to remove ./ in CDPATH or stuff gets weird
 export CDPATH=./:\
+$HOME:\
 $REPOS:\
 $REPOS/dotfiles:\
-$HOME/programming:\
-$HOME
+$HOME/programming
 
 # Colors and escapes
 escape=$'\[\]'
