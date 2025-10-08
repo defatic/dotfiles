@@ -24,6 +24,5 @@ case "$@" in
     python3 main.py
     deactivate
     cd - 1>/dev/null
-    echo "$(date): Successfully ran jackpotAnalyzer" > $HOME/programing/python/jackpotAnalyzer/logs/jackpotAnalyzer.log
     ;;
 esac
