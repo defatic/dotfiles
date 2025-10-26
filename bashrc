@@ -247,7 +247,7 @@ source "$HOME/.git-prompt.sh"
 function my_prompt() {
   local tNum="$(task status:pending count)"
   export PS1=" ${yellow}$tNum${reset} $(task_indicator) ${cyan}\W${red}$(__git_ps1 ':%s') ${magenta}$(echo $VIRTUAL_ENV_PROMPT)${yellow} \$ ${reset}"
-#   export PS1=" ${cyan}\W${red}$(__git_ps1 ':%s') ${yellow}\$${reset} "
+  # export PS1=" ${cyan}\W${red}$(__git_ps1 ':%s') ${yellow}\$${reset} "
 }
 
 export PROMPT_COMMAND="my_prompt"
