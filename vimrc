@@ -7,8 +7,9 @@ Plug 'itchyny/vim-gitbranch'
 " Plug 'tek256/simple-dark'
 Plug 'rakr/vim-one'
 Plug 'ayu-theme/ayu-vim'
+Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 " Delimitmate
-Plug 'Raimondi/delimitMate'
+" Plug 'Raimondi/delimitMate'
 " CoC - Code Completion
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 " CTRL-P
@@ -138,7 +139,8 @@ endif
 set background=dark
 
 " colorscheme simple-dark
-colorscheme one
+" colorscheme one
+colorscheme catppuccin_macchiato
 
 " let ayucolor="mirage"
 " colorscheme ayu
