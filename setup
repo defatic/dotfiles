@@ -1,10 +1,12 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 set -e
 
 # Add folders here
 vimdir="$HOME/.vim"
 aladir="$HOME/.config/alacritty"
+hypr="$HOME/.config/hypr"
+lynx="$HOME/.config/lynx"
 
 checkDir() {
   if [[ ! -d "$1" ]]; then
@@ -19,16 +21,20 @@ checkDir() {
 
 checkDir "${vimdir}"
 checkDir "${aladir}"
+checkDir "${lynx}"
+# checkDir "${hypr}"
 
 ln -sf "${PWD}"/bashrc "${HOME}"/.bashrc
 ln -sf "${PWD}"/bash_completion "${HOME}"/.bash_completion
 ln -sf "${PWD}"/profile "${HOME}"/.bash_profile
 ln -sf "${PWD}"/xinitrc "${HOME}"/.xinitrc
 ln -sf "${PWD}"/inputrc "${HOME}"/.inputrc
-ln -sf "${PWD}"/vimrc "${HOME}"/vimrc
+ln -sf "${PWD}"/vimrc "${HOME}"/.vim/vimrc
 ln -sf "${PWD}"/tmux.conf "${HOME}"/.tmux.conf
 ln -sf "${PWD}"/git-prompt.sh "${HOME}"/.git-prompt.sh
 ln -sf "${PWD}"/alacritty.yml "${HOME}"/.config/alacritty/alacritty.yml
 ln -sf "${PWD}"/taskrc "${HOME}"/.taskrc
 ln -sf "${PWD}"/lynx/lynx.cfg "${HOME}"/.config/lynx/lynx.cfg
 ln -sf "${PWD}"/lynx/lynx.lss "${HOME}"/.config/lynx/lynx.lss
+
+# ln -sf "${PWD}"/hyprland.conf "${HOME}"/.config/hypr/hyprland.conf

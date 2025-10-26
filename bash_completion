@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 # Copy of https://github.com/Bash-it/bash-it/blob/master/completion/available/tmux.completion.bash
 # and https://github.com/przepompownia/bash-it/blob/master/completion/available/tmux.completion.bash
