@@ -24,7 +24,9 @@ Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 " Vim go
-Plug 'govim/govim'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" Zig
+Plug 'ziglang/zig.vim'
 " AI
 Plug 'Exafunction/codeium.vim', { 'branch': 'main' }
 call plug#end()
@@ -220,16 +222,16 @@ let g:go_gopls_analyses = { 'composites' : v:false }
 au FileType go nnoremap <leader>rs :!clear && go run %<CR>
 au FileType go nnoremap <leader>rn :GOVIMRename<CR>
 
-call govim#config#Set("ExperimentalMouseTriggeredHoverPopupOptions", {
-      \ "mousemoved": "any",
-      \ "pos": "topleft",
-      \ "line": +1,
-      \ "col": 0,
-      \ "moved": "any",
-      \ "wrap": v:false,
-      \ "close": "click",
-      \ "padding": [0, 1, 0, 1],
-      \})
+" call govim#config#Set("ExperimentalMouseTriggeredHoverPopupOptions", {
+"       \ "mousemoved": "any",
+"       \ "pos": "topleft",
+"       \ "line": +1,
+"       \ "col": 0,
+"       \ "moved": "any",
+"       \ "wrap": v:false,
+"       \ "close": "click",
+"       \ "padding": [0, 1, 0, 1],
+"       \})
 
 " Key maps
 let mapleader="\<space>"

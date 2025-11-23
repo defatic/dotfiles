@@ -55,7 +55,7 @@ alias paclsea='pacman -Qs'
 
 # Pacman AUR aliases
 # Search and Install packages from AUR with yay
-alias aurins='yay'
+alias aurins='yay -S'
 # Update the system with AUR packages
 alias aurupg='yay -Syyu'
 
@@ -93,7 +93,8 @@ export VISUAL="vi"
 export EDITOR_PREFIX="vi"
 # export TERMINAL="alacritty"
 export TERMINAL="ghostty"
-export BROWSER="brave-browser"
+# export BROWSER="brave-browser"
+export BROWSER="librewolf"
 export READER="less"
 
 export GITUSER="$(git config --global user.name)"
