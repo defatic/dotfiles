@@ -17,13 +17,13 @@ cmd() {
 }
 
 case "$@" in
-  up)
+  up|c)
 	cmd "connect"
     ;;
-  down)
+  down|d)
 	cmd "disconnect"
 	;;
-  status)
+  status|s)
 	mullvad status
 	;;
   *) 

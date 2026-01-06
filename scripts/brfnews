@@ -1,7 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-cd $HOME/programing/python/brfnews
-source .venv/bin/activate
-python3 main.py
-deactivate
-cd - 1>/dev/null
+path="$HOME/programing/python/brfnews"
+
+cd "${path}" || exit 1
+uv run main.py

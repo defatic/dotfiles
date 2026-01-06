@@ -1,4 +1,6 @@
-#!/bin/sh
+#!/usr/bin/env bash
+
+[[ ! -x $(command -v transmission-daemon) ]] && echo "You dont have transmission installed" && exit 1
 
 commands="daemon add list remove start stop kill"
 
@@ -43,6 +45,8 @@ case "$1" in
     ;;
   *)
     printf "Usage:\n"
+    printf " Command\tDescription\n"
+    printf " --------------------------\n"
     printf " daemon\t\tStart the daemon\n"
     printf " add\t\tAdd a torrent\n"
     printf " list\t\tList torrents\n"

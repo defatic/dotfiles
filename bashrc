@@ -72,6 +72,8 @@ alias mutt='mutt -F $HOME/.mutt/muttrc'
 
 export LANG="en_US.UTF-8"
 export LANGUAGE="en_US.UTF-8"
+# export LANG="sv_SE.UTF-8"
+# export LANGUAGE="sv_SE.UTF-8"
 
 export REPOS="$HOME/repos"
 export SCRIPTS="$REPOS/dotfiles/scripts"

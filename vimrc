@@ -6,7 +6,6 @@ Plug 'itchyny/vim-gitbranch'
 " Colorscheme
 " Plug 'tek256/simple-dark'
 Plug 'rakr/vim-one'
-Plug 'ayu-theme/ayu-vim'
 Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 " Delimitmate
 " Plug 'Raimondi/delimitMate'
@@ -28,7 +27,7 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " Zig
 Plug 'ziglang/zig.vim'
 " AI
-Plug 'Exafunction/codeium.vim', { 'branch': 'main' }
+" Plug 'Exafunction/codeium.vim', { 'branch': 'main' }
 call plug#end()
 
 " General settings
@@ -141,12 +140,8 @@ endif
 set background=dark
 
 " colorscheme simple-dark
-" colorscheme one
-colorscheme catppuccin_macchiato
-
-" let ayucolor="mirage"
-" colorscheme ayu
-
+colorscheme one
+" colorscheme catppuccin_macchiato
 
 " Set highlight for search pattern
 hi Search cterm=NONE ctermfg=204 ctermbg=236 guifg=#E06C75 guibg=#3E4452
@@ -274,3 +269,12 @@ hi SpellBad guifg=#E06C75
 " let g:codeium_enabled = v:false
 let g:codeium_disable_bindings = 1
 imap <script><silent><nowait><expr> <C-g> codeium#Accept()
+
+" Python LSP
+if executable('.venv/bin/pylsp')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'pylsp',
+        \ 'cmd': {server_info->['.venv/bin/pylsp']},
+        \ 'allowlist': ['python'],
+        \ })
+endif

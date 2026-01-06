@@ -7,7 +7,7 @@ fi
 # [[ -z "$DISPLAY" && "$XDG_VTNR" -eq 1 ]] && exec startx
 if test -z "$DISPLAY"; then
     if test "$XDG_VTNR" -eq 1; then
-        exec hyprland
+        exec start-hyprland
         # exec startx
     fi
 fi
