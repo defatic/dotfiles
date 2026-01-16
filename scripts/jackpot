@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-commands="view "
+commands="view pull"
 path="${HOME}/programing/python/jackpotAnalyzer"
 
 if test -n "$COMP_LINE"; then
@@ -16,12 +16,17 @@ case "$@" in
     cd "${path}" || exit 1
     uv run view.py
     ;;
+  pull)
+    cd "${path}" || exit 1
+    git pull --quiet
+    ;;
   *) 
     cd "${path}" || exit 1
     uv run main.py
     [[ -n $(git status --short) ]] || exit 1
-    git add data.csv
-    git commit -m "new numbers added"
-    git push
+    echo "Adding new numbers to git"
+    git add data.csv --quiet
+    git commit -m "new numbers added" --quiet
+    git push --quiet
     ;;
 esac
