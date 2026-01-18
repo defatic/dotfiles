@@ -25,8 +25,8 @@ case "$@" in
     uv run main.py
     [[ -n $(git status --short) ]] || exit 1
     echo "Adding new numbers to git"
-    git add data.csv --quiet
-    git commit -m "new numbers added" --quiet
-    git push --quiet
+    git add data.csv &>/dev/null
+    git commit -m "new numbers added" &>/dev/null
+    git push &>/dev/null
     ;;
 esac

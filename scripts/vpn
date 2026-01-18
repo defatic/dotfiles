@@ -17,7 +17,7 @@ cmd() {
 }
 
 case "$@" in
-  up|c)
+  up|u)
 	cmd "connect"
     ;;
   down|d)

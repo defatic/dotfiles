@@ -7,8 +7,7 @@ Plug 'itchyny/vim-gitbranch'
 " Plug 'tek256/simple-dark'
 Plug 'rakr/vim-one'
 Plug 'catppuccin/vim', { 'as': 'catppuccin' }
-" Delimitmate
-" Plug 'Raimondi/delimitMate'
+Plug 'ayu-theme/ayu-vim'
 " CoC - Code Completion
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 " CTRL-P
@@ -22,12 +21,11 @@ Plug 'vim-pandoc/vim-pandoc'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'mattn/vim-lsp-settings'
 " Vim go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " Zig
 Plug 'ziglang/zig.vim'
-" AI
-" Plug 'Exafunction/codeium.vim', { 'branch': 'main' }
 call plug#end()
 
 " General settings
@@ -140,8 +138,10 @@ endif
 set background=dark
 
 " colorscheme simple-dark
-colorscheme one
+" colorscheme one
 " colorscheme catppuccin_macchiato
+let ayucolor="mirage"
+colorscheme ayu
 
 " Set highlight for search pattern
 hi Search cterm=NONE ctermfg=204 ctermbg=236 guifg=#E06C75 guibg=#3E4452
@@ -150,9 +150,6 @@ hi Search cterm=NONE ctermfg=204 ctermbg=236 guifg=#E06C75 guibg=#3E4452
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_use_caching = 0
-
-" DelimitMate
-let delimitmate_expand_cr = 1
 
 " Light Line
 let g:lightline = {
@@ -177,7 +174,7 @@ inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
 
-" GoTo code navigation.
+" CoC GoTo code navigation.
 nmap <buffer>gd <Plug>(coc-definition)
 nmap <buffer>gy <Plug>(coc-type-definition)
 nmap <buffer>gi <Plug>(coc-implementation)
@@ -214,19 +211,6 @@ let g:go_gopls_analyses = { 'composites' : v:false }
 " au FileType go nmap <leader>c :GoCoverageToggle<CR>
 " au FileType go nmap <leader>i :GoInfo<CR>
 " au FileType go nmap <leader>l :GoMetaLinter!<CR>
-au FileType go nnoremap <leader>rs :!clear && go run %<CR>
-au FileType go nnoremap <leader>rn :GOVIMRename<CR>
-
-" call govim#config#Set("ExperimentalMouseTriggeredHoverPopupOptions", {
-"       \ "mousemoved": "any",
-"       \ "pos": "topleft",
-"       \ "line": +1,
-"       \ "col": 0,
-"       \ "moved": "any",
-"       \ "wrap": v:false,
-"       \ "close": "click",
-"       \ "padding": [0, 1, 0, 1],
-"       \})
 
 " Key maps
 let mapleader="\<space>"
@@ -264,11 +248,6 @@ nnoremap <silent><leader>se :setlocal spell spelllang=sv<CR>
 nnoremap <silent><leader>en :setlocal spell spelllang=en<CR>
 nnoremap <silent><leader>ns :set nospell<CR>
 hi SpellBad guifg=#E06C75
-
-" Codeium Settings
-" let g:codeium_enabled = v:false
-let g:codeium_disable_bindings = 1
-imap <script><silent><nowait><expr> <C-g> codeium#Accept()
 
 " Python LSP
 if executable('.venv/bin/pylsp')
