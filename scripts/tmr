@@ -16,8 +16,8 @@ downloadDir="$HOME/Downloads"
 
 case "$1" in
   daemon)
-    # transmission-daemon -c "$downloadDir"
-    sudo transmission-daemon -a 127.0.0.1
+    transmission-daemon -c "$downloadDir"
+    # sudo transmission-daemon -a 127.0.0.1
     printf "Transmission daemon started\n"
     ;;
   add)

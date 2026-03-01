@@ -1,6 +1,6 @@
 #!/bin/sh
 
-commands="up down status "
+commands="up down status info "
 
 if test -n "$COMP_LINE"; then
   pre="${COMP_LINE##* }"
@@ -16,6 +16,10 @@ cmd() {
 	mullvad status
 }
 
+info() {
+    curl -s https://am.i.mullvad.net/json | jq .
+}
+
 case "$@" in
   up|u)
 	cmd "connect"
@@ -26,6 +30,9 @@ case "$@" in
   status|s)
 	mullvad status
 	;;
+  info|i)
+    info
+    ;;
   *) 
-	echo "Usage: vpn [up|down|status]"
+	echo "Usage: vpn [up|down|status|info]"
 esac

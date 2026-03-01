@@ -35,8 +35,7 @@ alias c='clear'
 alias df='df -h'
 alias py='python3'
 
-alias ?='ddg'
-# alias ?='gpt'
+alias \?='ddg'
 
 # Pacman aliases
 # Update the system
@@ -48,7 +47,7 @@ alias pacrem='sudo pacman -Rnus'
 # Remove Orphin packages
 alias pacro='pacman -Qtdq > /dev/null ; sudo pacman -Rns $(pacman -Qtdq | sed -e ":a;N;$!ba;s/ / /g")'
 # Clear Cache of not installed packages
-alias pacclear='sudo pacman -Sc'
+alias pacclear='sudo pacman -Scc'
 alias paccc="sudo paccache -ruk0 && pacclear"
 # Search the local database for a named package
 alias paclsea='pacman -Qs'
@@ -57,18 +56,10 @@ alias paclsea='pacman -Qs'
 # Search and Install packages from AUR with yay
 alias aurins='yay -S'
 # Update the system with AUR packages
-alias aurupg='yay -Syyu'
+alias aurupg='clear ; yay -Syyu'
 
 command -v vim &>/dev/null && alias vi=vim
 # command -v nvim &>/dev/null && alias vi=nvim
-
-alias iotop='sudo iotop -oPa'
-alias iftop='sudo iftop -i enp3s0'
-alias nethogs='sudo nethogs enp3s0'
-
-# Mutt aliases
-alias mbsync='mbsync -c "$HOME/.mutt/isync/mbsyncrc" -a'
-alias mutt='mutt -F $HOME/.mutt/muttrc'
 
 export LANG="en_US.UTF-8"
 export LANGUAGE="en_US.UTF-8"
@@ -96,7 +87,8 @@ export EDITOR_PREFIX="vi"
 # export TERMINAL="alacritty"
 export TERMINAL="ghostty"
 # export BROWSER="brave-browser"
-export BROWSER="librewolf"
+# export BROWSER="librewolf"
+# export BROWSER="helium-browser"
 export READER="less"
 
 export GITUSER="$(git config --global user.name)"
@@ -232,12 +224,10 @@ fi
 complete -C tmr tmr
 complete -C zet zet
 complete -C tgo tgo
-complete -C ? ?
+complete -C \? \?
 complete -C tsl tsl
 complete -C vpn vpn
 complete -C jackpot jackpot
-# complete -C pomo pomo
-# complete -C tslive tslive
 
 # eval "$(dircolors -b)"
 type dircolors &>/dev/null && . <(dircolors -b)
@@ -254,3 +244,5 @@ function my_prompt() {
 }
 
 export PROMPT_COMMAND="my_prompt"
+
+source /home/dennis/.config/broot/launcher/bash/br

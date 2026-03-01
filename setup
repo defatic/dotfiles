@@ -1,21 +1,18 @@
 #!/usr/bin/env bash
 
-set -e
-
 # Add folders here
-vimdir="$HOME/.vim"
-aladir="$HOME/.config/alacritty"
-hypr="$HOME/.config/hypr"
-lynx="$HOME/.config/lynx"
+vimdir="${HOME}/.vim"
+aladir="${HOME}/.config/alacritty"
+# hypr="${HOME}/.config/hypr"
+lynx="${HOME}/.config/lynx"
 
 checkDir() {
-  if [[ ! -d "$1" ]]; then
-    mkdir -p "$1"
-    if [[ "$?" -eq 0 ]]; then
-      printf "%s\\n" "Creating directory: $1"
+  if [[ ! -d "${1}" ]]; then
+    if mkdir -p "${1}"; then
+      printf "%s\\n" "Creating directory: ${1}"
     fi
   else
-    printf "%s\\n" "directory: $1 already exists"
+    printf "%s\\n" "directory: ${1} already exists"
   fi
 }
 

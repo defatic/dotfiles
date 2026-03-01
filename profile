@@ -11,3 +11,5 @@ if test -z "$DISPLAY"; then
         # exec startx
     fi
 fi
+
+source /home/dennis/.config/broot/launcher/bash/br

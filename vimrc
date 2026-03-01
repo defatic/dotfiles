@@ -5,9 +5,9 @@ Plug 'itchyny/lightline.vim'
 Plug 'itchyny/vim-gitbranch'
 " Colorscheme
 " Plug 'tek256/simple-dark'
-Plug 'rakr/vim-one'
-Plug 'catppuccin/vim', { 'as': 'catppuccin' }
-Plug 'ayu-theme/ayu-vim'
+" Plug 'rakr/vim-one'
+" Plug 'catppuccin/vim', { 'as': 'catppuccin' }
+" Plug 'ayu-theme/ayu-vim'
 " CoC - Code Completion
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 " CTRL-P
@@ -16,16 +16,15 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 " Markdown
 Plug 'vim-pandoc/vim-pandoc'
-" Plug 'rwxrob/vim-pandoc-syntax-simple'
 " Auto Completion
 Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/vim-lsp'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
-Plug 'mattn/vim-lsp-settings'
+" Plug 'prabirshrestha/vim-lsp'
+" Plug 'mattn/vim-lsp-settings'
 " Vim go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " Zig
-Plug 'ziglang/zig.vim'
+" Plug 'ziglang/zig.vim'
 call plug#end()
 
 " General settings
@@ -140,8 +139,10 @@ set background=dark
 " colorscheme simple-dark
 " colorscheme one
 " colorscheme catppuccin_macchiato
-let ayucolor="mirage"
-colorscheme ayu
+colorscheme habamax
+" colorscheme ayu
+" let ayucolor="mirage"
+
 
 " Set highlight for search pattern
 hi Search cterm=NONE ctermfg=204 ctermbg=236 guifg=#E06C75 guibg=#3E4452
@@ -153,7 +154,7 @@ let g:ctrlp_use_caching = 0
 
 " Light Line
 let g:lightline = {
-      \ 'colorscheme': 'one',
+      \ 'colorscheme': 'wombat',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste', 'spell' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
