@@ -244,5 +244,3 @@ function my_prompt() {
 }
 
 export PROMPT_COMMAND="my_prompt"
-
-source /home/dennis/.config/broot/launcher/bash/br
