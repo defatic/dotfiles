@@ -45,7 +45,7 @@ alias pacins='sudo pacman -S'
 # Remove (uninstall) packages, configurationfiles and dependencies
 alias pacrem='sudo pacman -Rnus'
 # Remove Orphin packages
-alias pacro='pacman -Qtdq > /dev/null ; sudo pacman -Rns $(pacman -Qtdq | sed -e ":a;N;$!ba;s/ / /g")'
+alias pacro='pacman -Qtdq >/dev/null ; sudo pacman -Rns $(pacman -Qtdq | sed -e ":a;N;$!ba;s/ / /g")'
 # Clear Cache of not installed packages
 alias pacclear='sudo pacman -Scc'
 alias paccc="sudo paccache -ruk0 && pacclear"
@@ -129,6 +129,7 @@ pathprepend() {
   #/home/dennis/.config/coc/extensions/coc-clangd-data/install/12.0.0/clangd_12.0.0/bin \
 
 pathappend \
+  $HOME/.npm/packages/bin \
   $HOME/.local/bin \
   /usr/local/bin \
   /usr/local/sbin \
