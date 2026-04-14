@@ -1,0 +1,6 @@
+#!/bin/bash
+
+[[ ! -x $(command -v hyprshot) ]] && echo "You dont have hyprshot installed" && exit 1
+[[ ! -x $(command -v satty) ]] && echo "You dont have satty installed" && exit 1
+
+hyprshot -m region --raw | satty -f -
