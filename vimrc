@@ -8,6 +8,7 @@ Plug 'itchyny/vim-gitbranch'
 " Plug 'rakr/vim-one'
 " Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 " Plug 'ayu-theme/ayu-vim'
+Plug 'davidosomething/vim-colors-meh'
 " CoC - Code Completion
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 " CTRL-P
@@ -139,7 +140,8 @@ set background=dark
 " colorscheme simple-dark
 " colorscheme one
 " colorscheme catppuccin_macchiato
-colorscheme habamax
+" colorscheme habamax
+colorscheme meaccenth
 " colorscheme ayu
 " let ayucolor="mirage"
 
