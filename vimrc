@@ -141,7 +141,7 @@ set background=dark
 " colorscheme one
 " colorscheme catppuccin_macchiato
 " colorscheme habamax
-colorscheme meaccenth
+colorscheme meh
 " colorscheme ayu
 " let ayucolor="mirage"
 
