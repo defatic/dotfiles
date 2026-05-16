@@ -20,8 +20,6 @@ Plug 'vim-pandoc/vim-pandoc'
 " Auto Completion
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
-" Plug 'prabirshrestha/vim-lsp'
-" Plug 'mattn/vim-lsp-settings'
 " Vim go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " Zig
@@ -142,6 +140,7 @@ set background=dark
 " colorscheme catppuccin_macchiato
 " colorscheme habamax
 colorscheme meh
+let g:meh_pandoc_enabled = 1
 " colorscheme ayu
 " let ayucolor="mirage"
 
