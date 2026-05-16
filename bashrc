@@ -47,8 +47,7 @@ alias pacrem='sudo pacman -Rnus'
 # Remove Orphin packages
 alias pacro='pacman -Qtdq >/dev/null ; sudo pacman -Rns $(pacman -Qtdq | sed -e ":a;N;$!ba;s/ / /g")'
 # Clear Cache of not installed packages
-alias pacclear='sudo pacman -Scc'
-alias paccc="sudo paccache -ruk0 && pacclear"
+alias paccc="sudo paccache -ruk0 && sudo pacman -Scc"
 # Search the local database for a named package
 alias paclsea='pacman -Qs'
 
@@ -78,7 +77,7 @@ export GOPROXY="direct"
 export CGO_ENABELD=0
 
 # C Flags
-export CFLAGS="-Wall -Wextra -Werror"
+export CFLAGS="-Wall -Wextra -Werror -pedantic"
 
 # Default programs
 export EDITOR="vi"
