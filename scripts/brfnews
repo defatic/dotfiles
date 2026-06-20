@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-path="$HOME/programing/python/brfnews"
-
-cd "${path}" || exit 1
-uv run main.py
