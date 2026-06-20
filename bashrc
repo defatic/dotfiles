@@ -28,7 +28,7 @@ clear () { printf '[H[2J'; }
 # General aliases
 alias ls='ls --color=auto'
 alias la='ls -lAph --color=auto'
-alias ll='ls -ghSX --color=auto'
+alias ll='ls -ghl --color=auto'
 alias grep='grep --color=auto'
 alias ..='cd ..'
 alias c='clear'
@@ -87,7 +87,7 @@ export EDITOR_PREFIX="vi"
 export TERMINAL="ghostty"
 # export BROWSER="brave-browser"
 # export BROWSER="librewolf"
-# export BROWSER="helium-browser"
+export BROWSER="helium-browser"
 export READER="less"
 
 export GITUSER="$(git config --global user.name)"

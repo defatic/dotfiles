@@ -150,8 +150,9 @@ hi Search cterm=NONE ctermfg=204 ctermbg=236 guifg=#E06C75 guibg=#3E4452
 
 " CTRL-P
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-let g:ctrlp_cmd = 'CtrlPMixed'
+let g:ctrlp_cmd = 'CtrlPCurWD'
 let g:ctrlp_use_caching = 0
+" let g:ctrlp_cmd = 'CtrlPMixed'
 
 " Light Line
 let g:lightline = {
