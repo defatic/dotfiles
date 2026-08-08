@@ -55,6 +55,8 @@ let &t_SI.="[6 q"
 let &t_EI.="[0 q"
 let &t_te.="[0 q"
 
+let g:tex_conceal = 'adgms'
+
 set ttimeout
 set ttimeoutlen=1
 set ttyfast
@@ -127,6 +129,7 @@ vnoremap <right> <nop>
 
 " Better grep
 command! -nargs=+ Grep execute 'silent vimgrep! <args>' | copen
+nnoremap <leader>g :Grep 
 
 " Colorscheme
 if (has("termguicolors"))
@@ -167,15 +170,24 @@ let g:lightline = {
 let g:coc_disable_startup_warning = 1
 inoremap <silent><expr> <c-space> coc#refresh()
 
-" Asyncomplete
-function! s:check_back_space() abort
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
+inoremap <silent><expr> <PageDown> coc#pum#visible() ? coc#pum#scroll(1) : "\<PageDown>"
+inoremap <silent><expr> <PageUp> coc#pum#visible() ? coc#pum#scroll(0) : "\<PageUp>"
 
 " CoC GoTo code navigation.
 nmap <buffer>gd <Plug>(coc-definition)
@@ -227,7 +239,7 @@ nnoremap <silent><leader>b :buffers<CR>
 " Toggle Quickfix Window
 function! ToggleQuickFix()
     if empty(filter(getwininfo(), 'v:val.quickfix'))
-        :top cw 10
+        :cw 10
      else
         cw
     endif
@@ -260,3 +272,4 @@ if executable('.venv/bin/pylsp')
         \ 'allowlist': ['python'],
         \ })
 endif
+

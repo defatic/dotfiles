@@ -34,6 +34,7 @@ alias ..='cd ..'
 alias c='clear'
 alias df='df -h'
 alias py='python3'
+alias cal='cal -m'
 
 alias \?='ddg'
 
@@ -47,7 +48,7 @@ alias pacrem='sudo pacman -Rnus'
 # Remove Orphin packages
 alias pacro='pacman -Qtdq >/dev/null ; sudo pacman -Rns $(pacman -Qtdq | sed -e ":a;N;$!ba;s/ / /g")'
 # Clear Cache of not installed packages
-alias paccc="sudo paccache -ruk0 && sudo pacman -Scc"
+alias paccc="sudo paccache -rufk3 && sudo pacman -Scc"
 # Search the local database for a named package
 alias paclsea='pacman -Qs'
 
@@ -84,7 +85,8 @@ export EDITOR="vi"
 export VISUAL="vi"
 export EDITOR_PREFIX="vi"
 # export TERMINAL="alacritty"
-export TERMINAL="ghostty"
+# export TERMINAL="ghostty"
+export TERMINAL="kitty"
 # export BROWSER="brave-browser"
 # export BROWSER="librewolf"
 export BROWSER="helium-browser"
@@ -228,6 +230,7 @@ complete -C \? \?
 complete -C tsl tsl
 complete -C vpn vpn
 complete -C jackpot jackpot
+complete -C pach pach
 
 # eval "$(dircolors -b)"
 type dircolors &>/dev/null && . <(dircolors -b)

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-commands="view pull"
+commands="view pull go"
 path="${HOME}/programing/python/jackpotAnalyzer"
 
 if test -n "$COMP_LINE"; then
@@ -11,17 +11,27 @@ if test -n "$COMP_LINE"; then
   exit
 fi
 
+cleanup() {
+    popd >/dev/null 2>&1 || true
+}
+
+trap cleanup EXIT
+
 case "$@" in
   view)
-    cd "${path}" || exit 1
+    pushd "${path}" >/dev/null || exit 1
     uv run view.py
     ;;
   pull)
-    cd "${path}" || exit 1
+    pushd "${path}" >/dev/null || exit 1
     git pull --quiet
     ;;
+go)
+    pushd "$HOME/programing/go/jackpot" >/dev/null || exit 1
+    go run main.go
+    ;;
   *) 
-    cd "${path}" || exit 1
+    pushd "${path}" >/dev/null || exit 1
     uv run main.py
     [[ -n $(git status --short) ]] || exit 1
     echo "Adding new numbers to git"

@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+#
+# 1. Tmux
+# 2. Ollama
+# 3. Himalaya (email in the terminal)
 
 # Copy of https://github.com/Bash-it/bash-it/blob/master/completion/available/tmux.completion.bash
 # and https://github.com/przepompownia/bash-it/blob/master/completion/available/tmux.completion.bash
@@ -261,3 +265,7 @@ _ollama_complete() {
 complete -F _ollama_complete ollama
 
 # END Ollama completion
+#
+# START Himalaya
+source .himalaya.bash
+# END Himalaya

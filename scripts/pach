@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+
+set -e
+
+commands="sysupg orphin cache aurupg"
+
+if [[ -n "$COMP_LINE" ]]; then
+  pre="${COMP_LINE##* }"
+  for c in ${commands}; do
+    [[ -z "${pre}" || "${c}" != "${c#"${pre}"}" ]] && echo "$c"
+  done
+  exit
+fi
+
+clear () { printf '[H[2J'; }
+
+case "$@" in
+  sysupg)
+      clear
+      sudo pacman -Syyu
+    ;;
+  orphin)
+      clear
+      pacman -Qtdq >/dev/null
+      sudo pacman -Rns "$(pacman -Qtdq | sed -e ":a;N;$!ba;s/ / /g")"
+    ;;
+  cache)
+      clear
+      sudo paccache -rufk3
+      sudo pacman -Scc
+    ;;
+  aurupg)
+      clear
+      yay -Syyu --noconfirm
+    ;;
+  *) 
+      echo "Pacman Helper Script"
+      echo "Usage: pach [command]"
+      echo "----------------------------"
+      echo "Commands:"
+      echo "  sysupg: Upgrade the system"
+      echo "  orphin: Removes orphin packages"
+      echo "  cache: Clear the package cache"
+      echo "  aurupg: Upgrade the system with AUR packages"
+esac

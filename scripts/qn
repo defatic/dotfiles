@@ -1,0 +1,13 @@
+#!/bin/env bash
+
+set -e
+
+[[ "${1}" == "" ]] && echo "You need to give a name to your quick note" && exit 1
+
+DIR=$HOME/repos/Notes/Notes/quick/
+FILE=$1.md
+
+touch ${DIR}${FILE}
+printf "# " >> ${DIR}${FILE}
+
+vim ${DIR}${FILE}

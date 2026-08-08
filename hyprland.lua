@@ -13,7 +13,9 @@ hl.monitor({
 ---- MY PROGRAMS ----
 
 -- Set programs that you use
-local terminal    = "ghostty --title=Ghostty"
+-- local terminal    = "ghostty --title=Ghostty"
+local terminal    = "kitty"
+local startUpTerm = "sleep 2 && kitty"
 local menu        = "rofi -c $HOME/.config/rofi/config.rasi -show drun"
 local fileManager = "nautilus"
 local windowBar   = "waybar"
@@ -34,10 +36,8 @@ hl.on("hyprland.start", function()
     hl.exec_cmd(email)
     hl.exec_cmd(games)
     hl.exec_cmd(browser)
-    hl.exec_cmd(terminal)
-    -- hl.exec_cmd(xsettingsd)
+    hl.exec_cmd(startUpTerm)
     -- hl.exec_cmd("keepassxc --minimized")
-    -- hl.exec_cmd("nextcloud --background")
 end)
 
 ---- ENVIRONMENT VARIABLES ----
@@ -327,6 +327,7 @@ hl.window_rule({
 
 hl.window_rule({
     name = "Steam Game Window",
+    fullscreen = true,
     center = true,
     workspace = "10",
     match = { class = "steam_app_.*" },
@@ -369,4 +370,12 @@ hl.window_rule({
     center = true,
     size = "412 120",
     match = { class = "DesktopEditors" },
+})
+
+hl.window_rule({
+    name = "Obsidian",
+    float = true,
+    center = true,
+    size = "1300 850",
+    match = { class = "md.Obsidian" },
 })
