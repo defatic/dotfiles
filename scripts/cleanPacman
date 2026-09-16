@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+[[ -z "${1}" ]] && echo "You must give this command one package name" && exit 1
+
+echo "Searching for ${1}"
+find ~ -type d -name "*${1}*" 2>/dev/null
+
+read -r -p "Do you want to proceed with clean/deleting ${1} ... [Y/n]: " answer
+answer=${answer:-Y}
+
+[[ "${answer^^}" == "N" ]] && echo "Quiting" && exit 0
+
+echo "Cleaing/Deleting ${1}"
+find ~ -type d -name "*${1}*" -print -exec rm -rf {} + 2>/dev/null
+echo "Done"

@@ -43,4 +43,4 @@ color.calendar.weeknumber=inverse
 color.active=magenta
 color.error=white on red
 color.due=cyan
-news.version=3.4.2
+news.version=3.5.0

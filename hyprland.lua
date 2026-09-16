@@ -15,10 +15,12 @@ hl.monitor({
 -- Set programs that you use
 -- local terminal    = "ghostty --title=Ghostty"
 local terminal    = "kitty"
-local startUpTerm = "sleep 2 && kitty"
-local menu        = "rofi -c $HOME/.config/rofi/config.rasi -show drun"
-local fileManager = "nautilus"
-local windowBar   = "waybar"
+local startUpTerm = "sleep 2 && kitty -e tmux new-session -A -s Work -n Main"
+-- local menu        = "rofi -c $HOME/.config/rofi/config.rasi -show drun" -- kept as fallback, no longer bound
+-- local fileManager = "nautilus"
+local fileManager = "dolphin"
+-- local windowBar   = "waybar"
+local topBar   = "qs"
 local wallpaper   = "hyprpaper"
 local ideler      = "hypridle"
 local clipHist    = "copyq"
@@ -29,7 +31,7 @@ local email       = "betterbird"
 ---- AUTOSTART ----
 
 hl.on("hyprland.start", function()
-    hl.exec_cmd(windowBar)
+    hl.exec_cmd(topBar)
     hl.exec_cmd(wallpaper)
     hl.exec_cmd(ideler)
     hl.exec_cmd(clipHist)
@@ -201,11 +203,13 @@ local closeWindowBind = hl.bind(mainMod .. " + C", hl.dsp.window.close())
 hl.bind(mainMod .. " + SHIFT" .. " + Q", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + space", hl.dsp.exec_cmd(menu))
-hl.bind(mainMod .. " + b ", hl.dsp.exec_cmd("pkill -SIGUSR1 waybar"))
+-- app launcher: quickshell rofi-style launcher (see ~/.config/quickshell/shell.qml)
+hl.bind(mainMod .. " + space", hl.dsp.exec_cmd("qs ipc call launcher toggle"))
+-- hl.bind(mainMod .. " + b ", hl.dsp.exec_cmd("pkill -SIGUSR1 waybar"))
 hl.bind(mainMod .. " + F ", hl.dsp.window.fullscreen())
 -- hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 -- hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit")) -- dwindle only
+hl.bind(mainMod .. " + SHIFT" .. " + N", hl.dsp.exec_cmd("dunstctl close-all"))
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + h", hl.dsp.focus({ direction = "left" }))
@@ -377,5 +381,21 @@ hl.window_rule({
     float = true,
     center = true,
     size = "1300 850",
-    match = { class = "md.Obsidian" },
+    match = { class = "md.obsidian.Obsidian" },
+})
+
+hl.window_rule({
+    name = "Dolphin",
+    float = true,
+    center = true,
+    size = "1200 780",
+    match = { class = "org.kde.dolphin" },
+})
+
+hl.window_rule({
+    name = "Proton Qt",
+    float = true,
+    center = true,
+    size = "730 710",
+    match = { class = "net.davidotek.pupgui2" },
 })

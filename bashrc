@@ -27,16 +27,15 @@ clear () { printf '[H[2J'; }
 
 # General aliases
 alias ls='ls --color=auto'
-alias la='ls -lAph --color=auto'
-alias ll='ls -ghl --color=auto'
+alias la='ls -lAh --color=auto'
+alias ll='ls -lhS --color=auto'
 alias grep='grep --color=auto'
 alias ..='cd ..'
 alias c='clear'
 alias df='df -h'
-alias py='python3'
 alias cal='cal -m'
-
-alias \?='ddg'
+alias t='tmux new-session -A -s Work -n Main'
+alias r='reminders'
 
 # Pacman aliases
 # Update the system
@@ -84,11 +83,7 @@ export CFLAGS="-Wall -Wextra -Werror -pedantic"
 export EDITOR="vi"
 export VISUAL="vi"
 export EDITOR_PREFIX="vi"
-# export TERMINAL="alacritty"
-# export TERMINAL="ghostty"
 export TERMINAL="kitty"
-# export BROWSER="brave-browser"
-# export BROWSER="librewolf"
 export BROWSER="helium-browser"
 export READER="less"
 
@@ -226,23 +221,24 @@ fi
 complete -C tmr tmr
 complete -C zet zet
 complete -C tgo tgo
-complete -C \? \?
 complete -C tsl tsl
 complete -C vpn vpn
 complete -C jackpot jackpot
 complete -C pach pach
+complete -C reminders reminders
+complete -C r r # r = alias for reminders
 
 # eval "$(dircolors -b)"
 type dircolors &>/dev/null && . <(dircolors -b)
 type gh &>/dev/null && . <(gh completion -s bash)
-type pandoc &>/dev/null && . <(pandoc --bash-completion)
-type yq &>/dev/null && . <(yq shell-completion bash)
+# type pandoc &>/dev/null && . <(pandoc --bash-completion)
+# type yq &>/dev/null && . <(yq shell-completion bash)
 
 # Set promt
 source "$HOME/.git-prompt.sh"
 function my_prompt() {
-  local tNum="$(task status:pending count)"
-  export PS1=" ${yellow}$tNum${reset} $(task_indicator) ${cyan}\W${red}$(__git_ps1 ':%s') ${magenta}$(echo $VIRTUAL_ENV_PROMPT)${yellow} \$ ${reset}"
+  local tNum="$(task status:pending count 2>/dev/null)"
+  export PS1=" ${yellow}$tNum${reset} $(task_indicator 2>/dev/null) ${cyan}\W${red}$(__git_ps1 ':%s') ${magenta}$(echo $VIRTUAL_ENV_PROMPT)${yellow} \$ ${reset}"
   # export PS1=" ${cyan}\W${red}$(__git_ps1 ':%s') ${yellow}\$${reset} "
 }
 

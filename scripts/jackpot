@@ -1,42 +1,28 @@
 #!/usr/bin/env bash
 
-commands="view pull go"
-path="${HOME}/programing/python/jackpotAnalyzer"
+commands="go view "
 
-if test -n "$COMP_LINE"; then
+if [[ -n "$COMP_LINE" ]]; then
   pre="${COMP_LINE##* }"
   for c in ${commands}; do
-    test -z "${pre}" -o "${c}" != "${c#"${pre}"}" && echo "$c"
+      [[ -z "${pre}" || "${c}" != "${c#"${pre}"}" ]] && echo "$c"
   done
   exit
 fi
 
-cleanup() {
-    popd >/dev/null 2>&1 || true
-}
-
-trap cleanup EXIT
-
 case "$@" in
-  view)
-    pushd "${path}" >/dev/null || exit 1
-    uv run view.py
-    ;;
-  pull)
-    pushd "${path}" >/dev/null || exit 1
-    git pull --quiet
-    ;;
-go)
-    pushd "$HOME/programing/go/jackpot" >/dev/null || exit 1
-    go run main.go
-    ;;
-  *) 
-    pushd "${path}" >/dev/null || exit 1
-    uv run main.py
-    [[ -n $(git status --short) ]] || exit 1
-    echo "Adding new numbers to git"
-    git add data.csv &>/dev/null
-    git commit -m "new numbers added" &>/dev/null
-    git push &>/dev/null
-    ;;
+    go)
+        pushd ~/repos/dotfiles/scripts/ 2>&1 1>/dev/null
+        ./jackpot.go
+        ;;
+    view)
+        pushd ~/programing/python/jackpotAnalyzer 2>&1 1>/dev/null
+        uv run view.py
+        ;;
+    *)
+        pushd ~/programing/python/jackpotAnalyzer 2>&1 1>/dev/null
+        uv run main.py
+        ;;
 esac
+
+popd 2>&1 1>/dev/null

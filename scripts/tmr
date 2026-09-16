@@ -2,7 +2,7 @@
 
 [[ ! -x $(command -v transmission-daemon) ]] && echo "You dont have transmission installed" && exit 1
 
-commands="daemon add list remove start stop kill"
+commands="daemon serverstatus add list remove start stop kill"
 
 if test -n "$COMP_LINE"; then
   pre="${COMP_LINE##* }"
@@ -16,9 +16,13 @@ downloadDir="$HOME/Downloads"
 
 case "$1" in
   daemon)
-    transmission-daemon -c "$downloadDir"
+    sudo systemctl start transmission-daemon.service
+    # transmission-daemon -c "$downloadDir"
     # sudo transmission-daemon -a 127.0.0.1
     printf "Transmission daemon started\n"
+    ;;
+  serverstatus)
+    sudo systemctl status transmission-daemon.service
     ;;
   add)
     shift
@@ -40,7 +44,8 @@ case "$1" in
     transmission-remote -t "$@" --stop
     ;;
   kill)
-    sudo pkill transmission-da
+    sudo systemctl stop transmission-daemon.service
+    # sudo pkill transmission-da
     printf "Transmission daemon killed\n"
     ;;
   *)

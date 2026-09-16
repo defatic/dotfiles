@@ -1,8 +1,14 @@
 #!/usr/bin/env bash
 
+# The `checkupdates` command come from waybar-module-pacman-updates-git package.
+# Also assuming you are use yay and not paru or something else.
+
 set -e
 
-commands="sysupg orphin cache aurupg"
+[[ -z $(which checkupdates) ]] && echo "Please install package waybar-module-pacman-updates-git" && exit 1
+[[ -z $(which yay) ]] && echo "Please install yay package" && exit 1
+
+commands="sysupg aurupg orphin cache updates "
 
 if [[ -n "$COMP_LINE" ]]; then
   pre="${COMP_LINE##* }"
@@ -12,17 +18,22 @@ if [[ -n "$COMP_LINE" ]]; then
   exit
 fi
 
-clear () { printf '[H[2J'; }
+clear() { printf '[H[2J'; }
+
+updateQuickshell() {
+      quickshell ipc call pacmanupdate pUpdate 2>/dev/null
+}
 
 case "$@" in
   sysupg)
       clear
-      sudo pacman -Syyu
+      sudo pacman -Syyu --noconfirm
+      updateQuickshell
     ;;
   orphin)
       clear
       pacman -Qtdq >/dev/null
-      sudo pacman -Rns "$(pacman -Qtdq | sed -e ":a;N;$!ba;s/ / /g")"
+      sudo pacman -Rns $(pacman -Qtdq | sed -e ":a;N;$!ba;s/ / /g")
     ;;
   cache)
       clear
@@ -32,14 +43,35 @@ case "$@" in
   aurupg)
       clear
       yay -Syyu --noconfirm
+      updateQuickshell
+    ;;
+  updates)
+      repo=$(checkupdates | wc -l)
+      aur=$(yay -Qua | wc -l)
+      clear
+      printf "R%02d:A%02d\n%s\n" "${repo}" "${aur}" "-------"
+      if [[ $(checkupdates) ]]; then
+          printf "%s\n" "Main repo"
+          checkupdates
+      fi
+
+      if [[ $(yay -Qua 2>/dev/null) ]]; then
+          printf "\n%s\n" "AUR"
+          yay -Qua 2>/dev/null
+      fi
+    ;;
+  numbers)
+      repo=$(checkupdates | wc -l)
+      aur=$(yay -Qua | wc -l)
+      printf "R%02d:A%02d\n" "${repo}" "${aur}"
     ;;
   *) 
       echo "Pacman Helper Script"
       echo "Usage: pach [command]"
       echo "----------------------------"
       echo "Commands:"
-      echo "  sysupg: Upgrade the system"
+      echo "  aurupg: Upgrade the system with AUR & main repo packages"
+      echo "  sysupg: Upgrade the system (Only main repo packages)"
       echo "  orphin: Removes orphin packages"
       echo "  cache: Clear the package cache"
-      echo "  aurupg: Upgrade the system with AUR packages"
 esac

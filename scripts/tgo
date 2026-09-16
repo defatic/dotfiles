@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 tmuxpath=/usr/bin/tmux
 
@@ -6,10 +6,10 @@ tmuxpath=/usr/bin/tmux
 
 commands="start "
 
-if test -n "$COMP_LINE"; then
+if [[ -n "$COMP_LINE" ]]; then
   pre="${COMP_LINE##* }"
   for c in ${commands}; do
-    test -z "${pre}" -o "${c}" != "${c#${pre}}" && echo "$c"
+      [[ -z "${pre}" || "${c}" != "${c#"${pre}"}" ]] && echo "$c"
   done
   exit
 fi

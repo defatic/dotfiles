@@ -24,6 +24,7 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " Zig
 " Plug 'ziglang/zig.vim'
+Plug 'ap/vim-css-color'
 call plug#end()
 
 " General settings
@@ -147,6 +148,10 @@ let g:meh_pandoc_enabled = 1
 " colorscheme ayu
 " let ayucolor="mirage"
 
+" Color Highlighter
+" let g:colorhighlighter_excluded_filetypes = ['markdown', 'text', 'help']
+let g:colorhighlighter_enable = 1
+let g:colorhighlighter_update_delay = 500
 
 " Set highlight for search pattern
 hi Search cterm=NONE ctermfg=204 ctermbg=236 guifg=#E06C75 guibg=#3E4452
@@ -272,4 +277,3 @@ if executable('.venv/bin/pylsp')
         \ 'allowlist': ['python'],
         \ })
 endif
-
