@@ -44,44 +44,46 @@ activeReminderTimers() {
 
         printf "%s\t%s\n" "${timer}" "${next}"
     done < <(systemctl --user list-timers --all --output=json "reminders-*.timer" 2>/dev/null | jq -r '.[] | [.unit, .next] | @tsv')
+    exit 0
 }
 
 showReminders() {
-  local timer next remaining reminder reminderMinutes body=""
-  local reminderDir="${XDG_RUNTIME_DIR:-/tmp}/reminders"
-  local reminderMessage=""
-  local now=$(date +%s)
+    local timer next remaining reminder reminderMinutes body=""
+    local reminderDir="${XDG_RUNTIME_DIR:-/tmp}/reminders"
+    local reminderMessage=""
+    local now=$(date +%s)
 
-  while IFS=$'\t' read -r timer next; do
-    remaining=$((next - now))
-    reminder=${timer%.timer}
-    reminder=${reminder#omarchy-reminder-}
-    reminderMinutes=${reminder%%m-*}
-    reminderMessage=""
-    [[ -f ${reminderDir}/${timer%.timer}.message ]] && reminderMessage=$(<"${reminderDir}/${timer%.timer}.message")
+   while IFS=$'\t' read -r timer next; do
+     remaining=$((next - now))
+     reminder=${timer%.timer}
+     reminder=${reminder#omarchy-reminder-}
+     reminderMinutes=${reminder%%m-*}
+     reminderMessage=""
+     [[ -f ${reminderDir}/${timer%.timer}.message ]] && reminderMessage=$(<"${reminderDir}/${timer%.timer}.message")
 
-    if [[ -n "${reminderMessage}" ]]; then
-      body+="${reminderMessage} in $(formatRemaining ${remaining}) ($(date -d "@${next}" +%-H:%M:%S))"$'\n'
-    else
-      body+="${reminderMinutes}-min reminder in $(formatRemaining ${remaining}) ($(date -d "@${next}" +%-H:%M:%S))"$'\n'
-    fi
-  done < <(activeReminderTimers "${now}")
+     if [[ -n "${reminderMessage}" ]]; then
+       body+="${reminderMessage} in $(formatRemaining ${remaining}) ($(date -d "@${next}" +%-H:%M:%S))"$'\n'
+     else
+       body+="${reminderMinutes}-min reminder in $(formatRemaining ${remaining}) ($(date -d "@${next}" +%-H:%M:%S))"$'\n'
+     fi
+   done < <(activeReminderTimers "${now}")
 
-  if [[ "${1}" == "s" ]]; then
-      if [[ -z "${body}" ]]; then
-        echo -e "Upcoming reminders\nNo outstanding reminders"
-      else
-        echo -e "Upcoming reminders\n${body%$'\n'}"
-      fi
+   if [[ "${1}" == "s" ]]; then
+       if [[ -z "${body}" ]]; then
+         echo -e "Upcoming reminders\n------------------\nNo outstanding reminders"
+       else
+         echo -e "Upcoming reminders\n------------------\n${body%$'\n'}"
+       fi
 
-      exit 5
-  fi
+       exit 5
+   fi
 
-  if [[ -z "${body}" ]]; then
-    notify-send -i 󰢌 "Upcoming reminders" "No outstanding reminders"
-  else
-    notify-send -i 󰢌 "Upcoming reminders" "${body%$'\n'}"
-  fi
+   if [[ -z "${body}" ]]; then
+     notify-send -i 󰢌 "Upcoming reminders" "No outstanding reminders"
+   else
+     notify-send -i 󰢌 "Upcoming reminders" "${body%$'\n'}"
+   fi
+   exit 0
 }
 
 clearReminders() {
@@ -96,6 +98,7 @@ clearReminders() {
 
     rm -f "${remindersDir}"/reminders-*.message 2>/dev/null || true
     notify-send "Cleared!" "All reminders have been cleared"
+    exit 0
 }
 
 activeReminders() {
@@ -107,24 +110,21 @@ activeReminders() {
         cmd=0
         printf "%s" "${cmd}"
     fi
+    exit 0
 }
 
 case "$*" in
     show)
         showReminders
-        exit 0
         ;;
     term)
         showReminders s
-        exit 0
         ;;
     clear)
         clearReminders
-        exit 0
         ;;
     ar)
         activeReminders
-        exit 0
         ;;
     *) 
         : ;;

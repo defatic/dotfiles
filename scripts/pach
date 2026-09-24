@@ -73,5 +73,5 @@ case "$@" in
       echo "  aurupg: Upgrade the system with AUR & main repo packages"
       echo "  sysupg: Upgrade the system (Only main repo packages)"
       echo "  orphin: Removes orphin packages"
-      echo "  cache: Clear the package cache"
+      echo "  cache:  Clear the package cache"
 esac
