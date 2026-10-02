@@ -7,6 +7,9 @@ set -e
 [[ ! "$(command -v jq)" ]] && echo "Install jq" && exit 1
 [[ ! "$(command -v awk)" ]] && echo "Install awk" && exit 1
 
+# SOUND="${HOME}/Downloads/notification_sounds/universfield-new-notification-09-352705.mp3"
+SOUND="${HOME}/Downloads/notification_sounds/universfield-new-notification-062-494544.mp3"
+
 commands="show clear term "
 
 if [[ -n "$COMP_LINE" ]]; then
@@ -62,7 +65,9 @@ showReminders() {
      [[ -f ${reminderDir}/${timer%.timer}.message ]] && reminderMessage=$(<"${reminderDir}/${timer%.timer}.message")
 
      if [[ -n "${reminderMessage}" ]]; then
-       body+="${reminderMessage} in $(formatRemaining ${remaining}) ($(date -d "@${next}" +%-H:%M:%S))"$'\n'
+       # body+="${reminderMessage} in $(formatRemaining ${remaining}) ($(date -d "@${next}" +%-H:%M:%S))"$'\n'
+       body+="${reminderMessage}\n $(formatRemaining ${remaining}) ($(date -d "@${next}" +%-H:%M:%S))"$'\n'
+       # body+="$(formatRemaining ${remaining}) ($(date -d "@${next}" +%-H:%M:%S))\n${reminderMessage}"$'\n'
      else
        body+="${reminderMinutes}-min reminder in $(formatRemaining ${remaining}) ($(date -d "@${next}" +%-H:%M:%S))"$'\n'
      fi
