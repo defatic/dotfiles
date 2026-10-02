@@ -23,8 +23,6 @@ HISTSIZE=10000
 HISTCONTROL=ignorespace
 SAVEHIST=10000
 
-clear () { printf '[H[2J'; }
-
 # General aliases
 alias ls='ls --color=auto'
 alias la='ls -lAh --color=auto'
@@ -219,9 +217,7 @@ if [ -f /etc/bash_completion ]; then
 fi
 
 complete -C tmr tmr
-complete -C zet zet
 complete -C tgo tgo
-complete -C tsl tsl
 complete -C vpn vpn
 complete -C jackpot jackpot
 complete -C pach pach
