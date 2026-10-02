@@ -1,18 +1,18 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 reset='[0m'
 red='[31m'
 green='[32m'
 
 doGitUpdate() {
-  cd "$HOME/${1}" 2>/dev/null || exit 1
+  pushd "$HOME/${1}" 2>/dev/null || exit 1
   echo "${red}$HOME/${1}${reset}"
 
   git add -A .
   git commit -m "updated ${1}"
   git push
 
-  cd -
+  popd
 }
 
 doGitUpdate ".local/share/task"
