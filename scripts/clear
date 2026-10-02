@@ -1,3 +1,0 @@
-#!/bin/sh
-
-echo "\e[H\e[2J"
