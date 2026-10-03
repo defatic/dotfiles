@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+paplay "${HOME}/Downloads/notification_sounds/universfield-new-notification-062-494544.mp3"
