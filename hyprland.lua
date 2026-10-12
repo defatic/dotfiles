@@ -210,6 +210,7 @@ hl.bind(mainMod .. " + F ", hl.dsp.window.fullscreen())
 -- hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 -- hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit")) -- dwindle only
 hl.bind(mainMod .. " + SHIFT" .. " + N", hl.dsp.exec_cmd("dunstctl close-all"))
+hl.bind(mainMod .. " + ALT" .. " + K", hl.dsp.exec_cmd("screenClip"))
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + h", hl.dsp.focus({ direction = "left" }))
@@ -331,7 +332,7 @@ hl.window_rule({
 
 hl.window_rule({
     name = "Steam Game Window",
-    fullscreen = true,
+    -- fullscreen = true,
     center = true,
     workspace = "10",
     match = { class = "steam_app_.*" },
@@ -398,4 +399,10 @@ hl.window_rule({
     center = true,
     size = "730 710",
     match = { class = "net.davidotek.pupgui2" },
+})
+
+hl.window_rule({
+    name = "Satty",
+    workspace = "4 silent",
+    match = { class = "com.gabm.satty" },
 })

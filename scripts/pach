@@ -48,7 +48,10 @@ case "$@" in
   updates)
       repo=$(checkupdates | wc -l)
       aur=$(yay -Qua | wc -l)
-      clear
+      tot=$(( repo + aur ))
+      if (( tot > 10 )); then
+          clear
+      fi
       printf "R%02d:A%02d\n%s\n" "${repo}" "${aur}" "-------"
       if [[ $(checkupdates) ]]; then
           printf "%s\n" "Main repo"
