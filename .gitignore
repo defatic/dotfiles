@@ -1,9 +1,0 @@
-.gitignore
-
-scripts/mop
-scripts/ghostty
-scripts/brfnews
-
-scripts/elm
-scripts/cua-driver
-scripts/jackpot.go
