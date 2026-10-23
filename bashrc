@@ -32,7 +32,7 @@ alias ..='cd ..'
 alias c='clear'
 alias df='df -h'
 alias cal='cal -m'
-alias t='tmux new-session -A -s Work -n Main'
+alias t='tmux new-session -A -s Work -n "Main" \; new-window -t 9 -n "LLM Server" \; split-window -v \; select-window -t Main'
 alias r='reminders'
 
 # Pacman aliases
