@@ -12,17 +12,17 @@ fi
 
 case "$@" in
     go)
-        pushd ~/repos/dotfiles/scripts/ 2>&1 1>/dev/null
+        pushd ~/repos/dotfiles/scripts/ 2>&1 1>/dev/null || exit
         ./cmd_jackpot.go
         ;;
     view)
-        pushd ~/programing/python/jackpotAnalyzer 2>&1 1>/dev/null
+        pushd ~/programing/python/jackpotAnalyzer 2>&1 1>/dev/null || exit
         uv run view.py
         ;;
     *)
-        pushd ~/programing/python/jackpotAnalyzer 2>&1 1>/dev/null
+        pushd ~/programing/python/jackpotAnalyzer 2>&1 1>/dev/null || exit
         uv run main.py
         ;;
 esac
 
-popd 2>&1 1>/dev/null
+popd 2>&1 1>/dev/null || exit
