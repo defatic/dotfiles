@@ -5,8 +5,8 @@
 
 set -e
 
-[[ -z $(which checkupdates) ]] && echo "Please install package waybar-module-pacman-updates-git" && exit 1
-[[ -z $(which yay) ]] && echo "Please install yay package" && exit 1
+[[ -z $(command -v checkupdates) ]] && echo "Please install package waybar-module-pacman-updates-git" && exit 1
+[[ -z $(command -v yay) ]] && echo "Please install yay package" && exit 1
 
 commands="sysupg aurupg orphin cache updates "
 
@@ -32,13 +32,15 @@ case "$@" in
     ;;
   orphin)
       clear
-      pacman -Qtdq >/dev/null
-      sudo pacman -Rns $(pacman -Qtdq | sed -e ":a;N;$!ba;s/ / /g")
+      # pacman -Qtdq >/dev/null
+      # sudo pacman -Rns $(pacman -Qtdq | sed -e ":a;N;$!ba;s/ / /g")
+      yay -Ycc
     ;;
   cache)
       clear
-      sudo paccache -rufk3
-      sudo pacman -Scc
+      # sudo paccache -rufk3
+      # sudo pacman -Scc
+      yay -Scc
     ;;
   aurupg)
       clear
