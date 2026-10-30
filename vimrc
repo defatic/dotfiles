@@ -29,6 +29,8 @@ call plug#end()
 
 " General settings
 set nocompatible
+set noerrorbells
+set visualbell
 filetype plugin on
 syntax on
 
