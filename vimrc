@@ -31,6 +31,7 @@ call plug#end()
 set nocompatible
 set noerrorbells
 set visualbell
+set t_vb=
 filetype plugin on
 syntax on
 
