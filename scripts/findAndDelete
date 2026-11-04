@@ -3,7 +3,7 @@
 [[ -z "${1}" ]] && echo "You must give this command one parameter to search for" && exit 1
 
 echo "Searching for ${1}"
-find "${HOME}" -maxdepth 3 -type d -name "*${1}*" 2>/dev/null
+[[ -z $(find "${HOME}" -maxdepth 3 -type d -name "*${1}*" 2>/dev/null | tee /dev/stderr) ]] && echo "Nothing found... Quiting" && exit 0
 
 read -r -p "Do you want to proceed with clean/deleting ${1} ... [Y/n]: " answer
 answer=${answer:-Y}
