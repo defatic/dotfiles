@@ -3,23 +3,29 @@
 # Optimized for 12GB VRAM + 32GB RAM + Concurrent Requests
 # Model: Qwen3.5-9B-Q6_K (~7.5GB VRAM)
 
-MODEL_DIR=~/Downloads/models/Qwen3.5-9B-Q6_K/
+export CUDA_VISIBLE_DEVICES=0           # Use specific GPU
+export OMP_NUM_THREADS=2                # Leave some for system
+export LLAMA_SERVER_LOG_COLORS=on       # Debug info
 
- llama-server --host 0.0.0.0 \
-     --port 8080 \
-     --temp 1.0 \
-     --top-p 0.95 \
-     --top-k 20 \
-     --min-p 0.00 \
-     -ngl 99 \
-     -fa on \
-     -b 2048 \
-     -ub 512 \
-     -c 131072 \
-     -ctk q8_0 \
-     -ctv q8_0 \
-     --presence-penalty 1.5 \
-     --repeat-penalty 1.0 \
-     --jinja \
-     --alias "unsloth/Qwen3.5-9B-Q6_K" \
-     --models-dir "${MODEL_DIR}"
+MODEL_DIR=~/Downloads/models/Qwen3.5-9B-Q6_K
+
+llama-server --host 0.0.0.0 \
+    --port 8080 \
+    --temp 1.0 \
+    --top-p 0.95 \
+    --top-k 20 \
+    --min-p 0.00 \
+    -ngl 99 \
+    -fa on \
+    -b 2048 \
+    -ub 2048 \
+    -ctk q8_0 \
+    -ctv q8_0 \
+    --fit-target 512 \
+    --load-mode mmap \
+    --presence-penalty 1.5 \
+    --repeat-penalty 1.0 \
+    --jinja \
+    --alias "unsloth/Qwen3.5-9B-Q6_K" \
+    --models-dir "${MODEL_DIR}" \
+    --no-mmproj

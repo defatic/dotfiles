@@ -2,9 +2,9 @@ hl.window_rule({
     name = "Battle.net",
     match = {
         class = "steam_app_default",
-        title = "Battle.net",
+        title = "^Battle.net.*",
     },
-    workspace = "9",
+    workspace = "9 silent",
     float = true,
     center = true,
     no_blur = true,
